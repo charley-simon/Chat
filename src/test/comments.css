@@ -1,0 +1,99 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: system-ui, sans-serif;
+}
+
+/* Make images easier to work with */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/***
+ 🟣 Modern CSS Solutions Demo Styles
+ */
+
+.comment-list {
+  list-style: none;
+  padding: 0.5rem;
+  margin: 0;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.comment .comment-list {
+  grid-column-start: 2;
+  grid-column-end: -1;
+  padding: 0;
+}
+
+.comment {
+  display: grid;
+  grid-template-columns: min(64px, 15%, 10vw) 1fr;
+  gap: 1rem;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.comment-body {
+  display: grid;
+  gap: .5rem;
+  color: #444;
+}
+
+.comment-meta {
+  color: #767676;
+  font-size: .875rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.comment-body a {
+  color: inherit;
+  hyphens: none;
+}
+
+.comment-meta a {
+  color: mediumvioletred;
+}
+
+.comment-avatar img {
+  border-radius: 50%;
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 1;
+}
+
+@supports not (aspect-ratio: 1) {
+  .comment-avatar {
+    position: relative;
+    height: 0;
+    padding-bottom: 100%;
+  }
+
+  .comment-avatar img {
+    position: absolute;
+    height: 100%;
+  }
+}

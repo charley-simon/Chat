@@ -1,0 +1,35 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,300&display=swap");
+
+:root {
+  --font-primary: "Roboto", sans-serif;
+  --font-secondary: "Merriweather", serif;
+}
+
+p {
+  margin: 1rem;
+}
+
+.box {
+  border: 2px solid #005979;
+  background-color: #eaf6fa;
+  
+  margin: 1rem;
+}
+
+.primary-font {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  color: #005979;
+}
+
+.secondary-font {
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+}
+
+.tertiary-font {
+  font-family: "Arial";
+  font-size: 1rem;
+}

@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-color: red;
+}
+
+:root {
+  --border-color: #333;
+  --background-color: grey;
+}
+
+.messages {
+  /*background-color: var(--border-color);*/
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 2rem);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  /*box-shadow: 1px 2px var(--border-color);*/
+}
+
+.messages * {
+  overflow: hidden;
+}
+
+.messages-header {
+  flex: 0 0 auto;
+  /*position: relative;*/
+  min-height: 100%;
+  max-height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 0.5rem;
+  /*border-bottom: 2px solid var(--border-color);*/
+  margin-bottom: 2px;
+  background-color: var(--background-color);
+}
+
+.messages-header * {
+  overflow: hidden;
+}
+
+.messages-header > .avatar {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  overflow: hidden;
+}
+
+.messages-footer {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 0.5rem;
+  /*border-top: 2px solid var(--border-color);*/
+  margin-top: 2px;
+  background-color: var(--background-color);
+}
+
+.messages-body {
+  flex: 1 1 auto;
+  position: relative;
+  overflow-y: scroll;
+  border-top: 0;
+  --content-color: darkgrey;
+  --content-margin-left: 0;
+  --content-margin-right: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  overflow-y: auto;
+  background-color: var(--background-color);
+}
+
+.message {
+  /* Bloc d'un message */
+  /*background-color: red;*/
+  /* pour tester et mieux y voir */
+  display: flex;
+  flex-direction: column;
+  /* 3 lignes, seul le texte est variable en hauteur */
+  overflow: hidden;
+  /* on efface tout ce qui dépasse */
+  padding: 0 1rem 0 1rem;
+  place-items: center;
+}
+
+.message > * {
+  box-shadow: 1px 2px 2px grey;
+  overflow: hidden;
+}
+
+.message.send {
+  /* Si c'est un message envoyé on déplace à droite */
+  padding-left: 15%;
+  --content-margin-left: -100%;
+}
+
+.message.receive {
+  /* Si c'est un message reçu on déplace à gauche */
+  padding-right: 15%;
+  --content-margin-right: -100%;
+}
+
+.message .avatar {
+  /* Avatar: propriétées communes */
+  display: flex;
+  place-items: center;
+  background-color: var(--content-color);
+  opacity: 0.5;
+  z-index: 1;
+  border-radius: 20px;
+  padding: 0.5rem;
+  max-height: 20px;
+  margin-left: var(--content-margin-left);
+  margin-right: var(--content-margin-right);
+  margin-top: 0.2rem;
+  margin-bottom: -20px;
+}
+
+.message .content {
+  /* Le texte du message */
+  background: linear-gradient(to left top, lightgrey, var(--content-color));
+  min-width: max-content;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  min-width: calc(100% - 2rem );
+}
+
+.message .time {
+  /* Le stamp/l'heure du message */
+  background-color: antiquewhite;
+  border-radius: 10px;
+  opacity: 0.5;
+  margin-top: -10px;
+  margin-left: auto;
+  margin-right: 1rem;
+  padding: 0 1rem 0 1rem;
+}

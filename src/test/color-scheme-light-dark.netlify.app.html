@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <title>https://color-scheme-light-dark.netlify.app/</title>
+  <style>
+    /* set your page to automatically respond to OS settings on load
+       seriously, go play with the color-scheme property, it's ace!*/
+       html {
+          font-family: sans-serif;
+          box-sizing: border-box;
+          color-scheme: light dark;
+
+          --medgrey: 175 50% 70%;
+      }
+
+      html, body {
+          margin: 0;
+          padding: 0;
+      }
+
+      .mode-switcher {
+      }   
+      .mode-switcher button {
+          border: 0;
+          padding: 0.25rem;
+          margin: 0.5vmin 0.25vmin;
+          border-radius: 0.25rem;
+          font-size: 1.5rem;
+          background-color: hsla(var(--medgrey) / 0.5);
+      }
+      .mode-switcher #lightBtn {
+          box-shadow: 2px 2px 5px -2px CanvasText inset;
+      }
+      .mode-switcher #darkBtn {
+          box-shadow: 2px 2px 5px -2px Canvas inset;
+      }
+      .mode-switcher :is(#darkBtn, #lightBtn):hover {
+          /* transform: translate(1px, 1px); */
+          background-color: hsla(var(--medgrey) / 1);
+      }
+      .mode-switcher #lightBtn:active {
+          box-shadow: 2px 2px 5px -2px Canvas inset;
+      }
+      .mode-switcher #darkBtn:active {
+          box-shadow: 2px 2px 5px -2px CanvasText inset;
+      }
+
+      header {
+          position: sticky;
+          top: 0;
+          z-index: 1;
+          border-bottom: 1px solid hsla(var(--medgrey) / 0.25);
+          place-content: space-around;
+          place-items: center;
+      }
+      header, footer {
+          background-color: Canvas;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0 3vmin;
+          padding: 0 3vmin;
+      }
+
+      footer {
+          border-top: 1px solid hsla(var(--medgrey) / 0.25);
+          place-content: center;
+      }
+
+      header ul {
+          display: flex;
+          gap: 3vmin;
+          list-style-type: none;
+          padding-left: 0;
+          place-items: center;
+      }
+
+      header li {
+          min-width: max-content;
+      }
+
+      main {
+          max-width: 72ch;
+          margin-inline: auto;
+          padding-inline: 1em;
+          line-height: 1.5em;
+          padding-block-end: 5rem;
+      }
+
+      section, article {
+          scroll-margin-top: 7rem;
+          margin-block-end: 3rem;
+      }
+
+      a {
+          display: inline-block;
+          width: fit-content;
+          text-decoration: none;
+      }
+
+      ul li {
+          margin-block: 0.5em;
+      }
+
+      code, pre, p, ul {
+          font-size: clamp(0.9rem, 4vmin, 1.1rem);
+      }
+
+      code, pre {
+          background-color: hsla(var(--medgrey) / 0.25);
+          padding: 0.2em 0.3em;
+          border-radius: 0.25rem;
+      }
+      pre {
+          width: max(100%, fit-content);
+          white-space: pre-wrap;
+          overflow: auto;
+      }
+      pre i {
+          opacity: 0.5;
+      }
+
+      .mode-styling {
+          color: rebeccapurple;
+          background-color: gold;
+          text-align: center;
+          width: fit-content;
+          margin: 0.25em auto;
+          padding: 0.5em 0.75em;
+          border-radius: 0.5em;
+      }
+      div.mode-styling { font-size: 2rem; }
+
+      .mode-styling::after { content: " dark mode" }
+      div.mode-styling::after { content: " light mode" }
+
+      .dark-mode .mode-styling {
+          background-color: rebeccapurple;
+          color: gold;
+      }
+      .dark-mode .mode-styling::after { content: " light mode" }
+      .dark-mode div.mode-styling::after { content: " dark mode" }
+
+  </style>
+  <script>
+    // first, a useful variable to neaten things up:
+    const htmlRoot = document.querySelector("html");
+
+    // set color-scheme to dark and switch to light button
+    function switchDark() {
+      htmlRoot.style.colorScheme = "dark";
+    }
+    // set color-scheme to light and switch to dark button
+    function switchLight() {
+      htmlRoot.style.colorScheme = "light";
+    }
+    // the same variable as before:
+    htmlRoot = document.querySelector("html");
+
+    // check for color-scheme on html element, if not set, then...
+    if (!htmlRoot.style.colorScheme) {
+      // ..if user OS is in dark mode...
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // ..add dark-mode class to html element
+        htmlRoot.classList.add("dark-mode");
+      }
+    }
+
+    // now we can to check for live changes, by adding an
+    // event listener in case our user flips the OS mode
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+      // only run if the html element color-scheme is not set
+      if (!htmlRoot.style.colorScheme) {
+        // add/remove dark mode to match OS setting
+        if (event.matches) {
+          htmlRoot.classList.add("dark-mode");
+        } else {
+          htmlRoot.classList.remove("dark-mode");
+        }
+      }
+    });
+
+    // finally we add another line to each of our functions,
+    // switchDark and switchLight, to include the mode changes
+    function switchDark() {
+      htmlRoot.style.colorScheme = "dark";
+      htmlRoot.classList.add("dark-mode");
+    }
+    function switchLight() {
+      htmlRoot.style.colorScheme = "light";
+      htmlRoot.classList.remove("dark-mode");
+    }
+
+    // a couple more useful variables    
+     htmlRoot = document.querySelector("html");
+    const lightButton = document.querySelector("#lightBtn");
+    const darkButton = document.querySelector("#darkBtn");
+
+    if (!htmlRoot.style.colorScheme) {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        htmlRoot.classList.add("dark-mode");
+        darkButton.setAttribute("aria-pressed", "true");
+        lightButton.setAttribute("aria-pressed", "false");
+      } else {
+        darkButton.setAttribute("aria-pressed", "false");
+        lightButton.setAttribute("aria-pressed", "true");
+      }
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+      if (!htmlRoot.style.colorScheme) {
+        if (event.matches) {
+          htmlRoot.classList.add("dark-mode");
+          darkButton.setAttribute("aria-pressed", "true");
+          lightButton.setAttribute("aria-pressed", "false");
+        } else {
+          htmlRoot.classList.remove("dark-mode");
+          darkButton.setAttribute("aria-pressed", "false");
+          lightButton.setAttribute("aria-pressed", "true");
+        }
+      }
+    });
+
+    function switchDark() {
+      htmlRoot.style.colorScheme = "dark";
+      htmlRoot.classList.add("dark-mode");
+      darkButton.setAttribute("aria-pressed", "true");
+      lightButton.setAttribute("aria-pressed", "false");
+    }
+    function switchLight() {
+      htmlRoot.style.colorScheme = "light";
+      htmlRoot.classList.remove("dark-mode");
+      darkButton.setAttribute("aria-pressed", "false");
+      lightButton.setAttribute("aria-pressed", "true");
+    }
+  </script>
+</head>
+
+<body>
+  <h1 title="Website Title"><a href="#">Light/Dark Mode</a></h1>
+  <div class="mode-switcher">
+      <button id="lightBtn" onclick="switchLight()" aria-pressed="false">light</button>
+      <button id="darkBtn" onclick="switchDark()" aria-pressed="true">dark</button>
+  </div>
+  <ul>
+      <li><a href="#how">How?</a></li>
+      <li><a href="#more">More Styling</a></li>
+      <li><a href="#a11y">Accessibility</a></li>
+      <li><a href="#limits">Limitations</a></li>
+  </ul>
+  
+  <div class="mode-styling">Specific styles for</div>
+  <p class="mode-styling">Click toggle in header for </p>
+
+</body>
+
+</html>
+

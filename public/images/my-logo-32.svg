@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="450.1777"
+   height="450.1777"
+   viewBox="0 0 450.1777 450.1777"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="my-logo-32.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#3a3a3a"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     inkscape:zoom="0.5"
+     inkscape:cx="210"
+     inkscape:cy="293"
+     inkscape:window-width="1920"
+     inkscape:window-height="1046"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showborder="false"
+     shape-rendering="crispEdges" />
+  <defs
+     id="defs1">
+    <rect
+       x="173.61282"
+       y="128.78915"
+       width="168.56227"
+       height="193.18372"
+       id="rect1" />
+  </defs>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-19.547416,-10.393267)">
+    <rect
+       style="fill:#02ab4c;fill-opacity:1;stroke-width:0.978799"
+       id="rect2"
+       width="354.07648"
+       height="349.75092"
+       x="162.45673"
+       y="-181.34842"
+       rx="57.467907"
+       ry="57.467907"
+       transform="rotate(45)" />
+    <text
+       xml:space="preserve"
+       id="text1"
+       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:12px;font-family:Arial;-inkscape-font-specification:'Arial, Heavy';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect1);fill:#ffffff;fill-opacity:1"
+       transform="matrix(44.510913,0,0,39.425947,-7693.9623,-5092.4069)"><tspan
+         x="173.61328"
+         y="139.54801"
+         id="tspan2">C</tspan></text>
+  </g>
+</svg>

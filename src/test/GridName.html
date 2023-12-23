@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      /* juste pour l'exemple et mieux voir les fonds en debug */
+      font: 1em Helvetica Neue, Helvetica, Arial, sans-serif;
+      background-color: brown;
+      margin: 0;
+      padding: 1rem;
+    }
+
+    :root {
+      --border-color: #333;
+      --background-color: grey;
+    }
+
+    .messages {
+      /*background-color: var(--border-color);*/
+      overflow: hidden;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      max-height: calc(100vh - 2rem);
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      /*box-shadow: 1px 2px var(--border-color);*/
+    }
+
+    .messages * {
+      overflow: hidden;
+    }
+
+    .messages-header {
+      flex: 0 0 auto;
+      /*position: relative;*/
+      min-height: 100%;
+      max-height: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
+      padding: .5rem;
+      /*border-bottom: 2px solid var(--border-color);*/
+      margin-bottom: 2px;
+      background-color: var(--background-color);
+    }
+
+    .messages-header * {
+      overflow: hidden;
+    }
+
+    .messages-header > .avatar {
+      display: flex;
+      flex-direction: column;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .messages-footer {
+      flex: 0 0 auto;
+      box-sizing: border-box;
+      overflow: hidden;
+      padding: .5rem;
+      /*border-top: 2px solid var(--border-color);*/
+      margin-top: 2px;
+      background-color: var(--background-color);
+    }
+
+    .messages-body {
+      flex: 1 1 auto;
+      position: relative;
+      border-top: 0;
+      --content-color: darkgrey;
+      --content-margin-left: 0;
+      --content-margin-right: 0;
+      box-sizing: border-box;
+      overflow: hidden;
+      overflow-y: auto;
+      background-color: var(--background-color);
+    }
+
+    .message {
+      /* Bloc d'un message */
+      /* background-color: red;*/
+      /* pour tester et mieux y voir */
+      display: flex;
+      flex-direction: column;
+      /* 3 lignes, seul le texte est variable en hauteur */
+      overflow: hidden;
+      /* on efface tout ce qui dépasse */
+      padding: 0 1rem 0 1rem;
+      place-items: center;
+    }
+
+    .message>* {
+      box-shadow: 1px 2px 2px grey;
+      overflow: hidden;
+    }
+
+    .message.send {
+      /* Si c'est un message envoyé on déplace à droite */
+      padding-left: 15%;
+      --content-margin-left: -100%;
+    }
+
+    .message.receive {
+      /* Si c'est un message reçu on déplace à gauche */
+      padding-right: 15%;
+      --content-margin-right: -100%;
+    }
+
+    .message .avatar {
+      /* Avatar: propriétées communes */
+      display: flex;
+      place-items: center;
+      background-color: var(--content-color);
+      opacity: .8;
+      z-index: 1;
+      border-radius: 20px;
+      padding: .5rem;
+      max-height: 30px;
+      margin-left: var(--content-margin-left);
+      margin-right: var(--content-margin-right);
+      margin-top: .2rem;
+      margin-bottom: -20px;
+    }
+
+    .message .content {
+      /* Le texte du message */
+      background: linear-gradient(to left top, lightgrey, var(--content-color));
+      border-radius: 10px;
+      padding: 1rem;
+      margin-top: .5rem;
+      min-width: calc(100% - 2rem );
+    }
+
+    .message .time {
+      /* Le stamp/l'heure du message */
+      background-color: antiquewhite;
+      border-radius: 10px;
+      opacity: .8;
+      margin-top: -10px;
+      margin-left: auto;
+      margin-right: 1rem;
+      padding: 0 1rem 0 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="messages">
+    <div class="messages-header">
+      <div class="avatar">
+        <img src="avatar-h-2.png" />
+        Charley
+      </div>
+    </div>
+    <div class="messages-body">
+      <div class="message receive" style="--content-color: deepskyblue">
+        <div class="avatar">
+          <img src="avatar-h-1.png" />
+          Rodolphe
+        </div>
+        <div class="content">Nostrum quidem</div>
+        <div class="time">17/12/2023 à 23:35</div>
+      </div>
+      <div class="message send" style="--content-color: lightgrey">
+        <div class="avatar">
+          <img src="avatar-h-2.png" />
+          Charley
+        </div>
+        <div class="content">Lorem, ipsum dolor</div>
+        <div class="time">17/12/2023 à 23:37</div>
+      </div>
+      <div class="message send" style="--content-color: lightgrey">
+        <div class="content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt dignissimos, molestiae
+          aspernatur aliquam illum consequuntur vero dicta, cumque fuga porro et magni tempore vel officia
+          voluptatibus
+          ea, ipsam sunt non.</div>
+        <div class="time">17/12/2023 à 23:37</div>
+      </div>
+      <div class="message receive" style="--content-color: burlywood">
+        <div class="avatar">
+          <img src="avatar-f-1.png" />
+          Margaux
+        </div>
+        <div class="content">Nostrum quidem, provident delectus quibusdam sit autem quaerat sequi repellat voluptatum
+          maiores fugit dicta animi quae repudiandae quas voluptatibus error recusandae? Recusandae veritatis commodi
+          quam
+          officiis unde pariatur ducimus possimus?</div>
+        <div class="time">17/12/2023 à 23:35</div>
+      </div>
+    </div>
+    <div class="messages-footer">
+      <form action="" name="sendForm">
+        <div class="input-group">
+            <input type="search" id="send" placeholder="Ecrivez votre message" class="">
+            <button type="submit" class="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5" />
+                </svg>
+            </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

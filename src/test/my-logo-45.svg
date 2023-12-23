@@ -1,0 +1,15 @@
+<svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 300">
+  <title>Charley's logo</title>
+  <defs>
+    <mask style="mask-type: luminance;" id="matrice">
+      <rect x="0" y="0" rx="10" ry="10" width="320" height="320" style="fill:white;" />
+      <text fill="#000000" x="-100" y="370" font-size="310" font-family="Arial" font-weight="1000"
+        transform="translate(-102.7, -63) rotate(-45)">C</text>
+    </mask>
+  </defs>
+  <rect x="0" y="0" rx="10" ry="10" width="200" height="200" style="fill:green;
+    mask:url(#matrice);
+    mask-mode: luminance" 
+    transform="rotate(45)
+    translate(94, -100)"/>
+</svg>

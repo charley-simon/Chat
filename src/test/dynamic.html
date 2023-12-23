@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dynamic Html, Css and Javascript</title> 
+	
+	<!-- the static loading of dynamic.js file-->
+  <link rel="stylesheet" href="dynamic.css" />
+	<script src="dynamic.js"></script> 
+</head> 
+<body> 
+  <div name="wrapper" class="wrapper dbg">
+    <div name="grid" class="grid dbg">
+        <div class="dbg">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur rerum, nulla ducimus deleniti
+                veritatis. Autem placeat molestiae id maxime hic quia mollitia molestias vem. Perferendis reiciendis
+                ex tempora, odio iure quibusdam ut consequuntur minima Porro consectetur rerum ipsum nulla
+                aspernatur facilis eaque quis iste accusantium, ducimus ad incidunt quibusdam, numquam qui odit
+                repudiandae eum dolorem sit.</p>
+        </div>
+        <div class="dbg">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, fugit maiores optio dolore quos
+                dolorum deserunt atque tempore rerum sunt vel quasi nisi aliquid aliquam inventore molestiae quidem
+                voluptates quo, voluptatem. Debitis, quae, nisi ? Rem, adipisci, aliquid. Aperiam iusto iure alias
+                dolorem omnis corporis. Est nam maiores similique dolorum ad in distinctio a deleniti blanditiis,
+                voluptate commodi inventore quidem aliquam
+                Excepturi voluptas distinctio in laudantium fugit reiciendis mollitia dolorum, a expedita? Iure
+                repellendus alias fugiat eius dolor autem, obcaecati quisquam eum ducimus quaerat culpa, animi! Ad
+                qui aperiam neque nihil. Sunt eaque quo sint, voluptatum nostrum incidunt atque, modi doloremque
+                illum a praesentium illo ut tempora temporibus, quae beatae maiores cum placeat quisquam pariatur
+                fuga expedita? Error aut ratione adipisci!</p>
+        </div>
+        <div class="dbg">
+            This is an ad
+        </div>
+        <div class="dbg">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, libero obcaecati dolore officia
+                suscipit ex, deserunt enim sit eligendi ipsam, quia corporis cumque tempora aliquid debitis
+                perspiciatis, facilis numquam quas!</p>
+        </div>
+        <div class="dbg">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos cumque iste necessitatibus
+                quasi, sapiente eos quod eligendi inventore eius nisi culpa error suscipit vel alias nostrum
+                provident assumenda. Inventore, eum.</p>
+        </div>
+    </div>
+</div>
+
+	<div> 
+		<div id="upper"> 
+			
+			<!-- The message will change on successful execution of View button-->
+			<h3 id="mssg"> 
+			We are here to learn how to load 
+			CSS and JS file dynamically 
+			</h3> 
+
+			<!-- The message() function is in dynamic-dbg.js file -->
+			<button onclick="message()"> View Message </button> 
+		</div> 
+		<br> 
+		
+		<!-- This div would disappear after view 
+			message is successfully executed-->
+		<div id="lower"> 
+			
+			<!-- The loadCSS would load the dynamic-dbg.css file -->
+			<button onclick="loadCSS()"> Load CSS </button> 
+
+			<!-- The loadJS would load the dynamic-dbg.js file-->
+			<button onclick="loadJS()"> Load JS </button>
+		</div> 
+	</div> 
+  <div id="console-dbg">
+    <div id="console-content">
+      <p>Debugging console</p>
+    </div>
+  </div>
+</body> 
+</html>
+

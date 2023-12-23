@@ -1,0 +1,490 @@
+.cs-color__blue-100 {
+  color: #eaf6fa;
+}
+.cs-color__blue-200 {
+  color: #b3ebff;
+}
+.cs-color__blue-300 {
+  color: #79d2f2;
+}
+.cs-color__blue {
+  color: #009fd9;
+}
+.cs-color__blue-500 {
+  color: #007fad;
+}
+.cs-color__blue-600 {
+  color: #005979;
+}
+.cs-color__indigo-100 {
+  color: #e8f1fd;
+}
+.cs-color__indigo-200 {
+  color: #cce1ff;
+}
+.cs-color__indigo-300 {
+  color: #96c2ff;
+}
+.cs-color__indigo {
+  color: #5968e2;
+}
+.cs-color__indigo-500 {
+  color: #4f54b3;
+}
+.cs-color__indigo-600 {
+  color: #383c80;
+}
+.cs-color__purple-100 {
+  color: #f5efff;
+}
+.cs-color__purple-200 {
+  color: #dfccff;
+}
+.cs-color__purple-300 {
+  color: #c9acfd;
+}
+.cs-color__purple {
+  color: #8d56eb;
+}
+.cs-color__purple-500 {
+  color: #6637b6;
+}
+.cs-color__purple-600 {
+  color: #492782;
+}
+.cs-color__green-100 {
+  color: #e1fdf3;
+}
+.cs-color__green-200 {
+  color: #c6f7da;
+}
+.cs-color__green-300 {
+  color: #73e4a2;
+}
+.cs-color__green {
+  color: #2db783;
+}
+.cs-color__green-500 {
+  color: #16855b;
+}
+.cs-color__green-600 {
+  color: #054e33;
+}
+.cs-color__yellow-100 {
+  color: #fdf7e7;
+}
+.cs-color__yellow-200 {
+  color: #ffebb3;
+}
+.cs-color__yellow-300 {
+  color: #ffdd80;
+}
+.cs-color__yellow {
+  color: #febe14;
+}
+.cs-color__yellow-500 {
+  color: #a77005;
+}
+.cs-color__yellow-600 {
+  color: #714601;
+}
+.cs-color__red-100 {
+  color: #ffeff0;
+}
+.cs-color__red-200 {
+  color: #ffd9d9;
+}
+.cs-color__red-300 {
+  color: #ffb0b0;
+}
+.cs-color__red {
+  color: #ff5a5f;
+}
+.cs-color__red-500 {
+  color: #b22d31;
+}
+.cs-color__red-600 {
+  color: #7d0d10;
+}
+.cs-color__black-300 {
+  color: #676d73;
+}
+.cs-color__black {
+  color: #2f3033;
+}
+.cs-color__gray-200 {
+  color: #fafafa;
+}
+.cs-color__gray-300 {
+  color: #e9eced;
+}
+.cs-color__gray {
+  color: #d3d4d5;
+}
+.cs-color__white {
+  color: #ffffff;
+}
+
+.color-inherit {
+  color: inherit;
+}
+
+.white {
+  color: cs-color__white;
+}
+
+.black {
+  color: cs-color__black;
+}
+
+.black-300 {
+  color: cs-color__black-300;
+}
+
+.blue {
+  color: cs-color__blue;
+}
+
+.indigo {
+  color: cs-color__indigo;
+}
+
+.purple {
+  color: cs-color__purple;
+}
+
+.green {
+  color: cs-color__green;
+}
+
+.yellow {
+  color: cs-color__yellow;
+}
+
+.red {
+  color: cs-color__red;
+}
+
+.gray {
+  color: cs-color__gray;
+}
+
+.gray-200 {
+  color: cs-color__gray-200;
+}
+
+.gray-300 {
+  color: cs-color__gray-300;
+}
+
+.blue-500 {
+  color: cs-color__blue-500;
+}
+
+.indigo-500 {
+  color: cs-color__indigo-500;
+}
+
+.purple-500 {
+  color: cs-color__purple-500;
+}
+
+.green-500 {
+  color: cs-color__green-500;
+}
+
+.yellow-500 {
+  color: cs-color__yellow-500;
+}
+
+.red-500 {
+  color: cs-color__red-500;
+}
+
+.blue-600 {
+  color: cs-color__blue-600;
+}
+
+.indigo-600 {
+  color: cs-color__indigo-600;
+}
+
+.purple-600 {
+  color: cs-color__purple-600;
+}
+
+.green-600 {
+  color: cs-color__green-600;
+}
+
+.yellow-600 {
+  color: cs-color__yellow-600;
+}
+
+.red-600 {
+  color: cs-color__red-600;
+}
+
+.bg-white {
+  background-color: cs-color__white;
+}
+
+.bg-black {
+  background-color: cs-color__black;
+}
+
+.bg-black-300 {
+  background-color: cs-color__black-300;
+}
+
+.bg-blue {
+  background-color: cs-color__blue;
+}
+
+.bg-blue-100 {
+  background-color: cs-color__blue-100;
+}
+
+.bg-indigo {
+  background-color: cs-color__indigo;
+}
+
+.bg-indigo-100 {
+  background-color: cs-color__indigo-100;
+}
+
+.bg-purple {
+  background-color: cs-color__purple;
+}
+
+.bg-purple-100 {
+  background-color: cs-color__purple-100;
+}
+
+.bg-green {
+  background-color: cs-color__green;
+}
+
+.bg-green-100 {
+  background-color: cs-color__green-100;
+}
+
+.bg-yellow {
+  background-color: cs-color__yellow;
+}
+
+.bg-yellow-100 {
+  background-color: cs-color__yellow-100;
+}
+
+.bg-red {
+  background-color: cs-color__red;
+}
+
+.bg-red-100 {
+  background-color: cs-color__red-100;
+}
+
+.bg-gray {
+  background-color: cs-color__gray;
+}
+
+.bg-gray-200 {
+  background-color: cs-color__gray-200;
+}
+
+.bg-gray-300 {
+  background-color: cs-color__gray-300;
+}
+
+.hover-white:hover {
+  color: cs-color__white;
+}
+
+.hover-white:focus {
+  color: cs-color__white;
+}
+
+.hover-black:hover {
+  color: cs-color__black;
+}
+
+.hover-black:focus {
+  color: cs-color__black;
+}
+
+.hover-black-300:hover {
+  color: cs-color__black-300;
+}
+
+.hover-black-300:focus {
+  color: cs-color__black-300;
+}
+
+.hover-blue:hover {
+  color: cs-color__blue;
+}
+
+.hover-blue:focus {
+  color: cs-color__blue;
+}
+
+.hover-indigo:hover {
+  color: cs-color__indigo;
+}
+
+.hover-indigo:focus {
+  color: cs-color__indigo;
+}
+
+.hover-purple:hover {
+  color: cs-color__purple;
+}
+
+.hover-purple:focus {
+  color: cs-color__purple;
+}
+
+.hover-green:hover {
+  color: cs-color__green;
+}
+
+.hover-green:focus {
+  color: cs-color__green;
+}
+
+.hover-yellow:hover {
+  color: cs-color__yellow;
+}
+
+.hover-yellow:focus {
+  color: cs-color__yellow;
+}
+
+.hover-red:hover {
+  color: cs-color__red;
+}
+
+.hover-red:focus {
+  color: cs-color__red;
+}
+
+.hover-gray:hover {
+  color: cs-color__gray;
+}
+
+.hover-gray:focus {
+  color: cs-color__gray;
+}
+
+.hover-gray-200:hover {
+  color: cs-color__gray-200;
+}
+
+.hover-gray-200:focus {
+  color: cs-color__gray-200;
+}
+
+.hover-gray-300:hover {
+  color: cs-color__gray-300;
+}
+
+.hover-gray-300:focus {
+  color: cs-color__gray-300;
+}
+
+.hover-bg-white:hover {
+  background-color: cs-color__white;
+}
+
+.hover-bg-white:focus {
+  background-color: cs-color__white;
+}
+
+.hover-bg-black:hover {
+  background-color: cs-color__black;
+}
+
+.hover-bg-black:focus {
+  background-color: cs-color__black;
+}
+
+.hover-bg-black-300:hover {
+  background-color: cs-color__black-300;
+}
+
+.hover-bg-black-300:focus {
+  background-color: cs-color__black-300;
+}
+
+.hover-bg-blue:hover {
+  background-color: cs-color__blue;
+}
+
+.hover-bg-blue:focus {
+  background-color: cs-color__blue;
+}
+
+.hover-bg-indigo:hover {
+  background-color: cs-color__indigo;
+}
+
+.hover-bg-indigo:focus {
+  background-color: cs-color__indigo;
+}
+
+.hover-bg-purple:hover {
+  background-color: cs-color__purple;
+}
+
+.hover-bg-purple:focus {
+  background-color: cs-color__purple;
+}
+
+.hover-bg-green:hover {
+  background-color: cs-color__green;
+}
+
+.hover-bg-green:focus {
+  background-color: cs-color__green;
+}
+
+.hover-bg-yellow:hover {
+  background-color: cs-color__yellow;
+}
+
+.hover-bg-yellow:focus {
+  background-color: cs-color__yellow;
+}
+
+.hover-bg-red:hover {
+  background-color: cs-color__red;
+}
+
+.hover-bg-red:focus {
+  background-color: cs-color__red;
+}
+
+.hover-bg-gray:hover {
+  background-color: cs-color__gray;
+}
+
+.hover-bg-gray:focus {
+  background-color: cs-color__gray;
+}
+
+.hover-bg-gray-200:hover {
+  background-color: cs-color__gray-200;
+}
+
+.hover-bg-gray-200:focus {
+  background-color: cs-color__gray-200;
+}
+
+.hover-bg-gray-300:hover {
+  background-color: cs-color__gray-300;
+}
+
+.hover-bg-gray-300:focus {
+  background-color: cs-color__gray-300;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon application de Chat</title>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/displayAllMsgs.css" />
+  <script src="./js/bootstrap.bundle.min.js" defer></script>
+</head>
+
+<body>
+  <!--
+    userName: <%= locals.userName ?? 'Null' %>
+    userID: <%= locals.userID %>
+    userAvatar: <%= locals.userAvatar %>
+    user: <%= locals.user %>
+-->
+  <div class="container">
+    <div class="row vh-100 row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+
+        <div name="<%= locals.user.name %>" id="User_<%= locals.user.id %>"
+          class="card text-white <%= locals.user.chatColor %> px-0 py-0 mx-2 my-2" style="max-width: 30rem;">
+          <div class="card-header">
+            <img src="images/<%= locals.user.avatar %>" height="28" class="float-start pe-2" alt="Avatar" />
+            <h5 class="card-title mx-0 my-0 px-0 py-0">
+              <%= locals.user.name %>
+            </h5>
+          </div>
+          <div id="messages" class="card-body mx-0 my-0 px-0 py-0" style="overflow-y: scroll; height: 200px">
+            <% for (const msg of locals.messages) { %>
+              <% let time=new Date(msg.time).toString() %>
+                <% time=time.substring(0, 24) %>
+                  <% console.log("Content: " + msg.content )%>
+                        <% let userItem = users[msg.from] %>
+                        <% if( user.id == userItem.id ) { %>
+                            <%- include( "outgoingMsg.ejs", {time: time, avatar: user.avatar, message: msg.content})
+                    %>
+                    <% } else { %>
+                      <%- include( "incomingMsg.ejs" , {time: time, avatar: userItem.avatar, message: msg.content}) %>
+                        <% } %>
+                          <% } %>
+          </div>
+          <div class="card-footer">
+            <form action="" method="post" name="sendForm_<%= locals.user.id %>" id="sendForm_<%= locals.user.id %>">
+              <div class="input-group">
+                <input type="hidden" id="user" name="user" value="<%= locals.user.id %>" />
+                <input type="search" name="message" id="message" placeholder="Ecrivez votre message"
+                  class="form-control" value="Un nouveau message">
+                <button type="submit" class="btn btn-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                      d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5" />
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Faire scroller les messages jusque en bas pour voir le dernier
+    // var elem = document.getElementById('messages');
+    // elem.scrollTop = elem.scrollHeight;
+  </script>
+</body>

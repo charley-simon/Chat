@@ -1,0 +1,93 @@
+<html>
+
+<head>
+  <style>
+    body {
+      background-color: #ccc;
+      margin: 0 0 0 0;
+      padding: 0 0 0 0;
+    }
+
+    p {
+      border-color: #313236;
+      background-color: #d1a338;
+      color: #746969;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .diva {
+      border: 10px solid #d462b9;
+      background-color: #90AFFF;
+      color: #FFF;
+      /*width: 98%;*/
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-left: 0px;
+    }
+
+    .pa {
+      border-color: #313236;
+      background-color: #d1a338;
+      color: #746969;
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-top: -5px;
+      margin-left: -5px;
+      padding-left: 0px;
+    }
+
+    .wrapper {
+      position: relative;
+    }
+
+    .boite-tirets {
+      position: relative;
+      z-index: 1;
+      border: dashed;
+      height: 8em;
+      margin-bottom: 1em;
+      margin-top: 2em;
+    }
+
+    .boite-doree {
+      position: absolute;
+      z-index: 3;
+      /* place .boite-doree au-dessus de .boite-verte et .boite-tirets */
+      background: gold;
+      width: 80%;
+      left: 60px;
+      top: 3em;
+    }
+
+    .boite-verte {
+      position: absolute;
+      z-index: 2;
+      /* place .boite-verte au-dessus de .boite-tirets */
+      background: lightgreen;
+      width: 20%;
+      left: 65%;
+      top: -25px;
+      height: 7em;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="diva">
+    Une première ligne
+    <p>Un paragraphe</p>
+    <p class="pa">Un paragraphe</p>
+  </div>
+  <div class="wrapper">
+    <div class="boite-tirets">Boîte avec tirets</div>
+    <div class="boite-doree">Boîte dorée</div>
+    <div class="boite-verte">Boîte verte</div>
+  </div>
+
+</body>
+
+</html>

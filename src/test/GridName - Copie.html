@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      /* juste pour l'exemple et mieux voir les fonds en debug */
+      font: 1em Helvetica Neue, Helvetica, Arial, sans-serif;
+      background-color: darkgrey;
+    }
+
+    .messages {
+      background-color: grey;
+      border: 4px solid black;
+      max-height: 300px;
+      overflow: hidden;
+      overflow-y: auto;
+      --content-color: darkgrey;
+      --content-margin-left: 0;
+      --content-margin-right: 0;
+      --current-avatar: null;
+      --margin-top: 0;
+    }
+
+    .message {
+      /* Bloc d'un message */
+      /*background-color: red;*/
+      /* pour tester et mieux y voir */
+      display: grid;
+      grid-template-areas: "avatar" "content" "time";
+      grid-template-rows: 10px auto 10px;
+      /* 3 lignes, seul le texte est variable en hauteur */
+      overflow: hidden;
+      /* on efface tout ce qui dépasse */
+      gap: 0px;
+      row-gap: 0px;
+      padding: 1rem 1rem 0 1rem;
+      place-items: center;
+    }
+
+    .message>* {
+      box-shadow: 1px 2px 2px grey;
+    }
+
+    .message.send {
+      /* Si c'est un message envoyé on déplace à droite */
+      padding-left: 20%;
+      --content-margin-left: -100%;
+    }
+
+    .message.receive {
+      /* Si c'est un message reçu on déplace à gauche */
+      padding-right: 20%;
+      --content-margin-right: -100%;
+    }
+
+    .message .avatar {
+      /* Avatar: propriétées communes */
+      /*float: left;*/
+      grid-area: avatar;
+      background-color: var(--content-color);
+      opacity: .8;
+      z-index: 1;
+      border-radius: 50%;
+      padding: .5rem;
+      margin-left: var(--content-margin-left);
+      margin-right: var(--content-margin-right);
+    }
+
+    .message .content {
+      /* Le texte du message */
+      grid-area: content;
+      background: linear-gradient(to left top, lightgrey, var(--content-color));
+      border-radius: 10px;
+      padding: 1rem;
+    }
+
+    .message .time {
+      /* Le stamp/l'heure du message */
+      grid-area: time;
+      background-color: antiquewhite;
+      border-radius: 10px;
+      opacity: .8;
+      margin-top: -10px;
+      margin-left: auto;
+      margin-right: 1rem;
+      padding: 0 1rem 0 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="messages">
+    <div class="message receive" style="--content-color: deepskyblue">
+      <div class="avatar">Rodolphe</div>
+      <div class="content">Nostrum quidem, provident delectus quibusdam sit autem quaerat sequi repellat voluptatum
+        maiores fugit dicta animi quae repudiandae quas voluptatibus error recusandae? Recusandae veritatis commodi quam
+        officiis unde pariatur ducimus possimus?</div>
+      <div class="time">17/12/2023 à 23:35</div>
+    </div>
+    <div class="message send" style="--content-color: lightgrey">
+      <div class="avatar">Charley</div>
+      <div class="content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt dignissimos, molestiae
+        aspernatur aliquam illum consequuntur vero dicta, cumque fuga porro et magni tempore vel officia voluptatibus
+        ea, ipsam sunt non.</div>
+      <div class="time">17/12/2023 à 23:37</div>
+    </div>
+    <div class="message send" style="--content-color: lightgrey">
+      <div class="content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt dignissimos, molestiae
+        aspernatur aliquam illum consequuntur vero dicta, cumque fuga porro et magni tempore vel officia voluptatibus
+        ea, ipsam sunt non.</div>
+      <div class="time">17/12/2023 à 23:37</div>
+    </div>
+    <div class="message receive" style="--content-color: burlywood">
+      <div class="avatar">Margaux</div>
+      <div class="content">Nostrum quidem, provident delectus quibusdam sit autem quaerat sequi repellat voluptatum
+        maiores fugit dicta animi quae repudiandae quas voluptatibus error recusandae? Recusandae veritatis commodi quam
+        officiis unde pariatur ducimus possimus?</div>
+      <div class="time">17/12/2023 à 23:35</div>
+    </div>
+  </div>
+</body>
+
+</html>

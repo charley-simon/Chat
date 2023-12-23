@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+:root {
+  --main-bg-color: brown;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Styling the main container */
+.xxx-card {
+  background-color: bisque;
+  height: 80%;
+  display: grid;
+  grid-template-rows: 1fr 8fr 1fr;
+  grid-template-columns: 1fr;
+}
+
+/* Styling the msg-header container */
+.xxx-header {
+  background-color: blue;
+  border: 1px solid #333;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  display: flex;
+}
+
+/* Styling the profile picture */
+.xxx-header-icon {
+  max-width: 100%;
+  max-height: 100%;
+  margin-left: .5rem;
+}
+
+/* styling user-name */
+.xxx-header-title {
+  margin: auto;
+  margin-left: .5rem;
+  align-items: baseline;
+}
+
+/* Styling the body */
+.xxx-body {
+  background-color: lightblue;
+  border: 1px solid #333;
+  padding: 1rem 1rem 0rem 1rem;
+}
+
+.xxx-body-msg {
+  background-color: aqua;
+  border: 1px solid #333;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  margin: 1rem 1rem 0rem 1rem;
+}
+
+.xxx-body-msg-icon-left {
+  direction: rtl;
+  position: relative;
+  /*float: left;
+  max-width: 40px;
+  max-height: 40px;
+  margin-top: -1rem;
+  margin-left: -1rem;*/
+}
+
+/* styling user-name */
+.xxx-body-msg-title {
+  margin: auto;
+}
+
+.xxx-body-msg-icon-right {
+  float: right;
+  position: absolute;
+  direction: rtl;
+  margin-top: -1rem;
+  margin-right: -40px;
+  margin-left: auto;
+  max-width: 40px;
+  max-height: 40px;
+}
+
+.xxx-body-msg-time {
+  display: block;
+  float: right;
+  position: static;
+  margin-top: -40px;
+  margin-right: 10px;
+  width: 100%;
+  color: #777;
+  font-size: 12px;
+  text-align: end;
+}
+
+/* Styling the msg-bottom container */
+.xxx-footer {
+  background-color: green;
+
+  border: 1px solid #333;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
