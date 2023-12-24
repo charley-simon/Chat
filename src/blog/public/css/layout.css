@@ -3,10 +3,11 @@
   grid-template-areas:
     "header"
     "hero"
+    "sidebar"
     "content"
     "footer";
-  grid-template-rows: 50px 10rem auto 5rem;
-  grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+  grid-template-rows: 50px 10rem auto auto 5rem;
+  grid-template-columns: repeat(auto-fit, minmax(40vh, 1fr));
   overflow: hidden;
   border: 5px solid rgb(111,41,97);
   width: auto;
@@ -20,6 +21,7 @@
                          "hero    hero"
                          "sidebar content"
                          "footer  footer";
+    grid-template-rows: 50px 10rem auto 5rem;
     grid-template-columns: 20% auto;
     gap: 1rem;
   }
