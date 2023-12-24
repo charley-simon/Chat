@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="../public/css/layout.css" />
 <style>
 
-.contents {
+.cards {
   grid-area: content;
   display: grid;
   grid-template-rows: repeat(auto-fit, minmax(40vh, 1fr));
@@ -23,7 +23,7 @@
 }
 
 @media (min-width: 600px) {
-  .contents {
+  .cards {
     grid-template-columns: repeat(auto-fit, minmax(40vh, 1fr));
     padding: 0;
   }
@@ -66,7 +66,7 @@
   <aside class="sidebar">sidebar
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt corporis suscipit nemo incidunt officia! Ipsum dolore, accusamus reprehenderit doloremque nisi itaque impedit laboriosam voluptates illo dolores enim quod, blanditiis quidem.
   </aside>
-  <section class="contents">
+  <section class="cards">
     <article class="card">
       <header>
         <h2>HTML</h2>
@@ -80,7 +80,6 @@
         <p>Lire l'article...</p>
       </footer>
     </article>
-  
     <article class="card">
       <header>
         <h2>CSS</h2>
