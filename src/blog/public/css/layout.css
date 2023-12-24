@@ -7,11 +7,22 @@
     "footer";
   grid-template-rows: 50px 10rem auto 5rem;
   grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
-  gap: 0px;
-  row-gap: 0px;
   overflow: hidden;
   border: 5px solid rgb(111,41,97);
   width: auto;
+  gap: 0;
+  row-gap: 0;
+}
+@media (min-width: 600px) {
+
+  .container {
+    grid-template-areas: "header  header" 
+                         "hero    hero"
+                         "sidebar content"
+                         "footer  footer";
+    grid-template-columns: 20% auto;
+    gap: 1rem;
+  }
 }
 
 .header {
@@ -32,48 +43,7 @@
   background-color: lightgrey;
 }
 
-.content {
-  grid-area: content;
-  display: flow;
-  grid-template-columns: repeat(minmax(200px, 1fr));
-  background-color: darkgrey;
-}
-
 .footer {
   grid-area: footer;
   background-color: green;
-}
-
-.card {
-  /*height: minmax(200px, 1fr);*/
-  border: 1px solid rgb(111,41,97);
-  background-color: aqua;
-  align-items: center;
-  justify-content: center;
-  min-height: 30vh;
-  border-radius: 1rem;
-  border: 2px dashed blue;
-  overflow: hidden;
-  padding: 1rem;
-}
-
-@media (min-width: 600px) {
-
-  .container {
-    grid-template-areas: "header  header" 
-                         "hero    hero"
-                         "sidebar content"
-                         "footer  footer";
-    grid-template-rows: 50px 10rem auto 5rem;
-    grid-template-columns: 20% auto;
-    gap: 10px;
-    row-gap: 10px;
-  }
-
-  .content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px;
-    row-gap: 10px;
-  }
 }
