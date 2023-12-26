@@ -16,7 +16,8 @@ export default class MyButton extends HTMLElement {
       padding: 3px 10px;
     }
     </style>
-    <button>MonTexte</button>`;
+    <slot name="outbutton"></slot>
+    <button><slot name="inbutton"></slot></button>`;
   }
 
 }

@@ -7,34 +7,55 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="./components/MyBtnTemplate.js" type="module" defer></script>
+  <script src="./components/LabeledCheckbox.js" type="module" defer></script>
   <script src="app.js" type="module" defer></script>
   <title>Exemple de Web Component</title>
   <style>
-    my-button {
-      --bg: red;
+    my-button-template {
+      border: 2px dashed red;
     }
+    my-button-template:checked {
+      border: none;
+    }
+    labeled-checkbox {
+      border: dashed blue;
+    }
+    labeled-checkbox:--checked {
+      border: solid;
+    }
+
   </style>
 </head>
 <body>
   <div class="container" style="margin-top: 60px">
     <h1>Page de démonstration</h1>
 
-    <second-timer prefix="Mon compteur "></second-timer>
+    <labeled-checkbox>You need to check this</labeled-checkbox>
 
-    <p>
-      <my-button></my-button>
-    </p>
-
-    <div class="form-group">
-      <label for="start">Date de début</label>
-      <input type="text" id="start" class="form-control" is="date-picker"/>
-    </div>
+    <my-button-template>
+      Click this
+    </my-button-template>
+    <template id="demo">
+      <div>
+        <my-button>
+          <div slot="inbutton">Mon texte</div>
+          <div slot="outbutton"><second-timer prefix="Mon compteur "></second-timer></div>
+        </my-button>
+      </div>
+  
+      <div class="form-group">
+        <label for="start">Date de début</label>
+        <input type="text" id="start" class="form-control" is="date-picker"/>
+      </div>
+    </template>
 
     <div id="target">
 
     </div>
 
     <button id="add" class="btn btn-primary">Ajouter un champ</button>
+    <button id="mybtntemplate" class="btn btn-primary">Hidden</button>
   </div>
 </body>
 </html>
