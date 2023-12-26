@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+:root {
+   color: hsl(135, 69%, 40%);
+   --green-color-h: 135;
+   --green-color-s: 69%;
+   --green-color-l: 40%;
+  
+   color: hsl(17, 100%, 57%);
+   --red-color-h: 17;
+   --red-color-s: 100%;
+   --red-color-l: 57%;
+  
+   --blue-color-h: 183;
+   --blue-color-s: 49%;
+   --blue-color-l: 27%;
+   
+   color: hsl(51, 94%, 68%);
+   --yellow-color-h: 51;
+   --yellow-color-s: 94%;
+   --yellow-color-l: 68%;
+
+   color: hsl(48, 4%, 25%);
+   --grey-color-h: 48;
+   --grey-color-s: 4%;
+   --grey-color-l: 25%;
+
+   --green-color: hsl(var(--green-color-h), var(--green-color-s), var(--green-color-l));
+   --green-color-10: hsl(var(--green-color-h), var(--green-color-s), calc(var(--green-color-l) + 5%));
+   --green-color-20: hsl(var(--green-color-h), var(--green-color-s), calc(var(--green-color-l) + 10%));
+   --green-color-30: hsl(var(--green-color-h), var(--green-color-s), calc(var(--green-color-l) + 15%));
+   --green-color-40: hsl(var(--green-color-h), var(--green-color-s), calc(var(--green-color-l) + 20%));
+    --green-color-50: hsl(var(--green-color-h), var(--green-color-s), calc(var(--green-color-l) + 25%));
+    --green-color-60: hsl(var(--green-color-h), var(--green-color-s), calc(var(--green-color-l) + 30%));
+    --green-color-70: hsl(var(--green-color-h), var(--green-color-s), calc(var(--green-color-l) + 35%));
+    --green-color-80: hsl(var(--green-color-h), var(--green-color-s), calc(var(--green-color-l) + 40%));
+  
+    --red-color: hsl(var(--red-color-h), var(--red-color-s), var(--red-color-l));
+    --red-color-10: hsl(var(--red-color-h), var(--red-color-s), calc(var(--red-color-l) + 5%));
+    --red-color-20: hsl(var(--red-color-h), var(--red-color-s), calc(var(--red-color-l) + 10%));
+    --red-color-30: hsl(var(--red-color-h), var(--red-color-s), calc(var(--red-color-l) + 15%));
+    --red-color-40: hsl(var(--red-color-h), var(--red-color-s), calc(var(--red-color-l) + 20%));
+    --red-color-50: hsl(var(--red-color-h), var(--red-color-s), calc(var(--red-color-l) + 25%));
+    --red-color-60: hsl(var(--red-color-h), var(--red-color-s), calc(var(--red-color-l) + 30%));
+    --red-color-70: hsl(var(--red-color-h), var(--red-color-s), calc(var(--red-color-l) + 35%));
+    --red-color-80: hsl(var(--red-color-h), var(--red-color-s), calc(var(--red-color-l) + 40%));
+  
+    --blue-color: hsl(var(--blue-color-h), var(--blue-color-s), var(--blue-color-l));
+    --blue-color-10: hsl(var(--blue-color-h), var(--blue-color-s), calc(var(--blue-color-l) + 5%));
+    --blue-color-20: hsl(var(--blue-color-h), var(--blue-color-s), calc(var(--blue-color-l) + 10%));
+    --blue-color-30: hsl(var(--blue-color-h), var(--blue-color-s), calc(var(--blue-color-l) + 15%));
+    --blue-color-40: hsl(var(--blue-color-h), var(--blue-color-s), calc(var(--blue-color-l) + 20%));
+    --blue-color-50: hsl(var(--blue-color-h), var(--blue-color-s), calc(var(--blue-color-l) + 25%));
+    --blue-color-60: hsl(var(--blue-color-h), var(--blue-color-s), calc(var(--blue-color-l) + 30%));
+    --blue-color-70: hsl(var(--blue-color-h), var(--blue-color-s), calc(var(--blue-color-l) + 35%));
+    --blue-color-80: hsl(var(--blue-color-h), var(--blue-color-s), calc(var(--blue-color-l) + 40%));
+      
+    --yellow-color: hsl(var(--yellow-color-h), var(--yellow-color-s), var(--yellow-color-l));
+    --yellow-color-10: hsl(var(--yellow-color-h), var(--yellow-color-s), calc(var(--yellow-color-l) + 5%));
+    --yellow-color-20: hsl(var(--yellow-color-h), var(--yellow-color-s), calc(var(--yellow-color-l) + 10%));
+    --yellow-color-30: hsl(var(--yellow-color-h), var(--yellow-color-s), calc(var(--yellow-color-l) + 15%));
+    --yellow-color-40: hsl(var(--yellow-color-h), var(--yellow-color-s), calc(var(--yellow-color-l) + 20%));
+    --yellow-color-50: hsl(var(--yellow-color-h), var(--yellow-color-s), calc(var(--yellow-color-l) + 25%));
+    --yellow-color-60: hsl(var(--yellow-color-h), var(--yellow-color-s), calc(var(--yellow-color-l) + 30%));
+    --yellow-color-70: hsl(var(--yellow-color-h), var(--yellow-color-s), calc(var(--yellow-color-l) + 35%));
+    --yellow-color-80: hsl(var(--yellow-color-h), var(--yellow-color-s), calc(var(--yellow-color-l) + 40%));
+      
+    --grey-color: hsl(var(--grey-color-h), var(--grey-color-s), var(--grey-color-l));
+    --grey-color-10: hsl(var(--grey-color-h), var(--grey-color-s), calc(var(--grey-color-l) + 5%));
+    --grey-color-20: hsl(var(--grey-color-h), var(--grey-color-s), calc(var(--grey-color-l) + 10%));
+    --grey-color-30: hsl(var(--grey-color-h), var(--grey-color-s), calc(var(--grey-color-l) + 15%));
+    --grey-color-40: hsl(var(--grey-color-h), var(--grey-color-s), calc(var(--grey-color-l) + 20%));
+    --grey-color-50: hsl(var(--grey-color-h), var(--grey-color-s), calc(var(--grey-color-l) + 25%));
+    --grey-color-60: hsl(var(--grey-color-h), var(--grey-color-s), calc(var(--grey-color-l) + 30%));
+    --grey-color-70: hsl(var(--grey-color-h), var(--grey-color-s), calc(var(--grey-color-l) + 35%));
+    --grey-color-80: hsl(var(--grey-color-h), var(--grey-color-s), calc(var(--grey-color-l) + 40%));
+      
+.green {
+  background: var(--green-color);
+}
+
+.green-10 {
+  background: var(--green-color-10);
+}
+
+.green-20 {
+  background: var(--green-color-20);
+}
+
+.green-30 {
+  background: var(--green-color-30);
+}
+
+.green-40 {
+  background: var(--green-color-40);
+}
+
+.green-50 {
+  background: var(--green-color-50);
+}
+
+.green-60 {
+  background: var(--green-color-60);
+}
+
+.green-70 {
+  background: var(--green-color-70);
+}
+
+.green-80 {
+  background: var(--green-color-80);
+}
+     
+.red {
+    background: var(--red-color);
+}
+
+.red-10 {
+    background: var(--red-color-10);
+}
+
+.red-20 {
+    background: var(--red-color-20);
+}
+
+.red-30 {
+    background: var(--red-color-30);
+}
+
+.red-40 {
+    background: var(--red-color-40);
+}
+
+.red-50 {
+    background: var(--red-color-50);
+}
+
+.red-60 {
+    background: var(--red-color-60);
+}
+
+.red-70 {
+    background: var(--red-color-70);
+}
+
+.red-80 {
+    background: var(--red-color-80);
+}
+
+.blue {
+    background: var(--blue-color);
+}
+
+.blue-10 {
+    background: var(--blue-color-10);
+}
+
+.blue-20 {
+    background: var(--blue-color-20);
+}
+
+.blue-30 {
+    background: var(--blue-color-30);
+}
+
+.blue-40 {
+    background: var(--blue-color-40);
+}
+
+.blue-50 {
+    background: var(--blue-color-50);
+}
+
+.blue-60 {
+    background: var(--blue-color-60);
+}
+
+.blue-70 {
+    background: var(--blue-color-70);
+}
+
+.blue-80 {
+    background: var(--blue-color-80);
+}
+
+.yellow {
+    background: var(--yellow-color);
+}
+
+.yellow-10 {
+    background: var(--yellow-color-10);
+}
+
+.yellow-20 {
+    background: var(--yellow-color-20);
+}
+
+.yellow-30 {
+    background: var(--yellow-color-30);
+}
+
+.yellow-40 {
+    background: var(--yellow-color-40);
+}
+
+.yellow-50 {
+    background: var(--yellow-color-50);
+}
+
+.yellow-60 {
+    background: var(--yellow-color-60);
+}
+
+.yellow-70 {
+    background: var(--yellow-color-70);
+}
+
+.yellow-80 {
+    background: var(--yellow-color-80);
+}
+
+.grey {
+    background: var(--grey-color);
+}
+
+.grey-10 {
+    background: var(--grey-color-10);
+}
+
+.grey-20 {
+    background: var(--grey-color-20);
+}
+
+.grey-30 {
+    background: var(--grey-color-30);
+}
+
+.grey-40 {
+    background: var(--grey-color-40);
+}
+
+.grey-50 {
+    background: var(--grey-color-50);
+}
+
+.grey-60 {
+    background: var(--grey-color-60);
+}
+
+.grey-70 {
+    background: var(--grey-color-70);
+}
+
+.grey-80 {
+    background: var(--grey-color-80);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(9, 100px);
+  grid-template-rows: repeat(5, 40px);
+  grid-gap: 4px
+}
+  
+  /* App Theme / Brand */
+  --primary-color: var(--green-color-10);
+  --primary-border-color: var(--green-color-10);
+  --primary-hover-color: var(--green-color);
+}
+
+.app-styleguide {
+  font-family: "Helvetica", sans-serif;
+  margin-top: 16px
+}
+
+.app-styleguide > * {
+  margin-top: 16px
+}
+
+.app-styleguide button {
+  font-size: 1rem;
+  width: 8em;
+  padding: 0.25em;
+  border: 0.125em solid transparent;
+  border-radius: 0.5em;
+  background: var(--primary-color);
+  color: white;
+}
+
+.app-styleguide button:hover {
+  background: var(--primary-hover-color);
+}
+
+.app-styleguide button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.app-styleguide a {
+  font-size: 1rem;
+  color: var(--primary-color);
+}
+
+.app-styleguide a:hover {
+  font-size: 1rem;
+  color: var(--primary-hover-color);
+}
+
+.app-styleguide input {
+  font-size: 1rem;
+  padding: 0.25em;
+  border: 0.125em solid var(--primary-border-color);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
+  background-color: var(--primary-border-color);
+}
+
+.app-styleguide input:focus {
+  background-color: white;
+}
+/* Application UI */
+:root {
+   /* Palette */
+   --white-color: hsl(0, 0%, 100%);
+   --black-color: hsl(48, 4%, 25%);
+   --gray-color: hsl(48, 22%, 95%);
+   --gray-dark-color: hsl(45, 5%, 83%);
+   --green-color: hsl(135, 69%, 40%);
+   --red-color: hsl(17, 100%, 57%);
+   --yellow-color: hsl(51, 94%, 68%);
+  
+  /* App Theme / Brand */
+  --primary-color: var(--green-color);
+  --destructive-color: var(--red-color);
+  --text-on-light-bg-color: var(--black-color);
+  --text-on-dark-bg-color: var(--white-color);
+
+}
+
+.app-styleguide {
+  font-family: "Helvetica", sans-serif;
+  margin-top: 16px
+}
+
+.app-styleguide > * {
+  margin-top: 16px
+}
+
+.app-styleguide button {
+  --color: var(--text-on-dark-bg-color);
+  --background-color: var(--primary-color);
+
+  font-size: 1rem;
+  width: 8em;
+  padding: 0.25em;
+  border: 0.125em solid transparent;
+  border-radius: 0.5em;
+  background-color: var(--background-color);
+  color: var(--color);
+}
+
+.app-styleguide button:hover {
+  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2));
+}
+
+.app-styleguide a {
+  font-size: 1rem;
+  color: var(--primary-color);
+}
+
+.app-styleguide a:hover {
+  font-size: 1rem;
+  filter: brightness(0.8);
+}
+
+.app-styleguide input {
+  --border-color: rgba(0,0,0,0);
+  --background-color: var(--gray-color);
+  --color: var(--text-on-light-bg-color);
+
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: var(--background-color);
+  color: var(--color);
+  border: 0.0625em solid var(--border-color);
+  border-radius: 0.75em;
+  padding: 0.5em 0.75em;
+  outline: none;
+}
+
+.app-styleguide input:focus {
+  --background-color: var(--white-color);
+  --border-color: var(--gray-dark-color);
+}
+
+.app-styleguide input.invalid {
+  --border-color: var(--destructive-color);
+  --color: var(--destructive-color);
+  --background-color: var(--white-color);
+}
+
+.app-styleguide .btn-secondary {
+  --background-color: var(--gray-dark-color);
+  --color: var(--text-on-light-bg-color);
+}
+
+.app-styleguide .btn-destructive {
+  --background-color: var(--destructive-color);
+}
+
+.app-styleguide .btn-tertiary {
+  --background-color: var(--yellow-color);
+  --color: var(--text-on-light-bg-color);
+}
+
+.app-styleguide h1 {
+  color: var(--primary-color);
+}
+
+.app-styleguide p,
+.app-styleguide h2 {
+  color: var(--text-on-light-bg-color);
+}
+
+.app-styleguide .close-icon {
+  color: var(--gray-dark-color);
+}
+</style>
+
+<body>
+
+  <div class="container">
+    <div class="green"></div>
+    <div class="green green-10"></div>
+    <div class="green green-20"></div>
+    <div class="green green-30"></div>
+    <div class="green green-40"></div>
+    <div class="green green-50"></div>
+    <div class="green green-60"></div>
+    <div class="green green-70"></div>
+    <div class="green green-80"></div>
+
+    <div class="red"></div>
+    <div class="red red-10"></div>
+    <div class="red red-20"></div>
+    <div class="red red-30"></div>
+    <div class="red red-40"></div>
+    <div class="red red-50"></div>
+    <div class="red red-60"></div>
+    <div class="red red-70"></div>
+    <div class="red red-80"></div>
+
+    <div class="blue"></div>
+    <div class="blue blue-10"></div>
+    <div class="blue blue-20"></div>
+    <div class="blue blue-30"></div>
+    <div class="blue blue-40"></div>
+    <div class="blue blue-50"></div>
+    <div class="blue blue-60"></div>
+    <div class="blue blue-70"></div>
+    <div class="blue blue-80"></div>
+
+    <div class="yellow"></div>
+    <div class="yellow yellow-10"></div>
+    <div class="yellow yellow-20"></div>
+    <div class="yellow yellow-30"></div>
+    <div class="yellow yellow-40"></div>
+    <div class="yellow yellow-50"></div>
+    <div class="yellow yellow-60"></div>
+    <div class="yellow yellow-70"></div>
+    <div class="yellow yellow-80"></div>
+
+    <div class="grey"></div>
+    <div class="grey grey-10"></div>
+    <div class="grey grey-20"></div>
+    <div class="grey grey-30"></div>
+    <div class="grey grey-40"></div>
+    <div class="grey grey-50"></div>
+    <div class="grey grey-60"></div>
+    <div class="grey grey-70"></div>
+    <div class="grey grey-80"></div>
+  </div>
+  <br/>
+  <div>
+    <button class="theme-green">Choose Green Theme</button>
+    <button class="theme-red">Choose Red Theme</button>
+    <button class="theme-blue">Choose Blue Theme</button>
+  </div>
+  
+  <div class="app-styleguide">
+    <h2>Application Theme</h2>
+    <div>
+      <button class="btn-primary">Primary</button>
+      <button class="btn-primary" disabled>Disabled</button>    
+    </div>
+    <div><a href="#">Link</a></div>
+    <div><input type="text" value="App Input" /></div>
+  </div>
+
+  <div class="app-styleguide">
+    <h2>Application UI</h2>
+    <div>
+      <button class="btn-primary">Primary</button>
+      <button class="btn-secondary">Secondary</button>
+      <button class="btn-tertiary">Tertiary</button>
+      <button class="btn-destructive">Destructive</button>
+    </div>
+    <div><a href="#">Link</a></div>
+    <div><h1>Head 1</h1></div>
+    <div><h2>Head 2</h2></div>
+    <div><p>Normal text</p></div>
+    <div>
+      <input type="text" value="App Input" />
+    </div>
+    <div>
+      <input class="invalid" type="text" value="App Input" />
+    </div>
+    <div>
+      <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="close-icon"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><path fill="currentColor" d="M18.3,5.71 C17.91,5.32 17.28,5.32 16.89,5.71 L12,10.59 L7.11,5.7 C6.72,5.31 6.09,5.31 5.7,5.7 C5.31,6.09 5.31,6.72 5.7,7.11 L10.59,12 L5.7,16.89 C5.31,17.28 5.31,17.91 5.7,18.3 C6.09,18.69 6.72,18.69 7.11,18.3 L12,13.41 L16.89,18.3 C17.28,18.69 17.91,18.69 18.3,18.3 C18.69,17.91 18.69,17.28 18.3,16.89 L13.41,12 L18.3,7.11 C18.68,6.73 18.68,6.09 18.3,5.71 Z"></path></g></svg>
+    </div>
+  </div>
+
+  <script>
+    function setTheme(name) {
+      document.querySelector(`.theme-${name}`).onclick = () => {
+        const root = document.documentElement;
+        root.style.setProperty('--primary-color', `var(--${name}-color-10)`);
+        root.style.setProperty('--primary-hover-color', `var(--${name}-color)`);
+        root.style.setProperty('--primary-border-color', `var(--${name}-color)`);
+      };
+    }
+  
+    setTheme('green');
+    setTheme('red');
+    setTheme('blue');
+  </script>
+  
+</body>
+
+</html>

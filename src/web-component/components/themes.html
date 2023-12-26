@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @use postcss-preset-env {
+      stage: 0;
+
+      features: {
+        "logical-properties-and-values": false
+      }
+    }
+
+    html {
+      --green: hsl(115, 50%, 50%);
+      --green-hue: 115;
+      --green-saturation: 50%;
+      --green-lightness: 50%;
+      --green: hsl(var(--green-hue) var(--green-saturation) var(--green-lightness));
+
+      --blue: hsl(244, 50%, 50%);
+      --blue-hue: 244;
+      --blue-saturation: 50%;
+      --blue-lightness: 50%;
+      --blue: hsl(var(--blue-hue) var(--blue-saturation) var(--blue-lightness));
+
+      --red: hsl(0, 50%, 50%);
+      --red-hue: 0;
+      --red-saturation: 50%;
+      --red-lightness: 50%;
+      --red: hsl(var(--red-hue) var(--red-saturation) var(--red-lightness));
+
+      --yellow: hsl(60, 50%, 50%);
+      --yellow-hue: 60;
+      --yellow-saturation: 50%;
+      --yellow-lightness: 50%;
+      --yellow: hsl(var(--yellow-hue) var(--yellow-saturation) var(--yellow-lightness));
+
+      /* brand foundation */
+      --brand-hue: 200;
+      --brand-saturation: 100%;
+      --brand-lightness: 50%;
+      --brand: hsl(var(--brand-hue) var(--brand-saturation) var(--brand-lightness));
+
+      /* light */
+      --brand-light: hsl(var(--brand-hue) var(--brand-saturation) var(--brand-lightness));
+      --text1-light: hsl(var(--brand-hue) var(--brand-saturation) 10%);
+      --text2-light: hsl(var(--brand-hue) 30% 30%);
+      --surface1-light: hsl(var(--brand-hue) 25% 90%);
+      --surface2-light: hsl(var(--brand-hue) 20% 99%);
+      --surface3-light: hsl(var(--brand-hue) 20% 92%);
+      --surface4-light: hsl(var(--brand-hue) 20% 85%);
+      --surface-shadow-light: var(--brand-hue) 10% 20%;
+      --shadow-strength-light: .02;
+
+      /* dark */
+      --brand-dark: hsl(var(--brand-hue) calc(var(--brand-saturation) / 2) calc(var(--brand-lightness) / 1.5));
+      --text1-dark: hsl(var(--brand-hue) 15% 85%);
+      --text2-dark: hsl(var(--brand-hue) 5% 65%);
+      --surface1-dark: hsl(var(--brand-hue) 10% 10%);
+      --surface2-dark: hsl(var(--brand-hue) 10% 15%);
+      --surface3-dark: hsl(var(--brand-hue) 5% 20%);
+      --surface4-dark: hsl(var(--brand-hue) 5% 25%);
+      --surface-shadow-dark: var(--brand-hue) 50% 3%;
+      --shadow-strength-dark: .8;
+
+      /* dim */
+      --brand-dim: hsl(var(--brand-hue) calc(var(--brand-saturation) / 1.25) calc(var(--brand-lightness) / 1.25));
+      --text1-dim: hsl(var(--brand-hue) 15% 75%);
+      --text2-dim: hsl(var(--brand-hue) 10% 61%);
+      --surface1-dim: hsl(var(--brand-hue) 10% 20%);
+      --surface2-dim: hsl(var(--brand-hue) 10% 25%);
+      --surface3-dim: hsl(var(--brand-hue) 5% 30%);
+      --surface4-dim: hsl(var(--brand-hue) 5% 35%);
+      --surface-shadow-dim: var(--brand-hue) 30% 13%;
+      --shadow-strength-dim: .2;
+    }
+
+    :root {
+      color-scheme: light;
+
+      /* set defaults */
+      --brand: var(--brand-light);
+      --text1: var(--text1-light);
+      --text2: var(--text2-light);
+      --surface1: var(--surface1-light);
+      --surface2: var(--surface2-light);
+      --surface3: var(--surface3-light);
+      --surface4: var(--surface4-light);
+      --surface-shadow: var(--surface-shadow-light);
+      --shadow-strength: var(--shadow-strength-light);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+
+        --brand: var(--brand-dark);
+        --text1: var(--text1-dark);
+        --text2: var(--text2-dark);
+        --surface1: var(--surface1-dark);
+        --surface2: var(--surface2-dark);
+        --surface3: var(--surface3-dark);
+        --surface4: var(--surface4-dark);
+        --surface-shadow: var(--surface-shadow-dark);
+        --shadow-strength: var(--shadow-strength-dark);
+      }
+    }
+
+    [color-scheme="light"] {
+      color-scheme: light;
+
+      --brand: var(--brand-light);
+      --text1: var(--text1-light);
+      --text2: var(--text2-light);
+      --surface1: var(--surface1-light);
+      --surface2: var(--surface2-light);
+      --surface3: var(--surface3-light);
+      --surface4: var(--surface4-light);
+      --surface-shadow: var(--surface-shadow-light);
+      --shadow-strength: var(--shadow-strength-light);
+    }
+
+    [color-scheme="dark"] {
+      color-scheme: dark;
+
+      --brand: var(--brand-dark);
+      --text1: var(--text1-dark);
+      --text2: var(--text2-dark);
+      --surface1: var(--surface1-dark);
+      --surface2: var(--surface2-dark);
+      --surface3: var(--surface3-dark);
+      --surface4: var(--surface4-dark);
+      --surface-shadow: var(--surface-shadow-dark);
+      --shadow-strength: var(--shadow-strength-dark);
+    }
+
+    [color-scheme="dim"] {
+      color-scheme: dark;
+
+      --brand: var(--brand-dim);
+      --text1: var(--text1-dim);
+      --text2: var(--text2-dim);
+      --surface1: var(--surface1-dim);
+      --surface2: var(--surface2-dim);
+      --surface3: var(--surface3-dim);
+      --surface4: var(--surface4-dim);
+      --surface-shadow: var(--surface-shadow-dim);
+      --shadow-strength: var(--shadow-strength-dim);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    html {
+      block-size: 100%;
+      background-color: var(--surface1);
+      color: var(--text1);
+    }
+
+    body {
+      min-block-size: 100%;
+      font-family: system-ui, sans-serif;
+      padding: 5vmax;
+      display: grid;
+      place-content: center;
+      gap: 5vmax;
+    }
+
+    main {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+      gap: 10vmax 10vmin;
+    }
+
+    section {
+      display: grid;
+      gap: 2.5vh;
+    }
+
+    h1 {
+      font-weight: 100;
+    }
+
+    p {
+      max-inline-size: 35ch;
+      font-size: 1.25rem;
+      line-height: 1.5;
+    }
+
+    header {
+      display: inline-grid;
+      gap: 1ch;
+    }
+
+    form {
+      display: flex;
+      gap: 2ch;
+
+      &>div {
+        display: inline-flex;
+        align-items: center;
+        gap: .75ch;
+      }
+    }
+
+    .surface-samples {
+      display: grid;
+      --size: 20ch;
+      grid-template-columns: var(--size) var(--size);
+      grid-auto-rows: var(--size);
+      gap: 2ch;
+
+      @media (width <=480px) {
+        & {
+          --size: 40vw;
+        }
+      }
+
+      &>* {
+        border-radius: 1rem;
+        display: grid;
+        place-content: center;
+        font-size: 3rem;
+        font-weight: 200;
+      }
+    }
+
+    .text-samples {
+      display: grid;
+      gap: 1.5ch;
+
+      &>h1 {
+        font-size: 2.5rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 1ch;
+      }
+    }
+
+    .brand {
+      color: var(--brand);
+      background-color: var(--brand);
+    }
+
+    .blue {
+      color: var(--blue);
+      background-color: var(--blue);
+    }
+
+    .green {
+      color: var(--green);
+      background-color: var(--green);
+    }
+
+    .red {
+      color: var(--red);
+      background-color: var(--red);
+    }
+
+    .yellow {
+      color: var(--yellow);
+      background-color: var(--yellow);
+    }
+
+
+    .surface1 {
+      background-color: var(--surface1);
+      color: var(--text2);
+    }
+
+    .surface2 {
+      background-color: var(--surface2);
+      color: var(--text2);
+    }
+
+    .surface3 {
+      background-color: var(--surface3);
+      color: var(--text1);
+    }
+
+    .surface4 {
+      background-color: var(--surface4);
+      color: var(--text1);
+    }
+
+    .text1 {
+      color: var(--text1);
+
+      @nest p& {
+        font-weight: 200;
+      }
+    }
+
+    .text2 {
+      color: var(--text2);
+    }
+
+    .swatch {
+      display: inline-block;
+      flex-shrink: 0;
+      inline-size: 1.5ch;
+      block-size: 1.5ch;
+      border-radius: 50%;
+
+      &.text1 {
+        background-color: var(--text1);
+      }
+
+      &.text2 {
+        background-color: var(--text2);
+      }
+    }
+
+    .rad-shadow {
+      border: 1px solid hsl(var(--brand-hue) 10% 50% / 15%);
+      box-shadow: 0 1rem .5rem -.5rem;
+      box-shadow:
+        0 2.8px 2.2px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .03)),
+        0 6.7px 5.3px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .01)),
+        0 12.5px 10px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .02)),
+        0 22.3px 17.9px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .02)),
+        0 41.8px 33.4px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .03)),
+        0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength));
+    }
+  </style>
+  <style>
+    /* Brand color picker */
+    :root {
+      --sampleColor: var(--brand);
+    }
+
+    .controls {
+      padding: 1.75rem;
+      background: #ffffff;
+      border-radius: 0.5rem;
+      display: none;
+      color: #000000;
+
+      >*+* {
+        margin-top: 0.75rem;
+      }
+    }
+
+    .sample {
+      border-radius: 0.5rem;
+      padding: 1.75rem;
+      color: #000000;
+      background-color: var(--sampleColor);
+
+      >*+* {
+        margin-top: 0.75rem;
+      }
+    }
+
+    .result {
+      display: block;
+      font-size: 1.4rem;
+      margin: 0 0 1rem;
+      text-align: center;
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+
+      label {
+        margin-right: 0.5rem;
+        width: 6rem;
+      }
+
+      input {
+        flex: 1 1 auto;
+      }
+    }
+
+    @supports (color: hsl(var(--brand-hue), var(--brand-saturation), var(--brand-lightness))) {
+
+      .controls {
+        display: block;
+      }
+
+      .warning {
+        display: none;
+      }
+
+      .sample {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+
+    <div>
+      <h3>Brand color</h3>
+      <p class="warning">
+        Sorry, your browser doesn’t support HWB colors.
+      </p>
+      <code class="result" data-result>hsl(0 0 0)</code>
+      <div class="controls rad-shadow" data-controls>
+        <div class="input-group">
+          <label for="hue">Hue</label>
+          <input id="hue" type="range" min="0" max="360">
+        </div>
+        <div class="input-group">
+          <label for="saturation">Saturation</label>
+          <input id="saturation" type="range" min="0" max="100" value="50">
+        </div>
+        <div class="input-group">
+          <label for="lightness">Lightness</label>
+          <input id="lightness" type="range" min="0" max="100" value="50">
+        </div>
+        <div id="sample" class="sample" style="height: auto">sample</div>
+      </div>
+    </div>
+    <div class="palette">
+      <span id="blue" class="swatch blue rad-shadow"></span>
+      <span id="green" class="swatch green rad-shadow"></span>
+      <span id="red" class="swatch red rad-shadow"></span>
+      <span id="yellow" class="swatch yellow rad-shadow"></span>
+    </div>
+    <h3>Scheme</h3>
+    <form id="theme-switcher">
+      <div>
+        <input checked type="radio" id="auto" name="theme" value="auto">
+        <label for="auto">Auto</label>
+      </div>
+      <div>
+        <input type="radio" id="light" name="theme" value="light">
+        <label for="light">Light</label>
+      </div>
+      <div>
+        <input type="radio" id="dark" name="theme" value="dark">
+        <label for="dark">Dark</label>
+      </div>
+      <div>
+        <input type="radio" id="dim" name="theme" value="dim">
+        <label for="dim">Dim</label>
+      </div>
+    </form>
+  </header>
+
+  <main>
+    <section>
+      <div class="surface-samples">
+        <div class="surface1 rad-shadow">1</div>
+        <div class="surface2 rad-shadow">2</div>
+        <div class="surface3 rad-shadow">3</div>
+        <div class="surface4 rad-shadow">4</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="text-samples">
+        <h1 class="text1">
+          <span class="swatch brand rad-shadow"></span>
+          Brand
+        </h1>
+        <h1 class="text1">
+          <span class="swatch text1 rad-shadow"></span>
+          Text Color 1
+        </h1>
+        <h1 class="text2">
+          <span class="swatch text2 rad-shadow"></span>
+          Text Color 2
+        </h1>
+        <br>
+        <p class="text1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+          labore et dolore magna aliqua.</p>
+        <p class="text2">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</p>
+      </div>
+    </section>
+  </main>
+  <script>
+    const switcher = document.querySelector('#theme-switcher');
+    const doc = document.firstElementChild;
+    const declaration = document.styleSheets[0].cssRules[0].style;
+    const inputs = [...document.querySelectorAll('input')]
+
+    switcher.addEventListener('input', e => setTheme(e.target.value));
+
+    var hue = 0;
+    var saturation = 0;
+    var lightness = 0;
+    var brandColor = getBrandColor();
+    ({ hue, saturation, lightness } = brandColor);
+    setBrandColor(brandColor);
+
+    function setTheme(theme) {
+      doc.setAttribute('color-scheme', theme);
+      ({ hue, saturation, lightness } = brandColor);
+      console.log(`setTheme(${theme}) hsl(${hue} ${saturation}% ${lightness}%)`)
+      setBrandColor({ hue, saturation, lightness });
+    }
+
+    function getBrandColor() {
+      hue = declaration.getPropertyValue('--brand-hue');
+      saturation = declaration.getPropertyValue('--brand-saturation').replace("%", "");
+      lightness = declaration.getPropertyValue('--brand-lightness').replace("%", "");
+      return { hue, saturation, lightness };
+    }
+
+    function setBrandColor(brandColor) {
+      const root = document.documentElement;
+      ({ hue, saturation, lightness } = brandColor);
+
+      root.style.setProperty('--brand-hue', hue);
+      root.style.setProperty('--brand-saturation', saturation);
+      root.style.setProperty('--brand-lightness', lightness);
+      root.style.setProperty('--brand', `hsl(${hue} ${saturation}% ${lightness}%)`);
+      console.log(`setBrandColor: hsl(${hue} ${saturation}% ${lightness}%)`)
+      setColorPicker({ hue, saturation, lightness });
+    }
+
+    // Gestion de la palette
+    function setPaletteClick(name) {
+      document.querySelector(`#${name}`).onclick = () => setPalette(name);
+    }
+
+    function setPalette(name) {
+      const root = document.documentElement;
+      hue = declaration.getPropertyValue(`--${name}-hue`);
+      saturation = declaration.getPropertyValue(`--${name}-saturation`).replace("%", "");
+      lightness = declaration.getPropertyValue(`--${name}-lightness`).replace("%", "");
+      console.log(`setPalette: hsl(${hue} ${saturation}% ${lightness}%)`)
+      setBrandColor({ hue, saturation, lightness });
+    };
+
+    setPaletteClick('blue');
+    setPaletteClick('green');
+    setPaletteClick('red');
+    setPaletteClick('yellow');
+
+    // Brand color picker
+    function getColorPicker() {
+      hue = inputs[0].value
+      saturation = inputs[1].value
+      lightness = inputs[2].value
+      return { hue, saturation, lightness };
+    }
+
+    function setColorPicker(brandColor) {
+      const root = document.documentElement;
+      const inputs = [...document.querySelectorAll('input')]
+      const { hue, saturation, lightness } = brandColor;
+      inputs[0].value = hue;
+      inputs[1].value = saturation;
+      inputs[2].value = lightness;
+
+      const hsl = `hsl(${hue} ${saturation}% ${lightness}%)`;
+      const result = document.querySelector('[data-result]')
+
+      console.log(`setColorPicker: hsl(${hue} ${saturation}% ${lightness}%)`)
+
+      result.innerText = hsl;
+      sample.style.setProperty(`--sampleColor`, hsl)
+    }
+
+    document.querySelector(`#sample`).onclick = () => setBrandColor(getColorPicker());
+    const controls = document.querySelector('[data-controls]')
+
+    controls.addEventListener('input', (e) => {
+      if (!e.target.id) return;
+      const color = getColorPicker();
+      setColorPicker(color);
+    })
+  </script>
+
+</body>
+
+</html>
