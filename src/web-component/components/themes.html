@@ -15,27 +15,27 @@
     }
 
     html {
-      --green: hsl(115, 50%, 50%);
+      --green: hsl(115, 100%, 50%);
       --green-hue: 115;
-      --green-saturation: 50%;
+      --green-saturation: 100%;
       --green-lightness: 50%;
       --green: hsl(var(--green-hue) var(--green-saturation) var(--green-lightness));
 
-      --blue: hsl(244, 50%, 50%);
+      --blue: hsl(244, 100%, 50%);
       --blue-hue: 244;
-      --blue-saturation: 50%;
+      --blue-saturation: 100%;
       --blue-lightness: 50%;
       --blue: hsl(var(--blue-hue) var(--blue-saturation) var(--blue-lightness));
 
-      --red: hsl(0, 50%, 50%);
+      --red: hsl(0, 100%, 50%);
       --red-hue: 0;
-      --red-saturation: 50%;
+      --red-saturation: 100%;
       --red-lightness: 50%;
       --red: hsl(var(--red-hue) var(--red-saturation) var(--red-lightness));
 
-      --yellow: hsl(60, 50%, 50%);
+      --yellow: hsl(60, 100%, 50%);
       --yellow-hue: 60;
-      --yellow-saturation: 50%;
+      --yellow-saturation: 100%;
       --yellow-lightness: 50%;
       --yellow: hsl(var(--yellow-hue) var(--yellow-saturation) var(--yellow-lightness));
 
@@ -44,6 +44,7 @@
       --brand-saturation: 100%;
       --brand-lightness: 50%;
       --brand: hsl(var(--brand-hue) var(--brand-saturation) var(--brand-lightness));
+      --surface: var(--surface1);
 
       /* light */
       --brand-light: hsl(var(--brand-hue) var(--brand-saturation) var(--brand-lightness));
@@ -105,6 +106,7 @@
         --surface2: var(--surface2-dark);
         --surface3: var(--surface3-dark);
         --surface4: var(--surface4-dark);
+
         --surface-shadow: var(--surface-shadow-dark);
         --shadow-strength: var(--shadow-strength-dark);
       }
@@ -159,31 +161,32 @@
 
     html {
       block-size: 100%;
-      background-color: var(--surface1);
+      /*background-color: var(--surface);*/
+      background: var(--surface);
       color: var(--text1);
     }
 
     body {
       min-block-size: 100%;
       font-family: system-ui, sans-serif;
-      padding: 5vmax;
+      padding: 2vmax;
       display: grid;
       place-content: center;
-      gap: 5vmax;
+      gap: 2vmax;
     }
 
     main {
       display: flex;
       flex-flow: row wrap;
-      align-items: center;
-      align-content: center;
+      /*align-items: center;*/
+      /*align-content: center;*/
       justify-content: center;
-      gap: 10vmax 10vmin;
+      gap: 5vmax 7vmin;
     }
 
     section {
       display: grid;
-      gap: 2.5vh;
+      /*gap: 2.5vh;*/
     }
 
     h1 {
@@ -214,9 +217,9 @@
 
     .surface-samples {
       display: grid;
-      --size: 20ch;
+      --size: 22ch;
       grid-template-columns: var(--size) var(--size);
-      grid-auto-rows: var(--size);
+      grid-auto-rows: auto;
       gap: 2ch;
 
       @media (width <=480px) {
@@ -271,25 +274,28 @@
       background-color: var(--yellow);
     }
 
-
     .surface1 {
       background-color: var(--surface1);
       color: var(--text2);
+      cursor: pointer;
     }
 
     .surface2 {
       background-color: var(--surface2);
       color: var(--text2);
+      cursor: pointer;
     }
 
     .surface3 {
       background-color: var(--surface3);
       color: var(--text1);
+      cursor: pointer;
     }
 
     .surface4 {
       background-color: var(--surface4);
       color: var(--text1);
+      cursor: pointer;
     }
 
     .text1 {
@@ -331,6 +337,9 @@
         0 41.8px 33.4px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .03)),
         0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength));
     }
+    input[type="radio"] {
+      cursor: pointer;
+    }
   </style>
   <style>
     /* Brand color picker */
@@ -338,12 +347,19 @@
       --sampleColor: var(--brand);
     }
 
-    .controls {
+    .color-picker {
+      display: grid;
+      grid-template-columns: auto 4ch;
+      gap: 3ch;
       padding: 1.75rem;
-      background: #ffffff;
-      border-radius: 0.5rem;
+      background: var(--surface1);
+      border-radius: 1rem;
+      color: var(--text1);
+      margin-bottom: 2ch;
+    }
+
+    .controls {
       display: none;
-      color: #000000;
 
       >*+* {
         margin-top: 0.75rem;
@@ -352,13 +368,10 @@
 
     .sample {
       border-radius: 0.5rem;
-      padding: 1.75rem;
-      color: #000000;
+      padding: 1rem;
+      color: var(--text1);
       background-color: var(--sampleColor);
-
-      >*+* {
-        margin-top: 0.75rem;
-      }
+      cursor: pointer;
     }
 
     .result {
@@ -377,8 +390,27 @@
         width: 6rem;
       }
 
-      input {
+      input[type="range"] {
         flex: 1 1 auto;
+        cursor: pointer;
+      }
+    }
+
+    .palettes {
+      display: grid;
+      margin: 0 0 0 auto;
+      place-content: center;
+      gap: 1.5ch;
+
+      &>.swatch {
+        border-radius: 1rem;
+        display: grid;
+        place-content: center;
+        width: 30px;
+        height: 30px;
+      }
+      &> span {
+        cursor: pointer;
       }
     }
 
@@ -402,13 +434,12 @@
 <body>
   <header>
 
-    <div>
-      <h3>Brand color</h3>
-      <p class="warning">
-        Sorry, your browser doesn’t support HWB colors.
-      </p>
-      <code class="result" data-result>hsl(0 0 0)</code>
-      <div id="myColors" class="controls rad-shadow" data-controls>
+    <p class="warning">
+      Sorry, your browser doesn’t support HWB colors.
+    </p>
+    <h3>Brand color</h3>
+    <div class="color-picker rad-shadow">
+      <div id="myColors" class="controls" data-controls>
         <div class="input-group">
           <label for="hue">Hue</label>
           <input id="hue" type="range" min="0" max="360">
@@ -421,14 +452,16 @@
           <label for="lightness">Lightness</label>
           <input id="lightness" type="range" min="0" max="100" value="50">
         </div>
-        <div id="sample" class="sample" style="height: auto">sample</div>
+        <div id="sample" class="sample rad-shadow" style="height: auto">
+          <code class="result" data-result>hsl(0 0 0)</code>
+        </div>
       </div>
-    </div>
-    <div class="palette">
-      <span id="blue" class="swatch blue rad-shadow"></span>
-      <span id="green" class="swatch green rad-shadow"></span>
-      <span id="red" class="swatch red rad-shadow"></span>
-      <span id="yellow" class="swatch yellow rad-shadow"></span>
+      <div class="palettes">
+        <span id="blue" class="swatch blue rad-shadow"></span>
+        <span id="green" class="swatch green rad-shadow"></span>
+        <span id="red" class="swatch red rad-shadow"></span>
+        <span id="yellow" class="swatch yellow rad-shadow"></span>
+      </div>
     </div>
     <h3>Scheme</h3>
     <form id="theme-switcher">
@@ -475,7 +508,6 @@
           <span class="swatch text2 rad-shadow"></span>
           Text Color 2
         </h1>
-        <br>
         <p class="text1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
           labore et dolore magna aliqua.</p>
         <p class="text2">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -485,12 +517,10 @@
   </main>
   <script>
     /* TODO
-     * clisk sur les surfaces => change la body.background
-     * agrandir les pastilles de couleurs
-     * mettre un curseur main sur les zones cliquables
+     *
      * finir la méthode set hsl de la classe HslColor
-     * 
      * Faire la meme chose avec LCH au lieu de HSL
+     * 
     */
     class HslColor {
 
@@ -521,6 +551,7 @@
       }
     }
 
+    // selection du theme par les radio boutons
     const switcher = document.querySelector('#theme-switcher');
     switcher.addEventListener('input', e => setTheme(e.target.value));
 
@@ -567,6 +598,7 @@
       setBrandColor(myColor);
     };
 
+    // les onClick sur les pastilles de couleurs 
     document.querySelector("#blue").onclick = () => setPalette("blue");
     document.querySelector("#green").onclick = () => setPalette("green");
     document.querySelector("#red").onclick = () => setPalette("red");
@@ -590,14 +622,26 @@
       sample.style.setProperty(`--sampleColor`, brandColor.hsl)
     }
 
+    // la brandColor = sample lors du click sur celui-ci
     document.querySelector(`#sample`).onclick = () => setBrandColor(getColorPicker());
 
+    // on ecoute l'evenement input des sliders du hsl picker');
     const controls = document.querySelector('[data-controls]')
     controls.addEventListener('input', (e) => {
       if (!e.target.id) return;
       const color = getColorPicker();
       setColorPicker(color);
     })
+
+    // les onClick sur les surfaces 
+    document.querySelector(".surface1").onclick = () => setSurfaceColor("surface1");
+    document.querySelector(".surface2").onclick = () => setSurfaceColor("surface2");
+    document.querySelector(".surface3").onclick = () => setSurfaceColor("surface3");
+    document.querySelector(".surface4").onclick = () => setSurfaceColor("surface4");
+
+    function setSurfaceColor( surface ) {
+      root.style.setProperty('--surface', `var(--${surface})`);
+    }
   </script>
 
 </body>
