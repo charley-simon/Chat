@@ -408,7 +408,7 @@
         Sorry, your browser doesn’t support HWB colors.
       </p>
       <code class="result" data-result>hsl(0 0 0)</code>
-      <div class="controls rad-shadow" data-controls>
+      <div id="myColors" class="controls rad-shadow" data-controls>
         <div class="input-group">
           <label for="hue">Hue</label>
           <input id="hue" type="range" min="0" max="360">
@@ -484,93 +484,115 @@
     </section>
   </main>
   <script>
-    const switcher = document.querySelector('#theme-switcher');
-    const doc = document.firstElementChild;
-    const declaration = document.styleSheets[0].cssRules[0].style;
-    const inputs = [...document.querySelectorAll('input')]
+    /* TODO
+     * clisk sur les surfaces => change la body.background
+     * agrandir les pastilles de couleurs
+     * mettre un curseur main sur les zones cliquables
+     * finir la méthode set hsl de la classe HslColor
+     * 
+     * Faire la meme chose avec LCH au lieu de HSL
+    */
+    class HslColor {
 
+      constructor(hue, saturation, lightness) {
+        // Store the name of the display device
+        this.hue = hue;
+        this.saturation = saturation;
+        this.lightness = lightness;
+      }
+
+      get hsl() {
+        return `hsl(${this.hue}deg ${this.saturation}% ${this.lightness}%)`;
+      }
+
+      set hsl(hslColor) {
+        // il faut parser `hsl(${hue}deg ${saturation}% ${lightness}%)`
+        // pour extraire les valeurs hue, saturation et lightness
+        // TODO !
+        var color = hslColor.replace("hsl(", "");
+        color = color.replace(")", "");
+        this.hue = color.replace("deg", "");
+        this.saturation = color.replace("%", "");
+        this.lightness = color.replace("%", "");
+      }
+
+      toString() {
+        return this.hsl;
+      }
+    }
+
+    const switcher = document.querySelector('#theme-switcher');
     switcher.addEventListener('input', e => setTheme(e.target.value));
 
-    var hue = 0;
-    var saturation = 0;
-    var lightness = 0;
+    const myStyle = document.styleSheets[0].cssRules[0].style;
+    const inputs = [...document.querySelectorAll('.input-group > input')];
+    console.log( inputs );
+    const root = document.documentElement;
+
     var brandColor = getBrandColor();
-    ({ hue, saturation, lightness } = brandColor);
+    console.log("brandColor: " + brandColor);
+    console.log(`hsl(${hue}deg ${saturation}% ${lightness}%)`)
     setBrandColor(brandColor);
 
     function setTheme(theme) {
+      const doc = document.firstElementChild;
       doc.setAttribute('color-scheme', theme);
-      ({ hue, saturation, lightness } = brandColor);
-      console.log(`setTheme(${theme}) hsl(${hue} ${saturation}% ${lightness}%)`)
-      setBrandColor({ hue, saturation, lightness });
+      setBrandColor(getBrandColor());
     }
 
     function getBrandColor() {
-      hue = declaration.getPropertyValue('--brand-hue');
-      saturation = declaration.getPropertyValue('--brand-saturation').replace("%", "");
-      lightness = declaration.getPropertyValue('--brand-lightness').replace("%", "");
-      return { hue, saturation, lightness };
+      hue = myStyle.getPropertyValue('--brand-hue').replace("deg", "");
+      saturation = myStyle.getPropertyValue('--brand-saturation').replace("%", "");
+      lightness = myStyle.getPropertyValue('--brand-lightness').replace("%", "");
+      return new HslColor( hue, saturation, lightness );
     }
 
-    function setBrandColor(brandColor) {
-      const root = document.documentElement;
-      ({ hue, saturation, lightness } = brandColor);
-
-      root.style.setProperty('--brand-hue', hue);
-      root.style.setProperty('--brand-saturation', saturation);
-      root.style.setProperty('--brand-lightness', lightness);
-      root.style.setProperty('--brand', `hsl(${hue} ${saturation}% ${lightness}%)`);
-      console.log(`setBrandColor: hsl(${hue} ${saturation}% ${lightness}%)`)
-      setColorPicker({ hue, saturation, lightness });
+    function setBrandColor(color) {
+      brandColor = color;
+      root.style.setProperty('--brand-hue', brandColor.hue);
+      root.style.setProperty('--brand-saturation', brandColor.saturation);
+      root.style.setProperty('--brand-lightness', brandColor.lightness);
+      root.style.setProperty('--brand', brandColor.hsl);
+      console.log("setBrandColor: " + color );
+      setColorPicker(brandColor);
     }
 
     // Gestion de la palette
-    function setPaletteClick(name) {
-      document.querySelector(`#${name}`).onclick = () => setPalette(name);
-    }
-
     function setPalette(name) {
-      const root = document.documentElement;
-      hue = declaration.getPropertyValue(`--${name}-hue`);
-      saturation = declaration.getPropertyValue(`--${name}-saturation`).replace("%", "");
-      lightness = declaration.getPropertyValue(`--${name}-lightness`).replace("%", "");
-      console.log(`setPalette: hsl(${hue} ${saturation}% ${lightness}%)`)
-      setBrandColor({ hue, saturation, lightness });
+      const hue = myStyle.getPropertyValue(`--${name}-hue`).replace("deg", "");
+      const saturation = myStyle.getPropertyValue(`--${name}-saturation`).replace("%", "");
+      const lightness = myStyle.getPropertyValue(`--${name}-lightness`).replace("%", "");
+      const myColor = new HslColor( hue, saturation, lightness );
+      console.log("setPalette: " + myColor );
+      setBrandColor(myColor);
     };
 
-    setPaletteClick('blue');
-    setPaletteClick('green');
-    setPaletteClick('red');
-    setPaletteClick('yellow');
+    document.querySelector("#blue").onclick = () => setPalette("blue");
+    document.querySelector("#green").onclick = () => setPalette("green");
+    document.querySelector("#red").onclick = () => setPalette("red");
+    document.querySelector("#yellow").onclick = () => setPalette("yellow");
 
     // Brand color picker
     function getColorPicker() {
-      hue = inputs[0].value
-      saturation = inputs[1].value
-      lightness = inputs[2].value
-      return { hue, saturation, lightness };
+      return new HslColor( inputs[0].value, inputs[1].value, inputs[2].value );
     }
 
-    function setColorPicker(brandColor) {
-      const root = document.documentElement;
-      const inputs = [...document.querySelectorAll('input')]
-      const { hue, saturation, lightness } = brandColor;
-      inputs[0].value = hue;
-      inputs[1].value = saturation;
-      inputs[2].value = lightness;
+    function setColorPicker(color) {
+      console.log("setColorPicker: " + color);
+      brandColor = color;
+      inputs[0].value = brandColor.hue;
+      inputs[1].value = brandColor.saturation;
+      inputs[2].value = brandColor.lightness;
 
-      const hsl = `hsl(${hue} ${saturation}% ${lightness}%)`;
-      const result = document.querySelector('[data-result]')
+      document.querySelector('[data-result]').innerText = brandColor.hsl;
+      console.log("setColorPicker: " + brandColor.hsl);
 
-      console.log(`setColorPicker: hsl(${hue} ${saturation}% ${lightness}%)`)
-
-      result.innerText = hsl;
-      sample.style.setProperty(`--sampleColor`, hsl)
+      sample.style.setProperty(`--sampleColor`, brandColor.hsl)
     }
 
     document.querySelector(`#sample`).onclick = () => setBrandColor(getColorPicker());
-    const controls = document.querySelector('[data-controls]')
 
+    const controls = document.querySelector('[data-controls]')
     controls.addEventListener('input', (e) => {
       if (!e.target.id) return;
       const color = getColorPicker();

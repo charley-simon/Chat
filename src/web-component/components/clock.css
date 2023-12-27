@@ -83,8 +83,8 @@
 
 .hours {
   --_abg: #333;
-  --_ah: 30cqi;
-  --_aw: 2.5cqi;
+  --_ah: 29cqi;
+  --_aw: 3cqi;
   animation: turn 43200s linear infinite; /* 60 * 60 * 12 */
   animation-delay: var(--_dh, 0ms);
 	position: relative;
