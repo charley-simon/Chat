@@ -518,8 +518,8 @@
   <script>
     /* TODO
      *
-     * finir la méthode set hsl de la classe HslColor
      * Faire la meme chose avec LCH au lieu de HSL
+     * faire des couleurs plus shiny
      * 
     */
     class HslColor {
@@ -536,14 +536,8 @@
       }
 
       set hsl(hslColor) {
-        // il faut parser `hsl(${hue}deg ${saturation}% ${lightness}%)`
-        // pour extraire les valeurs hue, saturation et lightness
-        // TODO !
-        var color = hslColor.replace("hsl(", "");
-        color = color.replace(")", "");
-        this.hue = color.replace("deg", "");
-        this.saturation = color.replace("%", "");
-        this.lightness = color.replace("%", "");
+        [this.hue, this.saturation, this.lightness] = hslColor.replace(/hsl|[()]|deg|%/gi,"").split(/ /)
+        console.log( `setHsl(${hslColor}), result: ${this.hue}, ${this.saturation}, ${this.lightness}` )
       }
 
       toString() {
