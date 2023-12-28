@@ -544,7 +544,7 @@
      * - Faire la meme chose avec LCH au lieu de HSL
      * - faire un theme superLight
      * - faire les boutons primary, secondary, tertiary and destructive
-     * avec leurs versions disabled, selected
+     *   avec leurs versions disabled, selected
      * - faire les radio boutons, check boxs, sliders, input, menus, etc...
      * 
     */
@@ -664,6 +664,15 @@
       console.info("setSurfaceColor(" + surface + ")")
       root.style.setProperty('--surface', `var(--${surface})`);
     }
+
+    function readingTime() {
+      const text = document.getElementById("article").innerText;
+      const wpm = 225;
+      const words = text.trim().split(/\s+/).length;
+      const time = Math.ceil(words / wpm);
+      document.getElementById("time").innerText = time;
+    }
+    readingTime();
   </script>
 
 </body>

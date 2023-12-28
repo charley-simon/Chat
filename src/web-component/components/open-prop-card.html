@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @import "https://unpkg.com/open-props";
+    @import "https://unpkg.com/open-props/normalize.min.css";
+
+    main {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+      -webkit-box-align: start;
+      -ms-flex-align: start;
+      align-items: flex-start;
+      -ms-flex-pack: distribute;
+      justify-content: space-around;
+      max-width: calc(var(--size-content-1) * 4);
+      grid-gap: var(--size-5);
+      gap: var(--size-5);
+      padding: var(--size-5);
+    }
+
+    .card {
+      -ms-flex-preferred-size: var(--size-content-1);
+      flex-basis: var(--size-content-1);
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      grid-gap: var(--size-2);
+      gap: var(--size-2);
+      background: var(--surface-3);
+      border: 1px solid var(--surface-1);
+      padding: var(--size-4);
+      border-radius: var(--radius-3);
+      -webkit-box-shadow: var(--shadow-2);
+      box-shadow: var(--shadow-2);
+    }
+
+    .card>h5 {
+      line-height: var(--font-lineheight-1);
+    }
+
+    body {
+      display: grid;
+      -ms-flex-line-pack: center;
+      align-content: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      place-content: center;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="card">
+      <img src="https://doodleipsum.com/500x500/hand-drawn?i=b48528b59f8d071fde57e51d2d6c433d" alt="Card image cap">
+      <h5>Lorem ipsum dolor</h5>
+      <p>Quis nostrud nisi ut aliquip ea commodo consequat.</p>
+      <a href="#">Check it</a>
+    </div>
+
+    <div class="card">
+      <img src="https://doodleipsum.com/500x500/hand-drawn?i=9b11b7fde5591be86d8928901e68355f" alt="Card image cap">
+      <h5>Consectetur adipiscing elit</h5>
+      <p>Duis aute irure dolor in cillum dolore eu.</p>
+      <a href="#">Check it</a>
+    </div>
+
+    <div class="card">
+      <img class="card-img" src="https://doodleipsum.com/500x500/hand-drawn?i=74c909f45ddde824d103db53e2a71e63"
+        alt="Card image cap">
+      <h5>Ut enim</h5>
+      <p>Excepteur sint occaecat cupidatat non proident.</p>
+      <a href="#">Ready for action</a>
+    </div>
+  </main>
+</body>
+
+</html>

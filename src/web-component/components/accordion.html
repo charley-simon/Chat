@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @layer reset {
+
+      *,
+      *:after,
+      *:before {
+        box-sizing: border-box;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      ul[class] {
+        list-style: none;
+      }
+
+      label {
+        cursor: pointer;
+        max-width: max-content;
+        user-select: none;
+      }
+    }
+
+    @layer baselayout {
+      html {
+        margin: auto;
+        line-height: 1.5;
+        font-size: 1.25em;
+        font-family: "Syne", sans-serif;
+        min-height: 100%;
+        background: white;
+      }
+
+      body {
+        width: 100%;
+        max-width: 120ch;
+        margin: 0 auto;
+        min-height: 100dvh;
+        padding: 2em;
+      }
+
+      footer {
+        text-align: center;
+        font-style: italic;
+        margin-top: 2rem;
+      }
+
+      h1,
+      h2,
+      summary {
+        font-family: "Anybody", sans-serif;
+
+        text-decoration: underline;
+        text-decoration-color: hsl(156deg 100% 50% / 50%);
+        text-decoration-thickness: 0.2rem;
+        text-decoration-style: wavy;
+        text-decoration-skip-ink: none;
+      }
+
+      h2 {
+        margin: 2em 0 0.5em 0;
+        text-wrap: balance;
+      }
+
+      a {
+        color: inherit;
+      }
+    }
+
+    @layer components {
+      @layer course {
+        .course {
+          counter-reset: chapter;
+        }
+
+        .course details {
+          counter-increment: chapter;
+        }
+
+        .course summary::before {
+          content: counter(chapter);
+          background: var(--border-color);
+          color: white;
+          display: inline-block;
+          height: 1lh;
+          aspect-ratio: 1;
+          text-align: center;
+          border-radius: 50%;
+          margin-right: 0.5em;
+        }
+
+        .course details a {
+          display: inline-block;
+          background: var(--border-color);
+          color: white;
+          text-decoration: none;
+          padding: 0.5em 0.7em;
+          font-size: 0.8em;
+          text-transform: uppercase;
+          background-color: var(--border-color);
+
+          &:hover {
+            background-color: lch(from var(--border-color) calc(l * 0.9) c h);
+          }
+        }
+      }
+
+      @layer accordion {
+        details {
+          --border-color: #6300ff;
+          border: 0.25em solid var(--border-color);
+          overflow: hidden;
+          margin: 0;
+
+          >summary {
+            background: #ccc;
+            padding: 0.5em;
+            border-bottom: 0.25em solid var(--border-color);
+            cursor: pointer;
+
+            transition: background 0.25s ease, color 0.25s ease;
+
+            &:hover {
+              background: #b4b4b4;
+            }
+          }
+
+          &[open] {
+            border-bottom: 0.25em solid var(--border-color);
+
+            >summary {
+              background: #b4b4b4;
+            }
+          }
+
+          >*:not(summary) {
+            padding: 1em;
+          }
+        }
+
+        /* Visually group successive siblings together */
+        details:has(+ details) {
+          border-bottom: none;
+        }
+
+        details+details {
+          border-top: none;
+        }
+
+        :not(details)+details,
+        details:first-child {
+          border-top-left-radius: 0.5em;
+          border-top-right-radius: 0.5em;
+        }
+
+        details:not(details:has(+ details)) {
+          border-bottom-left-radius: 0.5em;
+          border-bottom-right-radius: 0.5em;
+
+          &:not([open]) summary {
+            border-bottom: 0;
+          }
+        }
+      }
+    }
+
+    @layer utilities {
+      .float-right {
+        float: right;
+        margin-left: 0.5em;
+      }
+
+      .float-left {
+        float: left;
+        margin-right: 0.5em;
+      }
+
+      *:has(> .float-right, > .float-left) {
+        display: flow-root;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>Learn web development</h1>
+    <div class="course">
+      <h2>Learn CSS</h2>
+
+      <details name="learn-css" open>
+        <summary>Welcome to Learn CSS!</summary>
+        <p>An evergreen CSS course and reference to level up your web styling expertise.</p>
+        <p><a href="#">Read Article</a></p>
+      </details>
+
+      <details name="learn-css">
+        <summary>Box Model</summary>
+        <p>Everything displayed by CSS is a box. Understanding how the CSS Box Model works is therefore a core
+          foundation of CSS.</p>
+        <p><a href="#">Read Article</a></p>
+      </details>
+
+      <details name="learn-css">
+        <summary>Selectors</summary>
+        <p>To apply CSS to an element you need to select it. CSS provides you with a number of different ways to do
+          this, and you can explore them in this module.</p>
+        <p><a href="#">Read Article</a></p>
+      </details>
+
+      <details name="learn-css">
+        <summary>…</summary>
+        <p><em>(chapters 4 to 30 of this course have been omitted for demonstation purposes)</em></p>
+      </details>
+    </div>
+    <div class="course">
+      <h2>Learn Performance</h2>
+
+      <details name="learn-performance" open>
+        <summary>Welcome to Learn Performance!</summary>
+        <p>This course is designed for those new to web performance, a vital aspect of the user experience. It covers
+          key web performance concepts and techniques for improving performance.</p>
+        <p><a href="#">Read Article</a></p>
+      </details>
+
+      <details name="learn-performance">
+        <summary>Why speed matters</summary>
+        <p>Before you can get started with learning performance, you first have to understand its role in the user
+          experience, and how it can result in better outcomes for users. This course starts off with a brief
+          introduction into these topics, giving vital context as to why it's important to learn performance.</p>
+        <p><a href="#">Read Article</a></p>
+      </details>
+
+      <details name="learn-performance">
+        <summary>General HTML performance considerations</summary>
+        <p>Every website starts with a request for an HTML document, that request has a big role to play in how fast
+          your website loads. This module covers important concepts such as HTML caching, parser blocking, render
+          blocking, and more, so you can ensure the first request for your website's HTML is off on the right foot.</p>
+        <p><a href="#">Read Article</a></p>
+      </details>
+
+      <details name="learn-performance">
+        <summary>…</summary>
+        <p><em>(chapters 4 to 14 of this course have been omitted for demonstation purposes)</em></p>
+      </details>
+    </div>
+  </main>
+  <script>
+    // Exclusive accordion polyfill
+    //
+    // When a <details> element with a [name] opens, this code finds
+    // the other open ones with that [name] and closes them manually.
+    document.querySelectorAll("details[name]").forEach(($details) => {
+      $details.addEventListener("toggle", (e) => {
+        const name = $details.getAttribute("name");
+
+        if (e.newState == "open") {
+          document
+            .querySelectorAll(`details[name=${name}][open]`)
+            .forEach(($openDetails) => {
+              if (!($openDetails == $details)) {
+                $openDetails.removeAttribute("open");
+              }
+            });
+        }
+      });
+    });
+
+  </script>
+</body>
+
+</html>

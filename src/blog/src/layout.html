@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,51 +9,189 @@
 <link rel="stylesheet" href="../public/css/normalize.css" />
 <link rel="stylesheet" href="../public/css/layout.css" />
 <style>
-
-.cards {
-  grid-area: content;
-  display: grid;
-  grid-template-rows: repeat(auto-fit, minmax(40vh, 1fr));
-  grid-template-columns: auto-fit;
-  background-color: red;
-  gap: 1rem;
-  row-gap: 1rem;
-  padding: 1rem 0rem 1rem 0rem;
-  margin: 0;
-  overflow: scroll;
-}
-
-@media (min-width: 600px) {
-  .cards {
-    grid-template-columns: repeat(auto-fit, minmax(40vh, 1fr));
-    padding: 0;
+  * {
+    box-sizing: border-box;
+    margin: 0;
   }
-}
 
-.card {
-  background-color: aqua;
-  border: 2px dashed blue;
-  border-radius: .5em;
-  display: grid;
-  grid-template-rows: auto minmax(1rem, 1fr) auto;  
-  min-height: 40vh;
-  overflow: hidden;
-}
+  body {
+    font-family: system-ui, sans-serif;
+  }
 
-.card > .content {
-  color: #222;
-  background-color: rgba(255,255,255,.9);
-  border-radius: .5em;
-  padding: .5em;
-}
+  .cards {
+    --brand-hue: 244;
+    --surface-shadow: var(--brand-hue) 10% 20%;
+    --shadow-strength: .02;
+    grid-area: content;
+    display: grid;
+    grid-template-rows: repeat(auto, minmax(60vh, 1fr));
+    grid-template-columns: auto-fit;
+    background-color: lightgrey;
+    gap: 1rem;
+    row-gap: 1rem;
+    padding: 1rem 0rem 1rem 0rem;
+    margin: 0;
+    --overflow: auto;
 
-.card > header, .card > footer {
-  color: #fff;
-  background-color: #00b7a8;
-  border-radius: .5em;
-  padding: 0 .5rem 0 .5rem;
-}
+    .rad-shadow {
+      border: 1px solid hsl(var(--brand-hue) 10% 50% / 15%);
+      box-shadow: 0 1rem .5rem -.5rem;
+      box-shadow:
+        0 2.8px 2.2px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .03)),
+        0 6.7px 5.3px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .01)),
+        0 12.5px 10px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .02)),
+        0 22.3px 17.9px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .02)),
+        0 41.8px 33.4px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .03)),
+        0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength));
+    }
+  }
+
+  @media (min-width: 600px) {
+    .cards {
+      grid-template-columns: repeat(auto-fit, minmax(40vh, 1fr));
+      padding: 0;
+    }
+  }
+
+  .card {
+    --block-size: 100%;
+    --min-block-size: 100%;
+    width: auto;
+    display: grid;
+    grid-template-rows: 8ch minmax(30vh, 1rem) auto 5ch;
+    grid-template-columns: 100%;
+    --place-items: ;
+    background: oklch(50% none none / 20%);
+    border-radius: 10px;
+    border: 1px solid oklch(50% none none / 20%);
+
+    border: 1px solid hsl(var(--brand-hue) 10% 50% / 15%);
+    box-shadow: 0 1rem .5rem -.5rem;
+    box-shadow:
+      0 2.8px 2.2px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .03)),
+      0 6.7px 5.3px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .01)),
+      0 12.5px 10px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .02)),
+      0 22.3px 17.9px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .02)),
+      0 41.8px 33.4px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .03)),
+      0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength));
+
+    @media (prefers-color-scheme: light) {
+      background: white;
+      box-shadow: 0 30px 10px -20px oklch(0% none none / 25%);
+    }
+
+    >header {
+      padding: 1ch;
+
+      >p { color: blue; }
+    }
+
+    >content {
+      --padding-top: -10ch;
+      padding: 0ch 1ch 1ch 1ch;
+    }
+
+    >footer {
+      display: flex;
+      justify-content: flex-end;
+      padding: 1ch 2ch;
+      gap: 1ch;
+    }
+
+    figure {
+      aspect-ratio: 16/9;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      height: auto;
+      margin-inline: 0;
+      margin-block: 0;
+
+      >img {
+        position: relative;
+        width: 100%;
+        block-size: 100%;
+        object-fit: cover;
+        object-position: bottom;
+      }
+
+      & header {
+        text-align: center;
+        position: relative;
+        top: calc(-50% - 2ch);
+        color: hsla( 0deg 100% 100% / 0.7)
+      }
+
+      >figcaption {
+        text-align: center;
+        padding-block: 1ch;
+      }
+    }
+  }
+
+  .card2 {
+    background-color: aqua;
+    border: 2px dashed blue;
+    border-radius: .5em;
+    display: grid;
+    grid-template-rows: auto minmax(1rem, 1fr) auto;
+    min-height: 40vh;
+    overflow: hidden;
+
+    >.content {
+      color: #222;
+      background-color: rgba(255, 255, 255, .9);
+      border-radius: .5em;
+      padding: .5em;
+    }
+
+    >header,
+    >footer {
+      color: #fff;
+      background-color: #00b7a8;
+      border-radius: .5em;
+      padding: 0 .5rem 0 .5rem;
+    }
+
+    .responsive-image {
+      max-inline-size: auto;
+      aspect-ratio: 16/9;
+      margin-inline: 0;
+      padding-inline: 0;
+    }
+
+    figure {
+      border-radius: .5ch;
+      max-inline-size: 100%;
+      min-inline-size: 100%;
+      --aspect-ratio: 4/3;
+      margin-inline: 0;
+      padding-inline: 0;
+      margin-inline: 0;
+      margin-block: 0;
+      text-align: center;
+      overflow: hidden;
+
+      & img {
+        display: block;
+        inline-size: 100%;
+        object-fit: cover;
+        aspect-ratio: 16/9;
+        object-position: bottom;
+      }
+
+      & header {
+        /* Centered text */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+  }
 </style>
+
 <body>
 
   <template name="">
@@ -64,110 +203,167 @@
       <div slot="footer"></div>
     </cr-card>
   </template>
-<content class="container">
-  <header class="header">header
-    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-  </header>
-  <div class="hero">hero
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis in quaerat consequuntur perspiciatis. Repudiandae deserunt voluptatum minima recusandae nemo excepturi. Modi quasi quibusdam labore libero atque neque! Esse, nesciunt a?
-    Vero sequi, quisquam ipsam aliquid accusamus ipsa nam quam delectus magni earum cum vitae minima! Officia maxime quod ipsam est?
-  </div>
-  <aside class="sidebar">sidebar
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt corporis suscipit nemo incidunt officia! Ipsum dolore, accusamus reprehenderit doloremque nisi itaque impedit laboriosam voluptates illo dolores enim quod, blanditiis quidem.
-  </aside>
-  <section class="cards">
-    <cr-article class="card">
-      <article author="Charley" time="24/12/2023">
-        <header>Pourquoi ce blog ?</header>
-        <content>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur natus in, unde dolor mollitia, porro accusamus tenetur, commodi odio atque tempore! Similique commodi necessitatibus, delectus temporibus tempora fugit illum ad!</content>
-        <footer>Lire la suite...</footer>
+  <content class="container">
+    <header class="header">header
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </header>
+    <div class="hero">hero
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis in quaerat consequuntur perspiciatis. Repudiandae
+      deserunt voluptatum minima recusandae nemo excepturi. Modi quasi quibusdam labore libero atque neque! Esse,
+      nesciunt a?
+      Vero sequi, quisquam ipsam aliquid accusamus ipsa nam quam delectus magni earum cum vitae minima! Officia maxime
+      quod ipsam est?
+    </div>
+    <aside class="sidebar">sidebar
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt corporis suscipit nemo incidunt officia! Ipsum
+      dolore, accusamus reprehenderit doloremque nisi itaque impedit laboriosam voluptates illo dolores enim quod,
+      blanditiis quidem.
+    </aside>
+    <section class="cards">
+      <!--
+      <cr-article class="card">
+        <article author="Charley" time="24/12/2023">
+          <header>Pourquoi ce blog ?</header>
+          <content>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur natus in, unde dolor mollitia,
+            porro accusamus tenetur, commodi odio atque tempore! Similique commodi necessitatibus, delectus temporibus
+            tempora fugit illum ad!</content>
+          <footer>Lire la suite...</footer>
+        </article>
+      </cr-article>-->
+      <article class="card" author="Charley" time="24/12/2023">
+        <header>
+          <h2>Epic title</h2>
+          <p>Lorem ipsum dolor sit amet</p>
+        </header>
+        <figure>
+          <img src="https://assets.codepen.io/2585/uszetlo5l6591.webp"
+            alt="cyberpunk raining day in tokyo with purple and cyan lights">
+          <header>
+            <h2>cyberpunk raining day in tokyo</h2>
+          </header>
+        </figure>
+
+        <content>
+          <p>La partie HTML de mon blog.
+            patin couffin, etc...</p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit quis in eaque accusantium nesciunt
+          reiciendis! Dignissimos, veniam, temporibus illum nisi nihil sint, libero eum cum quas voluptas assumenda ea
+          possimus!
+        </content>
+        <footer>
+          <button>Like</button>
+          <button>Share</button>
+        </footer>
       </article>
-    </cr-article>
-    <article class="card">
-      <header>
-        <h2>HTML</h2>
-      </header>
-  
-      <div class="content">
-        La partie HTML de mon blog.
-      </div>
-  
-      <footer>
-        <p>Lire l'article...</p>
-      </footer>
-    </article>
-    <article class="card">
-      <header>
-        <h2>CSS</h2>
-      </header>
-      <div class="content">
-        <p>La partie CSS de mon blog.</p>
-      </div>
-      <footer>
-        <p>Lire l'article...</p>
-      </footer>
-    </article>
-    <article class="card">
-      <header>
-        <h2>Javascript</h2>
-      </header>
-      <div class="content">
-        <p>La partie Javascript de mon blog.</p>
-      </div>
-      <footer>
-        <p>Lire l'article...</p>
-      </footer>
-    </article>
-    <article class="card">
-      <h2>Lorem ipsum</h2>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fugit exercitationem quia minima nesciunt nostrum quasi veniam natus quidem dignissimos, quos vitae libero unde culpa et iste corporis repellendus labore?
-      Dolore ullam a consequuntur voluptatum vitae molestias asperiores, quasi corporis dignissimos fugiat, officiis excepturi ipsam illo autem eligendi nobis qui laboriosam impedit totam alias? Amet rem aspernatur molestias vero! Voluptatum?</p>
-    </article>
-    <article class="card">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fugit exercitationem quia minima nesciunt nostrum quasi veniam natus quidem dignissimos, quos vitae libero unde culpa et iste corporis repellendus labore?
-      Dolore ullam a consequuntur voluptatum vitae molestias asperiores, quasi corporis dignissimos fugiat, officiis excepturi ipsam illo autem eligendi nobis qui laboriosam impedit totam alias? Amet rem aspernatur molestias vero! Voluptatum?
-    </article>
-    <article class="card">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fugit exercitationem quia minima nesciunt nostrum quasi veniam natus quidem dignissimos, quos vitae libero unde culpa et iste corporis repellendus labore?
-      Dolore ullam a consequuntur voluptatum vitae molestias asperiores, quasi corporis dignissimos fugiat, officiis excepturi ipsam illo autem eligendi nobis qui laboriosam impedit totam alias? Amet rem aspernatur molestias vero! Voluptatum?
-    </article>
-    <article class="card">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fugit exercitationem quia minima nesciunt nostrum quasi veniam natus quidem dignissimos, quos vitae libero unde culpa et iste corporis repellendus labore?
-      Dolore ullam a consequuntur voluptatum vitae molestias asperiores, quasi corporis dignissimos fugiat, officiis excepturi ipsam illo autem eligendi nobis qui laboriosam impedit totam alias? Amet rem aspernatur molestias vero! Voluptatum?
-    </article>
-    <article class="card">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fugit exercitationem quia minima nesciunt nostrum quasi veniam natus quidem dignissimos, quos vitae libero unde culpa et iste corporis repellendus labore?
-      Dolore ullam a consequuntur voluptatum vitae molestias asperiores, quasi corporis dignissimos fugiat, officiis excepturi ipsam illo autem eligendi nobis qui laboriosam impedit totam alias? Amet rem aspernatur molestias vero! Voluptatum?
-    </article>
-    <article class="card">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fugit exercitationem quia minima nesciunt nostrum quasi veniam natus quidem dignissimos, quos vitae libero unde culpa et iste corporis repellendus labore?
-      Dolore ullam a consequuntur voluptatum vitae molestias asperiores, quasi corporis dignissimos fugiat, officiis excepturi ipsam illo autem eligendi nobis qui laboriosam impedit totam alias? Amet rem aspernatur molestias vero! Voluptatum?
-    </article>
-    <article class="card">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fugit exercitationem quia minima nesciunt nostrum quasi veniam natus quidem dignissimos, quos vitae libero unde culpa et iste corporis repellendus labore?
-      Dolore ullam a consequuntur voluptatum vitae molestias asperiores, quasi corporis dignissimos fugiat, officiis excepturi ipsam illo autem eligendi nobis qui laboriosam impedit totam alias? Amet rem aspernatur molestias vero! Voluptatum?
-    </article>
-    <article class="card">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fugit exercitationem quia minima nesciunt nostrum quasi veniam natus quidem dignissimos, quos vitae libero unde culpa et iste corporis repellendus labore?
-      Dolore ullam a consequuntur voluptatum vitae molestias asperiores, quasi corporis dignissimos fugiat, officiis excepturi ipsam illo autem eligendi nobis qui laboriosam impedit totam alias? Amet rem aspernatur molestias vero! Voluptatum?
-    </article>
-    <article class="card">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fugit exercitationem quia minima nesciunt nostrum quasi veniam natus quidem dignissimos, quos vitae libero unde culpa et iste corporis repellendus labore?
-      Dolore ullam a consequuntur voluptatum vitae molestias asperiores, quasi corporis dignissimos fugiat, officiis excepturi ipsam illo autem eligendi nobis qui laboriosam impedit totam alias? Amet rem aspernatur molestias vero! Voluptatum?
-    </article>
-    <article class="card">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fugit exercitationem quia minima nesciunt nostrum quasi veniam natus quidem dignissimos, quos vitae libero unde culpa et iste corporis repellendus labore?
-      Dolore ullam a consequuntur voluptatum vitae molestias asperiores, quasi corporis dignissimos fugiat, officiis excepturi ipsam illo autem eligendi nobis qui laboriosam impedit totam alias? Amet rem aspernatur molestias vero! Voluptatum?
-    </article>
-    <article class="card">
-      Le dernier: Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fugit exercitationem quia minima nesciunt nostrum quasi veniam natus quidem dignissimos, quos vitae libero unde culpa et iste corporis repellendus labore?
-      Dolore ullam a consequuntur voluptatum vitae molestias asperiores, quasi corporis dignissimos fugiat, officiis excepturi ipsam illo autem eligendi nobis qui laboriosam impedit totam alias? Amet rem aspernatur molestias vero! Voluptatum?
-    </article>
-  </section>
-  <footer class="footer">footer
-    Le footer: et consectetur adipisicing elit. Consequuntur quis animi accusantium. Iste, vitae sit. Assumenda saepe sit, ipsum incidunt aliquid ex dicta? Hic laudantium consequatur, sed ab eligendi doloribus.
-  </footer>
-</div>
+      <article class="card">
+        <header>
+          <h2>CSS</h2>
+        </header>
+        <div class="content">
+          <p>La partie CSS de mon blog.</p>
+        </div>
+        <footer>
+          <p>Lire l'article...</p>
+        </footer>
+      </article>
+      <article class="card">
+        <header>
+          <h2>Javascript</h2>
+        </header>
+        <div class="content">
+          <p>La partie Javascript de mon blog.</p>
+        </div>
+        <footer>
+          <p>Lire l'article...</p>
+        </footer>
+      </article>
+      <article class="card">
+        <h2>Lorem ipsum</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fugit exercitationem quia minima nesciunt
+          nostrum quasi veniam natus quidem dignissimos, quos vitae libero unde culpa et iste corporis repellendus
+          labore?
+          Dolore ullam a consequuntur voluptatum vitae molestias asperiores, quasi corporis dignissimos fugiat, officiis
+          excepturi ipsam illo autem eligendi nobis qui laboriosam impedit totam alias? Amet rem aspernatur molestias
+          vero! Voluptatum?</p>
+      </article>
+      <article class="card">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fugit exercitationem quia minima nesciunt
+        nostrum quasi veniam natus quidem dignissimos, quos vitae libero unde culpa et iste corporis repellendus labore?
+        Dolore ullam a consequuntur voluptatum vitae molestias asperiores, quasi corporis dignissimos fugiat, officiis
+        excepturi ipsam illo autem eligendi nobis qui laboriosam impedit totam alias? Amet rem aspernatur molestias
+        vero! Voluptatum?
+      </article>
+      <article class="card">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fugit exercitationem quia minima nesciunt
+        nostrum quasi veniam natus quidem dignissimos, quos vitae libero unde culpa et iste corporis repellendus labore?
+        Dolore ullam a consequuntur voluptatum vitae molestias asperiores, quasi corporis dignissimos fugiat, officiis
+        excepturi ipsam illo autem eligendi nobis qui laboriosam impedit totam alias? Amet rem aspernatur molestias
+        vero! Voluptatum?
+      </article>
+      <article class="card">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fugit exercitationem quia minima nesciunt
+        nostrum quasi veniam natus quidem dignissimos, quos vitae libero unde culpa et iste corporis repellendus labore?
+        Dolore ullam a consequuntur voluptatum vitae molestias asperiores, quasi corporis dignissimos fugiat, officiis
+        excepturi ipsam illo autem eligendi nobis qui laboriosam impedit totam alias? Amet rem aspernatur molestias
+        vero! Voluptatum?
+      </article>
+      <article class="card">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fugit exercitationem quia minima nesciunt
+        nostrum quasi veniam natus quidem dignissimos, quos vitae libero unde culpa et iste corporis repellendus labore?
+        Dolore ullam a consequuntur voluptatum vitae molestias asperiores, quasi corporis dignissimos fugiat, officiis
+        excepturi ipsam illo autem eligendi nobis qui laboriosam impedit totam alias? Amet rem aspernatur molestias
+        vero! Voluptatum?
+      </article>
+      <article class="card">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fugit exercitationem quia minima nesciunt
+        nostrum quasi veniam natus quidem dignissimos, quos vitae libero unde culpa et iste corporis repellendus labore?
+        Dolore ullam a consequuntur voluptatum vitae molestias asperiores, quasi corporis dignissimos fugiat, officiis
+        excepturi ipsam illo autem eligendi nobis qui laboriosam impedit totam alias? Amet rem aspernatur molestias
+        vero! Voluptatum?
+      </article>
+      <article class="card">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fugit exercitationem quia minima nesciunt
+        nostrum quasi veniam natus quidem dignissimos, quos vitae libero unde culpa et iste corporis repellendus labore?
+        Dolore ullam a consequuntur voluptatum vitae molestias asperiores, quasi corporis dignissimos fugiat, officiis
+        excepturi ipsam illo autem eligendi nobis qui laboriosam impedit totam alias? Amet rem aspernatur molestias
+        vero! Voluptatum?
+      </article>
+      <article class="card">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fugit exercitationem quia minima nesciunt
+        nostrum quasi veniam natus quidem dignissimos, quos vitae libero unde culpa et iste corporis repellendus labore?
+        Dolore ullam a consequuntur voluptatum vitae molestias asperiores, quasi corporis dignissimos fugiat, officiis
+        excepturi ipsam illo autem eligendi nobis qui laboriosam impedit totam alias? Amet rem aspernatur molestias
+        vero! Voluptatum?
+      </article>
+      <article class="card">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fugit exercitationem quia minima nesciunt
+        nostrum quasi veniam natus quidem dignissimos, quos vitae libero unde culpa et iste corporis repellendus labore?
+        Dolore ullam a consequuntur voluptatum vitae molestias asperiores, quasi corporis dignissimos fugiat, officiis
+        excepturi ipsam illo autem eligendi nobis qui laboriosam impedit totam alias? Amet rem aspernatur molestias
+        vero! Voluptatum?
+      </article>
+      <article class="card">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fugit exercitationem quia minima nesciunt
+        nostrum quasi veniam natus quidem dignissimos, quos vitae libero unde culpa et iste corporis repellendus labore?
+        Dolore ullam a consequuntur voluptatum vitae molestias asperiores, quasi corporis dignissimos fugiat, officiis
+        excepturi ipsam illo autem eligendi nobis qui laboriosam impedit totam alias? Amet rem aspernatur molestias
+        vero! Voluptatum?
+      </article>
+      <article class="card">
+        Le dernier: Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fugit exercitationem quia minima
+        nesciunt nostrum quasi veniam natus quidem dignissimos, quos vitae libero unde culpa et iste corporis
+        repellendus labore?
+        Dolore ullam a consequuntur voluptatum vitae molestias asperiores, quasi corporis dignissimos fugiat, officiis
+        excepturi ipsam illo autem eligendi nobis qui laboriosam impedit totam alias? Amet rem aspernatur molestias
+        vero! Voluptatum?
+      </article>
+    </section>
+    <footer class="footer">footer
+      Le footer: et consectetur adipisicing elit. Consequuntur quis animi accusantium. Iste, vitae sit. Assumenda saepe
+      sit, ipsum incidunt aliquid ex dicta? Hic laudantium consequatur, sed ab eligendi doloribus.
+    </footer>
+    </div>
 
 </body>
+
 </html>
