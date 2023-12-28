@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!--
+   Memorize less and reach more with logical properties
+   Memorize this one new box model and never have to worry about changing left and right 
+   padding or margin for international writing modes and document directions again. 
+   Adjust your styles from physical properties to logical ones like padding-inline, 
+   margin-inline, inset-inline, and now the browser will do the adjusting work.
+-->
+<style>
+  @layer demo {
+    button {
+      padding-inline: 2ch;
+      padding-block: 1ch;
+    }
+
+    article>p {
+      text-align: start;
+      margin-block: 2ch;
+    }
+  }
+
+  @layer demo.support {
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    html {
+      block-size: 100%;
+      color-scheme: dark light;
+    }
+
+    body {
+      min-block-size: 100%;
+      font-family: system-ui, sans-serif;
+
+      display: grid;
+      place-content: center;
+      place-items: start;
+      padding: 5vmin;
+    }
+
+    p {
+      max-inline-size: 40ch;
+    }
+  }
+</style>
+
+<body>
+  <button>A button</button>
+
+  <article>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit deserunt molestias porro quae eveniet. Veniam
+      laboriosam rem sunt voluptates accusamus nobis, quia labore quisquam corrupti maxime modi nemo minus vitae?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit deserunt molestias porro quae eveniet. Veniam
+      laboriosam rem sunt voluptates accusamus nobis, quia labore quisquam corrupti maxime modi nemo minus vitae?</p>
+  </article>
+</body>
+
+</html>

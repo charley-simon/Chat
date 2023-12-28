@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+/* :has() stuff */
+
+.item:has(.star) {
+  background: #eee;
+}
+
+.item:has(:checked) {
+  background: Highlight;
+}
+
+.item:has(.star) .title,
+.item:has(.star) .time {
+  font-weight: 800;
+}
+
+/* Inbox */
+
+.item {
+  display: grid;
+  grid-template-columns: 5rem 1fr 4fr 1fr;
+  gap: 1rem;
+  border: 1px solid lightgray;
+  padding: 0.5rem;
+  align-items: center;
+  justify-items: start;
+}
+
+.item + .item {
+  border-top: none;
+}
+
+.bottom-bar {
+  display: flex;
+  justify-content: flex-end;
+  background: #eee;
+  padding: 1rem;
+  border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+  display: none;
+}
+
+.title,
+.sender {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.mail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 300px 3fr;
+  gap: 2rem;
+}
+
+.context-area {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+[type="checkbox"] {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Base */
+
+body {
+  font-family: 'Google Sans', system-ui;
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 3rem;
+  margin: 1rem 0 2rem;
+}
+
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+.inboxes li {
+  background: aliceblue;
+  border: 1px solid powderblue;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.25rem;
+  display: grid;
+  grid-template-columns: 1.5rem 1fr;
+  gap: 1rem;
+}
+
+.starred {
+  margin-top: 2rem;
+}
+
+/* MQ */
+@media (width <= 850px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+  
+  .sidebar {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 1rem;
+  }
+  
+  .starred {
+    margin-top: 0;
+  }
+}
+
+@media (width <= 550px) {
+   .sidebar {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* CQ Bits */
+
+.inbox {
+  container: inbox / inline-size;
+}
+
+.starred {
+  container: starred / inline-size;
+}
+
+@container (width <= 550px) {
+  .item {
+    grid-template-columns: 3.5rem 1fr 4fr;
+  }
+  
+  .time {
+    display: none;
+  }
+}
+</style>
+
+<body>
+  <div class="mail-container">
+    <h1>You've got mail</h1>
+    
+    <div class="content">
+      <div class="sidebar">
+        <div class="filters">
+          <h2>Inboxes</h2>
+          <ul class="inboxes">
+            <li><div class="icon">📨</div> Primary</li>
+            <li><div class="icon">📤</div> Sent</li>
+            <li><div class="icon">🗑️</div> Trash</li>
+          </ul>
+        </div>
+        <div class="starred">
+          <h2>Favorites</h2>
+          <ul>
+            <li class="item">
+              <div class="context-area">
+                <input type="checkbox">
+                <div class="star">⭐️</div>
+              </div>
+               <div class="sender">Jane</div>
+               <div class="title">Dinner Invitation: Saturday, May 24</div>
+               <div class="time">12:53 PM</div>
+            </li>
+            <li class="item">
+              <div class="context-area">
+                <input type="checkbox">
+                <div class="star">⭐️</div>
+              </div>
+               <div class="sender">NYC Events</div>
+               <div class="title">[Action Needed] RSVP to Discodome</div>
+               <div class="time">9:16 AM</div>
+            </li>
+            <li class="item">
+              <div class="context-area">
+                <input type="checkbox">
+                <div class="star">⭐️</div>
+              </div>
+               <div class="sender">Yourself</div>
+               <div class="title">Reminder: Pick up Dry Cleaning</div>
+               <div class="time">12:23 AM</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="inbox">
+        <h2>Primary</h2>
+        <ul>
+          <li class="item">
+            <div class="context-area">
+              <input type="checkbox">
+              <div class="star">⭐️</div>
+            </div>
+             <div class="sender">Jane</div>
+             <div class="title">Dinner Invitation: Saturday, May 24</div>
+             <div class="time">12:53 PM</div>
+          </li>
+          <li class="item">
+            <div class="context-area">
+              <input type="checkbox" checked>
+            </div>
+             <div class="sender">Disco Pants</div>
+             <div class="title">Last chance to save on our spring sale</div>
+             <div class="time">12:40 AM</div>
+          </li>
+          <li class="item">
+            <div class="context-area">
+              <input type="checkbox">
+            </div>
+             <div class="sender">Flixstr</div>
+             <div class="title">Your subscription is about to expire</div>
+             <div class="time">12:23 AM</div>
+          </li>
+          <li class="item">
+            <div class="context-area">
+              <input type="checkbox">
+            </div>
+             <div class="sender">Dr. Mew</div>
+             <div class="title">Schedule your next appointment with us</div>
+             <div class="time">11:23 AM</div>
+          </li>
+          <li class="item">
+            <div class="context-area">
+              <input type="checkbox">
+            </div>
+             <div class="sender">Service.com</div>
+             <div class="title">Your feedback is important to us</div>
+             <div class="time">11:04 AM</div>
+          </li>
+          <li class="item">
+            <div class="context-area">
+              <input type="checkbox">
+              <div class="star">⭐️</div>
+            </div>
+             <div class="sender">NYC Events</div>
+             <div class="title">[Action Needed] RSVP to Discodome</div>
+             <div class="time">9:16 AM</div>
+          </li>
+          <li class="item">
+            <div class="context-area">
+              <input type="checkbox">
+            </div>
+             <div class="sender">Rachel Smith</div>
+             <div class="title">Get ready for your upcoming event!</div>
+             <div class="time">5:32 AM</div>
+          </li>
+          <li class="item">
+            <div class="context-area">
+              <input type="checkbox">
+            </div>
+             <div class="sender">Amorzon</div>
+             <div class="title">Your order has shipped!</div>
+             <div class="time">April 28</div>
+          </li>
+          <li class="item">
+            <div class="context-area">
+              <input type="checkbox">
+            </div>
+             <div class="sender">The Foundation Foundation</div>
+             <div class="title">Join our team of volunteers today</div>
+             <div class="time">April 28</div>
+          </li>
+          <li class="item">
+            <div class="context-area">
+              <input type="checkbox">
+            </div>
+             <div class="sender">Daily Traveler</div>
+             <div class="title">Travel inspiration for your next vacation</div>
+             <div class="time">April 28</div>
+          </li>
+        </ul>
+      </div>
+      <div class="bottom-bar">
+        <div class="pagination">➡️</div>
+      </div>
+    </div>
+  </div>
+  
+</body>
+
+</html>

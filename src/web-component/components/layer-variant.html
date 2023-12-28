@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @layer components.buttons {
+      .btn {
+        background: hsl(0 0% 50% / 50%);
+        border: none;
+        border-radius: 5px;
+        padding: 1ch 2ch;
+      }
+    }
+
+    /* 
+   this could be done from an entirely different file 
+   or
+   much later in the loading waterfall
+   teaches the .btn a new context while inserting the style
+   with the rest of the styles in the components.buttons layer
+*/
+    @layer components.buttons {
+      .new-context .btn {
+        font-size: 1.5rem;
+      }
+    }
+
+    @layer demo.support {
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+
+      html {
+        block-size: 100%;
+        color-scheme: dark light;
+      }
+
+      body {
+        min-block-size: 100%;
+        font-family: system-ui, sans-serif;
+
+        display: grid;
+        place-content: center;
+        place-items: center;
+        gap: 5vmin;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <button class="btn">A button</button>
+
+  <div class="new-context">
+    <button class="btn">A button</button>
+  </div>
+</body>
+
+</html>

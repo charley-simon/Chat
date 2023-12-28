@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  @import url(https://fonts.googleapis.com/css?family=Inter);
+  @import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap");
+  @import url(https://unpkg.com/open-props/open-props.min.css);
+  @import url(https://unpkg.com/open-props/normalize.min.css);
+
+  body {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    font-family: "Inter", sans-serif;
+  }
+
+  pre {
+    font-weight: bold;
+    background: var(--gray-8);
+    padding: var(--size-4);
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-2);
+    color: var(--gray-0);
+  }
+
+  input {
+    accent-color: var(--indigo-6);
+  }
+
+  code {}
+
+  p {
+    transition: all 0.2s;
+  }
+
+  p:first-of-type:first-letter {
+    font-family: "Merriweather", serif;
+    initial-letter: var(--initial, 2 2);
+    -webkit-initial-letter: var(--initial, 2 2);
+    font-weight: bold;
+    margin-right: 1rem;
+    color: var(--indigo-8);
+    text-shadow: 0.25rem 0.25rem purple;
+  }
+
+  p {
+    width: 50ch;
+  }
+
+  main {
+    display: grid;
+    gap: var(--size-4);
+    place-items: center;
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  .actions {
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    gap: var(--size-2);
+  }
+</style>
+
+<body>
+  <main>
+    <p>Another lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, deleniti saepe! Labore alias nemo quam
+      perferendis harum ducimus at qui omnis magni amet eius, optio dolorum? Aliquid harum molestias voluptatibus.</p>
+    <pre>
+      <code></code>
+    </pre>
+    <div class="actions">
+      <label for="lines">Lines</label>
+      <input id="lines" type="range" min="1" max="10" step="0.1" value="6" />
+      <label for="offset">Offset</label>
+      <input id="offset" type="range" min="1" max="10" step="1" value="6" />
+    </div>
+  </main>
+  <script>
+    const LINES = document.querySelector("#lines");
+    const OFFSET = document.querySelector("#offset");
+    const CODE = document.querySelector("code");
+
+    const UPDATE = () => {
+      document.documentElement.style.setProperty(
+        "--initial",
+        `${LINES.value} ${OFFSET.value}`
+      );
+
+      CODE.innerHTML = `p:first-letter {
+        initial-letter: ${LINES.value} ${OFFSET.value};
+      }`;
+    };
+
+    UPDATE();
+
+    LINES.addEventListener("input", UPDATE);
+    OFFSET.addEventListener("input", UPDATE);
+
+  </script>
+</body>
+
+</html>

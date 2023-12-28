@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @layer reset, layout;
+
+    @scope (.card) to (.card__content) {
+
+      img,
+      .img {
+        background: lightgreen;
+        border-color: green;
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* Visualization of scope */
+    main {
+      --shaded-size: 1px;
+      --shaded-color: #ccc;
+      --stripes: repeating-linear-gradient(-45deg, var(--shaded-color), var(--shaded-color) var(--shaded-size), transparent var(--shaded-size), transparent calc(var(--shaded-size) * 10)), repeating-linear-gradient(45deg, var(--shaded-color), var(--shaded-color) var(--shaded-size), transparent var(--shaded-size), transparent calc(var(--shaded-size) * 10));
+      background: var(--stripes) #ececec;
+
+      .card {
+        background: white;
+      }
+
+      .card,
+      .card__content {
+        border-color: black;
+      }
+
+      .card__content {
+        background: var(--stripes) #ececec;
+      }
+    }
+
+    @scope (html) {
+      .warning {
+        display: none;
+      }
+    }
+
+    @layer layout {
+      @layer general {
+        body {
+          padding: 0 0 2rem;
+          width: 90%;
+          max-width: 60em;
+          margin: 0 auto;
+        }
+
+        body>footer {
+          text-align: center;
+          margin: 2rem 0;
+          font-style: italic;
+        }
+      }
+
+      @layer visualization {
+        body>main {
+          margin: 2rem auto;
+        }
+
+        body>main [data-identifier] {
+          position: relative;
+          padding: 1.8rem 1.2rem;
+          border: 2px solid #ccc;
+          margin: 0.5rem 0 0 0;
+        }
+
+        body>main [data-identifier]::before {
+          content: '<' attr(data-identifier) '>';
+          position: absolute;
+          top: 0;
+          left: 0;
+          font-size: 0.8rem;
+          padding: 0.3em;
+          background: #e4e4e4;
+          color: #333;
+          font-weight: normal;
+          font-family: monospace;
+        }
+
+        main img {
+          max-height: 0px;
+          width: auto;
+        }
+
+        main span.img {
+          display: inline-block;
+        }
+      }
+
+      @layer warning {
+
+        /* Show warning for browsers without support */
+        .warning {
+          padding: 1em;
+          border: 1px solid black;
+          z-index: 9999;
+          color: black;
+          background: rgba(255 255 225 / 0.9);
+          z-index: 10001;
+
+          width: 100%;
+          margin: 1em auto;
+          text-align: center;
+        }
+
+        :is(.warning:hover,
+          .warning:has(:focus-within)) {
+          opacity: 1;
+        }
+
+        .warning> :first-child {
+          margin-top: 0;
+        }
+
+        .warning> :last-child {
+          margin-bottom: 0;
+        }
+
+        .warning a {
+          color: blue;
+        }
+
+        .warning--info {
+          border: 1px solid #123456;
+          background: rgba(205 230 255 / 0.8);
+        }
+      }
+
+      @layer code {
+        pre {
+          border: 1px solid #dedede;
+          padding: 1em;
+          background: #f7f7f7;
+          font-family: "Courier 10 Pitch", Courier, monospace;
+          overflow-x: auto;
+          border-left: 0.4em solid cornflowerblue;
+          tab-size: 4;
+        }
+
+        code:not(pre code),
+        output:not(code:has(output) output)
+          {
+          background: #f7f7f7;
+          border: 1px solid rgb(0 0 0 / 0.2);
+          padding: 0.1rem 0.3rem;
+          margin: 0.1rem 0;
+          border-radius: 0.2rem;
+          display: inline-block;
+        }
+      }
+    }
+
+    @layer reset {
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        line-height: 1;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        margin: 2em 0 0.5em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>CSS <code>@scope</code> demo: scoping root + scoping limit</h1>
+
+  <div class="warning">
+    <p>Your browser does not support <code>@scope</code> so this demo will not work properly.</p>
+  </div>
+
+  <p>Greyed out areas are not “in scope” of the <code>@scope</code> rule. Scoped style rules can only match elements in
+    the light areas.</p>
+
+  <main>
+    <div class="wrapper">
+      <div class="card">
+        <div class="card__header">
+          <h1>Card Title</h1>
+          <img src="https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png" height="32"
+            class="hero">
+        </div>
+        <div class="card__content">
+          <p><img src="https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png"
+              height="32"></p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia sit alias illum ducimus, quia, vero culpa
+            consequatur provident libero dolores quaerat, reiciendis consequuntur et neque repudiandae commodi placeat!
+          </p>
+          <p><img src="https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png"
+              height="32"></p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia sit alias illum ducimus, quia, vero culpa
+            consequatur provident libero dolores quaerat, reiciendis consequuntur et neque repudiandae commodi placeat!
+          </p>
+        </div>
+      </div>
+      <footer>
+        <p><img src="https://brm.us/avatar.jpg" height="32"> Bramus is a Chrome Developer Relations Engineer at Google
+        </p>
+      </footer>
+    </div>
+  </main>
+
+  <footer>
+    <p>Demo for <a href="https://developer.chrome.com/articles/at-scope/"
+        target="_top">https://developer.chrome.com/articles/at-scope/</a></p>
+  </footer>
+  <script>
+    document.querySelectorAll('*').forEach($el => {
+      const identifier = [$el.nodeName.toLowerCase()];
+      if ($el.id) {
+        identifier.push(`#${$el.id}`);
+      }
+      if ($el.classList.length) {
+        identifier.push(`.${Array.from($el.classList).join('.')}`);
+      }
+
+      // Images is replaced content, so gets a special treatment
+      if ($el.nodeName.toLowerCase() == 'img') {
+        const $wrapper = document.createElement('span');
+        $wrapper.classList.add('img');
+        $wrapper.innerHTML = $el.getAttribute('src').split('/').at(-1);
+        $wrapper.setAttribute('data-identifier', identifier.join(''));
+        $el.parentNode.insertBefore($wrapper, $el);
+        $el.remove();
+      } else {
+        $el.setAttribute('data-identifier', identifier.join(''));
+      }
+    });
+  </script>
+</body>
+
+</html>

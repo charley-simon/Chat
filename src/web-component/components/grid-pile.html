@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @layer demo {
+      .pile {
+        display: grid;
+        place-content: center;
+      }
+
+      .pile>* {
+        grid-area: 1/1;
+      }
+    }
+
+    @layer demo.hand-positions {
+      .pile:not(:hover)>span:nth-of-type(1) {
+        rotate: .2turn
+      }
+
+      .pile:not(:hover)>span:nth-of-type(2) {
+        rotate: .4turn
+      }
+
+      .pile:not(:hover)>span:nth-of-type(3) {
+        rotate: .6turn
+      }
+
+      .pile:not(:hover)>span:nth-of-type(4) {
+        rotate: .8turn
+      }
+
+      .pile:not(:hover)>span:nth-of-type(5) {
+        rotate: 1turn
+      }
+
+      .pile>span {
+        font-size: 30vmin;
+      }
+    }
+
+    @layer demo.support {
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+
+      html {
+        block-size: 100%;
+        color-scheme: dark light;
+      }
+
+      body {
+        min-block-size: 100%;
+        font-family: system-ui, sans-serif;
+
+        display: grid;
+        place-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="pile">
+    <span>😁</span>
+    <span>🤡</span>
+    <span>💀</span>
+    <span>🥶</span>
+    <span>🤯</span>
+  </div>
+</body>
+
+</html>

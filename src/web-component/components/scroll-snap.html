@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @layer base, demosupport, demo;
+
+    @import "https://unpkg.com/open-props" layer(base);
+    @import "https://unpkg.com/open-props/normalize.min.css" layer(base);
+
+    @layer demo {
+      .basic-snap-x {
+        overflow-x: auto;
+        -ms-scroll-snap-type: x mandatory;
+        scroll-snap-type: x mandatory;
+        overscroll-behavior-x: contain;
+      }
+
+      .basic-snap-x.snap-align-start>* {
+        scroll-snap-align: start;
+      }
+
+      .basic-snap-x.snap-align-center>* {
+        scroll-snap-align: center;
+      }
+
+      .basic-snap-x.snap-align-end>* {
+        scroll-snap-align: end;
+      }
+    }
+
+    @layer demosupport {
+      body {
+        display: grid;
+        place-content: center;
+      }
+
+      h3 {
+        -webkit-margin-start: var(--size-5);
+        margin-inline-start: var(--size-5);
+      }
+
+      .basic-snap-x {
+        display: flex;
+        gap: var(--size-5);
+        padding: var(--size-5);
+      }
+
+      .basic-snap-x>* {
+        block-size: 25vmin;
+        aspect-ratio: 1;
+        flex-shrink: 0;
+        box-shadow: var(--shadow-3);
+      }
+
+      .basic-snap-x>*:nth-child(12n+1) {
+        background: var(--indigo-4)
+      }
+
+      .basic-snap-x>*:nth-child(12n+2) {
+        background: var(--violet-4)
+      }
+
+      .basic-snap-x>*:nth-child(12n+3) {
+        background: var(--purple-4)
+      }
+
+      .basic-snap-x>*:nth-child(12n+4) {
+        background: var(--pink-4)
+      }
+
+      .basic-snap-x>*:nth-child(12n+5) {
+        background: var(--red-4)
+      }
+
+      .basic-snap-x>*:nth-child(12n+6) {
+        background: var(--orange-4)
+      }
+
+      .basic-snap-x>*:nth-child(12n+7) {
+        background: var(--yellow-4)
+      }
+
+      .basic-snap-x>*:nth-child(12n+8) {
+        background: var(--lime-4)
+      }
+
+      .basic-snap-x>*:nth-child(12n+9) {
+        background: var(--green-4)
+      }
+
+      .basic-snap-x>*:nth-child(12n+10) {
+        background: var(--teal-4)
+      }
+
+      .basic-snap-x>*:nth-child(12n+11) {
+        background: var(--cyan-4)
+      }
+
+      .basic-snap-x>*:nth-child(12n+12) {
+        background: var(--blue-4)
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 
+basic horizontal snapping
+
+slide: https://oh-snap.netlify.app/#basic-horizontal
+-->
+  <h3>Start</h3>
+  <section class="basic-snap-x snap-align-start">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </section>
+
+  <h3>Center</h3>
+  <section class="basic-snap-x snap-align-center">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </section>
+
+  <h3>End</h3>
+  <section class="basic-snap-x snap-align-end">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </section>
+</body>
+
+</html>
