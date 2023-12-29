@@ -39,12 +39,20 @@
   }
 
   .card {
+    height: 60ch;
     width: auto;
     display: grid;
-    grid-template-rows: 8ch minmax(30vh, 1rem) auto 5ch;
+    grid-template-areas:
+    "header"
+    "figure"
+    "content"
+    "footer";
+
+    grid-template-rows: 8ch minmax(30vh, 0) auto 5ch;
     grid-template-columns: 100%;
     background: oklch(20% none none / 20%);
     border-radius: 10px;
+    overflow: hidden;
 
     @media (prefers-color-scheme: light) {
       background: white;
@@ -52,17 +60,23 @@
     }
 
     >header {
+      grid-area: header;
       padding: 1ch;
-
+      height: 8ch;
       >p { color: blue; }
     }
 
     >content {
+      grid-area: content;
+      height: auto;
       --padding-top: -10ch;
       padding: 0ch 1ch 1ch 1ch;
+      overflow: hidden;
     }
 
     >footer {
+      grid-area: footer;
+      height: 5ch;
       display: flex;
       justify-content: flex-end;
       padding: 1ch 2ch;
@@ -70,11 +84,12 @@
     }
 
     figure {
+      grid-area: figure;
       aspect-ratio: 16/9;
       padding: 0;
       margin: 0;
       width: 100%;
-      height: auto;
+      height: minmax(30vh, 0);
       margin-inline: 0;
       margin-block: 0;
 
@@ -159,7 +174,6 @@
         transform: translate(-50%, -50%);
       }
     }
-
   }
 </style>
 
@@ -213,7 +227,6 @@
             <h2>cyberpunk raining day in tokyo</h2>
           </header>
         </figure>
-
         <content>
           <p>La partie HTML de mon blog.
             patin couffin, etc...</p>
@@ -230,22 +243,25 @@
         <header>
           <h2>CSS</h2>
         </header>
-        <div class="content">
-          <p>La partie CSS de mon blog.</p>
-        </div>
+        <content>
+          <p>La partie CSS de mon blog.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Id modi eius libero, fuga asperiores odit ea ad quisquam amet? Sequi voluptas impedit consectetur numquam. Esse quidem quas reprehenderit cumque accusantium!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, unde. Rem assumenda vel eos deleniti eligendi. Ipsam aut nulla sit facilis obcaecati earum placeat aliquid, rem dolores nostrum, esse laborum.
+          </p>
+        </content>
         <footer>
-          <p>Lire l'article...</p>
+          <button>Lire la suite...</button>
         </footer>
       </article>
       <article class="card rad-shadow">
         <header>
           <h2>Javascript</h2>
         </header>
-        <div class="content">
+        <content>
           <p>La partie Javascript de mon blog.</p>
-        </div>
+        </cont>
         <footer>
-          <p>Lire l'article...</p>
+          <button>Lire la suite...</button>
         </footer>
       </article>
       <article class="card rad-shadow">

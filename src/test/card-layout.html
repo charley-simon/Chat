@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../public/css/normalize.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+    }
+
+    .cards {
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns: repeat(auto-fill, minmax(min(40vh, 100%), 1fr));
+      grid-auto-columns: max-content;
+      place-items: stretch;
+      gap: 30px;
+      margin: 0 auto;
+
+      .card { /* bord et ombres */
+        border-radius: 10px;
+        border: 1px solid hsl(var(--brand-hue) 10% 50% / 15%);
+        box-shadow: 0 1rem .5rem -.5rem;
+        box-shadow:
+          0 2.8px 2.2px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .03)),
+          0 6.7px 5.3px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .01)),
+          0 12.5px 10px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .02)),
+          0 22.3px 17.9px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .02)),
+          0 41.8px 33.4px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .03)),
+          0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength));
+      }
+
+      .card {
+        --brand-hue: 244; /*hsl(222deg 80% 50%);*/
+        --surface-shadow: var(--brand-hue) 40% 10%;
+        --shadow-strength: .02;
+        display: grid;
+        grid-auto-flow: row;
+        background: linear-gradient(to bottom left, #8de8ef 40%, #7f6eff 100%);
+
+        grid-template-areas: "header" "figure" "content" "footer";
+        grid-template-rows: min-content 25vh auto min-content;
+
+        &:not(:has(> figure)) {
+          grid-template-areas: "header" "content" "footer";
+          grid-template-rows: min-content auto min-content;
+        }
+
+        row-gap: 0;
+        gap: 0;
+        place-items: stretch;
+        overflow: hidden;
+        width: 40vh;
+        height: 70vh;
+
+      /*font-size: clamp(1rem, 5vw, 3rem);*/
+
+        >header {
+          grid-area: header;
+          align-self: start;
+          place-self: start strech;
+          /*background-color: green;*/
+          /*border: 1px solid green;*/
+          padding: 1ch 2ch 1ch 2ch;
+        }
+
+        >figure {
+          position: relative;
+          grid-area: figure;
+          /* override figure properties */
+          /*border: 1px solid red;*/
+          margin-inline: 0;
+          margin-block: 0;
+
+          img {
+            position: relative;
+            inline-size: 100%;
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            object-fit: cover;
+            object-position: bottom;
+          }
+
+          header {
+            color: #fff;
+            opacity: 0.7;
+            /* centering the text on the image */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%)
+          }
+        }
+
+        >content {
+          grid-area: content;
+          /*border: 1px solid blue;*/
+
+          padding: 1ch 2ch 1ch 2ch;
+          overflow: hidden;
+          /*font-size: clamp(1rem, 1ch, 3rem);*/
+        }
+
+        >footer {
+          grid-area: footer;
+          align-self: end;
+          place-self: end strech;
+          padding: 1ch 2ch 1ch 2ch;
+          /*border: 1px solid green;*/
+        }
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="cards">
+    <div class="card">
+      <header>Header</header>
+      <figure>
+        <img src="../blog/public/img/107.jpg" alt="image 102">
+        <header>
+          <h2>cyberpunk in tokyo</h2>
+        </header>
+    </figure>
+      <content>Content
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores veritatis ipsam ullam. Iure quo, deserunt laboriosam ut nisi molestias eius necessitatibus ullam aperiam alias soluta. Eveniet ducimus quidem maiores perferendis.
+      </content>
+      <footer>Footer</footer>
+    </div>
+    <div class="card">
+      <header>Header</header>
+      <content>Content
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore officia autem quae. Dignissimos, omnis cumque repellendus quibusdam fugiat doloremque aliquid iure. Tempora voluptas ratione vitae ipsam doloremque, numquam obcaecati sit.
+        Officia et, repellendus amet quaerat odit voluptatibus laborum ea asperiores minima dignissimos, obcaecati corporis. Magnam amet iure, inventore necessitatibus aliquid obcaecati perferendis ipsa corporis libero modi numquam suscipit eveniet id?
+        Enim, perspiciatis ipsam. Enim itaque ut veritatis illum magnam laudantium! Inventore, odit magni quae fugiat culpa, voluptatem unde iure distinctio consequuntur tempora quibusdam aliquid quis enim accusamus aut maiores nostrum?
+      </content>
+      <footer>Footer</footer>
+    </div>
+    <div class="card">
+      <header>Header</header>
+      <figure>
+        <img src="../blog/public/img/102.jpg" alt="image 102">
+      </figure>
+      <content>Content
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore officia autem quae. Dignissimos, omnis cumque repellendus quibusdam fugiat doloremque aliquid iure. Tempora voluptas ratione vitae ipsam doloremque, numquam obcaecati sit.
+        Officia et, repellendus amet quaerat odit voluptatibus laborum ea asperiores minima dignissimos, obcaecati corporis. Magnam amet iure, inventore necessitatibus aliquid obcaecati perferendis ipsa corporis libero modi numquam suscipit eveniet id?
+        Enim, perspiciatis ipsam. Enim itaque ut veritatis illum magnam laudantium! Inventore, odit magni quae fugiat culpa, voluptatem unde iure distinctio consequuntur tempora quibusdam aliquid quis enim accusamus aut maiores nostrum?
+      </content>
+      <footer>Footer</footer>
+    </div>
+    <div class="card">
+      <header>Header</header>
+      <figure>
+        <img src="../blog/public/img/148.jpg" alt="image 102">
+      </figure>
+      <content>Content</content>
+      <footer>Footer</footer>
+    </div>
+    <div class="card">
+      <header>Header</header>
+      <figure>
+        <img src="../blog/public/img/200.jpg" alt="image 102">
+      </figure>
+      <content>Content</content>
+      <footer>Footer</footer>
+    </div>
+  </div>
+</body>
+
+</html>
