@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Charley" />
+  <meta name="description" content="Décrire ce que fait ce fichier." />
+  <title>Document</title>
+  <!-- CSS external styles link -->
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* CSS inline styles here */
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+    body {
+      background-color: #eeeeee;
+      font-size: 100%;
+      color: #333;
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto,
+        Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      padding: 0;
+      margin: 0;
+    }
+
+    header,
+    nav,
+    main {
+      display: block;
+      box-sizing: border-box;
+      width: auto;
+      padding: 1em 1vw;
+      margin: 1em 1vw;
+      color: #000;
+    }
+
+    header,
+    nav {
+      padding: 0;
+      margin: 0;
+    }
+
+    nav {
+      margin-top: 0.5em;
+      background-color: #ddd;
+      font-size: 90%;
+    }
+
+    nav ul,
+    nav li {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav>ul {
+      display: flex;
+      flex-wrap: no-wrap;
+      /* RWD */
+      justify-content: space-evenly;
+      align-items: stretch;
+    }
+
+    nav>ul>li {
+      flex: 1 1 auto;
+      /* RWD */
+      margin: 0;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+      align-content: flex-start;
+      padding: 0 1em;
+      border-right: 0.1em solid #ccc;
+      border-bottom: 0.1em solid #ccc;
+      position: relative;
+    }
+
+    nav>ul>li:first-child {
+      border-left: 0.1em solid #ccc;
+    }
+
+    nav>ul>li>a {
+      padding: 1em 0;
+      text-align: center;
+    }
+
+    nav>ul>li>* {
+      flex: 1 1 auto;
+      box-sizing: border-box;
+    }
+
+    nav>ul>li>button {
+      flex: 0 0 1em;
+      border: 0.15em solid #000;
+      border-radius: 50%;
+      line-height: 0;
+      outline: none;
+      text-align: center;
+      padding: 0.15em 0.15em 0.05em 0.15em;
+      margin: 1.1em 1em 0 1em;
+    }
+
+    nav>ul>li>a+button svg {
+      width: 1em;
+      height: 1em;
+      fill: #000;
+      transition: transform 0.25s ease-in;
+      transform-origin: center 45%;
+    }
+
+    button[aria-expanded="true"] svg {
+      transform: rotate(180deg);
+    }
+
+    nav>ul li>ul {
+      position: absolute;
+      top: 100%;
+      left: -0.1em;
+      right: -0.5em;
+      width: auto;
+      min-width: 12em;
+      height: auto;
+      overflow: visible;
+      z-index: 10;
+      margin: 0;
+      padding: 1em 0;
+      border: 0.01em solid transparent;
+    }
+
+    nav>ul ul a {
+      display: block;
+      font-size: 95%;
+      margin: 0;
+      padding: 0.5em 1.3em;
+    }
+
+    nav>ul ul a:hover,
+    nav>ul ul a:focus {
+      background-color: #ccc;
+    }
+
+    @media screen and (min-width: 60em) {
+
+      /* At arbitrary desktop width, keep right menu from going out of viewport */
+      nav>ul li:last-child>ul {
+        left: auto;
+        right: 0;
+      }
+    }
+
+    @media screen and (max-width: 60em) {
+      body {
+        background-color: #ffe;
+      }
+
+      nav>ul {
+        /* Has to happen in a max-width MQ */
+        /* Sorry, no mobile-first in this case */
+        flex-wrap: wrap;
+        /* RWD */
+      }
+
+      nav>ul>li {
+        border-right: 0.05em solid #ccc;
+        border-left: 0.05em solid #ccc;
+      }
+
+      nav>ul>li:first-child {
+        border-left-width: 0.05em;
+      }
+
+      nav>ul li>ul {
+        right: 0;
+      }
+    }
+
+    @media screen and (-ms-high-contrast: active) {
+      nav {
+        border-top: 0.1em solid windowText;
+      }
+    }
+
+    /* Colors */
+
+    nav,
+    nav ul,
+    nav button,
+    nav>ul ul a:hover,
+    nav>ul ul a:focus {
+      background-color: #013461;
+    }
+
+    nav a,
+    nav a:link,
+    nav a:visited,
+    nav a:hover,
+    nav a:focus,
+    nav a:active {
+      color: #fff;
+      text-decoration: none;
+      outline: none;
+    }
+
+    nav>ul>li>a+button svg {
+      fill: #fff;
+    }
+
+    nav>ul>li,
+    nav>ul>li>button,
+    nav>ul>li:first-child {
+      border-color: #0f5f8c;
+    }
+
+    nav>ul>li>button:hover,
+    nav>ul>li>button:focus {
+      border-color: #fff;
+    }
+
+    nav>ul>li:hover,
+    nav>ul>li>a:hover,
+    nav>ul>li>a:focus,
+    nav>ul li>ul {
+      background-color: #005c90;
+    }
+
+    nav>ul>li:focus-within {
+      /* Keep separate for IE11 */
+      background-color: #005c90;
+    }
+
+    nav>ul>li a[aria-current="page"],
+    nav>ul>li:hover a[aria-current="page"],
+    nav>ul>li:focus a[aria-current="page"],
+    nav>ul>li.selected,
+    nav>ul>li.selected:hover {
+      background-color: #187aba;
+      border-color: #187aba;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HTML inline code here -->
+  <header>
+    <nav id="Nav">
+      <ul>
+        <li><a href="http://example.com/?1" id="item01">Home</a></li>
+        <li class="selected">
+          <a href="http://example.com/?2" id="Item02" aria-current="page">About</a>
+          <button type="button" id="btnItem02" aria-controls="SubItem02" aria-expanded="false" aria-labelledby="Item02"
+            onclick="toggleSubNav(this.id);">
+            <svg xmlns="http://www.w3.org/2000/svg&quot;" viewBox="0 0 80 80" focusable="false">
+              <path d="M70.3 13.8L40 66.3 9.7 13.8z"></path>
+            </svg>
+          </button>
+          <ul id="SubItem02" style="display:none;">
+            <li><a href="http://example.com/?2a">Our Team</a></li>
+            <li><a href="http://example.com/?2b">Press</a></li>
+            <li><a href="http://example.com/?2c">Contact</a></li>
+            <li><a href="http://example.com/?2d" aria-current="page">Job Postings</a></li>
+          </ul>
+        </li>
+        <li><a href="http://example.com/?3" id="Item03">Blog</a></li>
+        <li><a href="http://example.com/?4" id="Item04">Services</a>
+          <button type="button" id="btnItem04" aria-controls="SubItem04" aria-expanded="false" aria-labelledby="Item04"
+            onclick="toggleSubNav(this.id);">
+            <svg xmlns="http://www.w3.org/2000/svg&quot;" viewBox="0 0 80 80" focusable="false">
+              <path d="M70.3 13.8L40 66.3 9.7 13.8z"></path>
+            </svg>
+          </button>
+          <ul id="SubItem04" style="display:none;">
+            <li><a href="http://example.com/?4a">Management Consulting</a></li>
+            <li><a href="http://example.com/?4b">Training</a></li>
+            <li><a href="http://example.com/?4c">Financial Audits</a></li>
+            <li><a href="http://example.com/?4d">Expert Witness</a></li>
+            <li><a href="http://example.com/?4e">Localization</a></li>
+            <li><a href="http://example.com/?4f">Writing Very Nasty Letters</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="http://example.com/?5" id="Item05">Products</a>
+          <button type="button" id="btnItem05" aria-controls="SubItem05" aria-expanded="false" aria-labelledby="Item05"
+            onclick="toggleSubNav(this.id);">
+            <svg xmlns="http://www.w3.org/2000/svg&quot;" viewBox="0 0 80 80" focusable="false">
+              <path d="M70.3 13.8L40 66.3 9.7 13.8z"></path>
+            </svg>
+          </button>
+          <ul id="SubItem05" style="display:none;">
+            <li><a href="http://example.com/?5a">Content Management Systems</a></li>
+            <li><a href="http://example.com/?5b">Translation Management Software</a></li>
+            <li><a href="http://example.com/?5c">Dessert Topping</a></li>
+            <li><a href="http://example.com/?5d">Floor Wax</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="http://example.com/?6" id="Item06">Events</a>
+          <button type="button" id="btnItem06" aria-controls="SubItem06" aria-expanded="false" aria-labelledby="Item06"
+            onclick="toggleSubNav(this.id);">
+            <svg xmlns="http://www.w3.org/2000/svg&quot;" viewBox="0 0 80 80" focusable="false">
+              <path d="M70.3 13.8L40 66.3 9.7 13.8z"></path>
+            </svg>
+          </button>
+          <ul id="SubItem06" style="display:none;">
+            <li><a href="http://example.com/?6a">Press Events</a></li>
+            <li><a href="http://example.com/?6b">Conferences</a></li>
+            <li><a href="http://example.com/?6c">Workshops</a></li>
+            <li><a href="http://example.com/?6d">Algonquinpalooza</a></li>
+          </ul>
+        </li>
+        <li><a href="http://example.com/?7" id="Item07">Contact</a>
+          <button type="button" id="btnItem07" aria-controls="SubItem07" aria-expanded="false" aria-labelledby="Item07"
+            onclick="toggleSubNav(this.id);">
+            <svg xmlns="http://www.w3.org/2000/svg&quot;" viewBox="0 0 80 80" focusable="false">
+              <path d="M70.3 13.8L40 66.3 9.7 13.8z"></path>
+            </svg>
+          </button>
+          <ul id="SubItem07" style="display:none;">
+            <li><a href="http://example.com/?7a">Phone</a></li>
+            <li><a href="http://example.com/?7b">Mailing Address</a></li>
+            <li><a href="http://example.com/?7c">Summoning Circles</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1>Navigation</h1>
+    <p>
+      Prototype navigation pattern. Read more in my blog post <a
+        href="http://adrianroselli.com/2019/06/link-disclosure-widget-navigation.html"><cite>Link + Disclosure Widget
+          Navigation</cite></a>.
+    </p>
+  </main>
+  <!-- Javascript external link -->
+  <script src="app.js" type="text/javascript"></script>
+  <script>
+    /* Javascript inline code here */
+
+    // Get the nav by id
+    var pNav = document.getElementById("Nav");
+
+    function toggleSubNav(eID) {
+      try {
+        // Get all the top-level items and get the buttons
+        var allButtons = document.querySelectorAll("#Nav > ul > li > a + button");
+        // Get all sub-menus
+        var allSubMenus = document.querySelectorAll("#Nav > ul > li > a + button + ul");
+        if (eID !== "") {
+          // Get the button
+          var toggle = document.querySelector("#" + eID);
+          // Find out what the button controls
+          var subMenuIdent = toggle.getAttribute("aria-controls");
+          // Get that thing it controls
+          var subMenu = document.getElementById(subMenuIdent);
+          // Toggle text and expanded state
+          if (toggle.getAttribute("aria-expanded") === "false") {
+            // Loop through all buttons and mark as closed
+            for (var i = 0; i < allButtons.length; i++) {
+              allButtons[i].setAttribute("aria-expanded", "false");
+              // allButtons[i].setAttribute("aria-label", "Show");
+              //   allButtons[i].innerHTML = arrowShow;
+            }
+            // Now mark the chosen button as opened
+            toggle.setAttribute("aria-expanded", "true");
+            // toggle.setAttribute("aria-label", "Hide");
+          } else {
+            // Close chosen button; no need to loop through rest of nodes
+            toggle.setAttribute("aria-expanded", "false");
+            // toggle.setAttribute("aria-label", "Show");
+          }
+          // Expand or collapse
+          if (subMenu.style.display === "none") {
+            // Hide all submenus
+            for (var i = 0; i < allSubMenus.length; i++) {
+              allSubMenus[i].style.display = "none";
+            }
+            // Show chosen submenu
+            subMenu.style.display = "block";
+          } else {
+            // Close chosen menu; no need to loop through rest of nodes
+            subMenu.style.display = "none";
+          }
+        }
+        if (eID !== "") {
+        } else {
+          // Hide all submenus
+          for (var i = 0; i < allSubMenus.length; i++) {
+            allSubMenus[i].style.display = "none";
+          }
+          // Loop through all buttons and mark as closed
+          for (var i = 0; i < allButtons.length; i++) {
+            allButtons[i].setAttribute("aria-expanded", "false");
+            // allButtons[i].setAttribute("aria-label", "Show");
+            // allButtons[i].innerHTML = arrowShow;
+          }
+        }
+      } catch (e) {
+        console.log("toggleSubNav(): " + e);
+      }
+    }
+
+    document.onkeydown = function (evt) {
+      evt = evt || window.event;
+      var isEscape = false;
+      if ("key" in evt) {
+        isEscape = evt.key == "Escape" || evt.key == "Esc";
+      } else {
+        isEscape = evt.keyCode == 27;
+      }
+      if (isEscape) {
+        //alert("Escape");
+        toggleSubNav("");
+      }
+    };
+
+
+  </script>
+</body>
+
+</html>

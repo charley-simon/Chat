@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Charley" />
+  <meta
+    name="description"
+    content="Décrire ce que fait ce fichier." />
+  <title>Document</title>
+  <!-- CSS external styles link -->
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* CSS inline styles here */
+    body {
+  background-color: rgb(225, 224, 229);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: medium;
+}
+
+input {
+  font-family: inherit;
+}
+
+.container {
+  margin: 20px;
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 380px;
+  height: 480px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 16px;
+
+  h1 {
+    margin: 4px 0px;
+    font-size: x-large;
+  }
+
+  button {
+    background: none;
+    border: none;
+    display: inline-block;
+    font-size: x-large;
+
+    &:hover {
+      border: 1px solid lightgrey;
+      border-radius: 12px;
+      padding: 4px;
+    }
+  }
+}
+
+input {
+  margin-top: 8px;
+}
+
+.field {
+  margin: 12px 0px;
+  border: none;
+  width: 100%;
+  outline: none;
+  padding: 8px 0;
+  font-size: medium;
+
+  &:focus {
+    border-width: 0 0 2px;
+    border-bottom: 1px solid rgb(95, 88, 197);
+  }
+}
+
+.round-field-border {
+  border-radius: 8px;
+  border: 1px solid lightgrey;
+  padding: 12px;
+  width: inherit;
+}
+
+.task-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 12px;
+
+  input {
+    border-bottom: 1px solid lightgrey;
+  }
+
+  .subtitle {
+    color: lightgrey;
+  }
+}
+
+$colors: (
+  red: #db2828,
+  yellow: #fbbd08,
+  teal: #00b5ad,
+  blue: #2185d0,
+  purple: #a333c8
+);
+
+.label-colour-container {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border: none;
+  margin: 12px 0px 28px;
+  padding: 0;
+  color: rgb(117, 117, 117);
+
+  input[type="radio"] {
+    display: none;
+
+    &:checked + label {
+      span::before {
+        content: "✓";
+        color: white;
+        font-size: small;
+        font-family: Verdana, Helvetica, sans-serif;
+      }
+      @each $name, $value in $colors {
+        .#{$name} {
+          box-shadow: 0 0 0 2px lighten($value, 25%);
+        }
+      } // !@each
+    } // !&:checked + label
+  }
+
+  label {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+
+    &:hover {
+      span {
+      }
+    }
+
+    span {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 3px solid white;
+
+      @each $name, $value in $colors {
+        &.#{$name} {
+          background: $value;
+        }
+      }
+    }
+  }
+}
+
+.assignee-container {
+  display: flex;
+  border: 1px solid lightgrey;
+  align-items: center;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 12px 0px 24px;
+
+  span {
+    margin-right: 8px;
+  }
+
+  select {
+    border: none;
+    width: 100%;
+    outline: none;
+    color: rgb(117, 117, 117);
+    font-size: medium;
+  }
+}
+
+.date-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 12px 0px 28px;
+
+  div:first-child {
+    padding-right: 8px;
+  }
+
+  .date-header {
+    font-size: medium;
+    font-weight: bold;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid lightgrey;
+  padding: 12px 0;
+  margin: 12px 0px;
+
+  input[type="submit"] {
+    padding: 16px;
+    margin-left: 16px;
+    border-radius: 12px;
+    border: none;
+  }
+
+  .primary {
+    background-color: rgb(95, 88, 197);
+    color: white;
+  }
+
+  .secondary {
+    background-color: lightgrey;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <!-- HTML inline code here -->
+<!-- design credit: https://dribbble.com/shots/15544255-Modals-collection -->
+<!-- radio button inspo: 
+https://codepen.io/rauldronca/pen/EWLeMz?editors=1100
+https://codepen.io/wildbeard/pen/eZZPZr?editors=1100 
+-->
+
+<div class="container">
+  <div class="header">
+    <h1>Create new task</h1>
+    <button>✕</button>
+  </div>
+  <form>
+    <div class="task-title">
+      <input class="field" type="text" placeholder="Title">
+      <p class="subtitle">00/100</p>
+      </input>
+    </div>
+    <input class="field" placeholder="Tap to add description" />
+    <div class='label-colour-container'>
+      <span>Label colour</span>
+      <input type="radio" name="color" id="red" />
+      <label for="red"><span class="red"></span></label>
+      <input type="radio" name="color" id="yellow" />
+      <label for="yellow"><span class="yellow"></span></label>
+      <input type="radio" name="color" id="teal" />
+      <label for="teal"><span class="teal"></span></label>
+      <input type="radio" name="color" id="blue" />
+      <label for="blue"><span class="blue"></span></label>
+      <input type="radio" name="color" id="purple" />
+      <label for="purple"><span class="purple"></span></label>
+    </div>
+    <div class="assignee-container">
+      <span>👤 </span>
+      <select id="assignee" name="assignee">
+        <option value="placeholder" disabled selected>Select assignee</option>
+        <option value="a">A. A</option>
+        <option value="b">B. B</option>
+        <option value="c">C. C</option>
+        <option value="d">D. D</option>
+      </select>
+    </div>
+    <div class="date-container">
+      <div>
+        <label class="date-header">Start Date</label>
+        <input type="date" class="round-field-border" />
+      </div>
+      <div>
+        <label class="date-header">End Date</label>
+        <input type="date" class="round-field-border" />
+      </div>
+    </div>
+    <div class='footer'>
+      <input class="secondary" type="submit" value="Cancel">
+      <input class="primary" type="submit" value="Save">
+    </div>
+  </form>
+</div>
+  <!-- Javascript external link -->
+  <script src="app.js" type="text/javascript"></script>
+  <script>
+    /* Javascript inline code here */
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+/* base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.task-board {
+	display: flex;
+	flex-direction: row;
+	background-color: lightgrey;
+	justify-content: start;
+	gap: 1rem;
+	margin: 0;
+	height: calc(100vh - 20px);
+}
+
+.task-column {
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	background-color: lightgrey;
+	row-gap: 1rem;
+	padding: 1rem 0rem 1rem 0rem;
+	margin: 0;
+	--overflow: auto;
+
+	> * {
+		margin-block: 0;
+		margin-inline: 0;
+	}
+}
+
+.task-item {
+	width: 30ch;
+	height: auto;
+	background: oklch(20% none none / 20%);
+	border-radius: 10px;
+	--overflow: hidden;
+
+  & h2 {
+    font-size: small;
+    font-weight: bold;
+  }
+
+	&.insert-before {
+		border-top: 5px solid black;
+	}
+
+	&.insert-after {
+		border-bottom: 5px solid black;
+	}
+
+	> .task-header {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		justify-items: center;
+		cursor: pointer;
+		padding: 0.3ch;
+
+		> .task-header-expand {
+			align-items: flex-start;
+			content: url("../public/img/chevron-down.svg");
+		}
+
+		> .task-header-collapse {
+			align-items: flex-start;
+			content: url("../public/img/chevron-up.svg");
+		}
+
+		> .task-title {
+			align-items: flex-center;
+			padding: 0.3ch;
+			cursor: move;
+			font-weight: bold;
+		}
+
+		> .task-categorie {
+			align-items: flex-right;
+			margin: 0;
+			padding: 0.05ch 1ch 0.1ch 1ch;
+			cursor: move;
+			border: 1px solid grey;
+			border-radius: 10px;
+			--background-color: lightgreen;
+		}
+
+    .task-header-menu {
+      align-items: flex-right;
+      overflow: visible;
+    }
+	}
+	> .task-content {
+		height: auto;
+		padding: 0ch 1ch 1ch 1ch;
+		overflow: hidden;
+		font-size: smaller;
+	}
+}
+
+.task-menu {
+  max-width: 13em;
+  /*margin: 80px auto 0;*/
+  position: relative;
+  float: right;
+  width: auto;
+}
+
+.task-menu-content {
+  font-size: small;
+  list-style: none;
+  position: absolute;
+  width: auto;
+  left: 0;
+  visibility: hidden;
+  transform: translateY(-2em);
+  transition: transform ease 0.3s;
+}
+
+.arrow {
+  content: url("../public/img/menu.svg");
+}
+
+.task-menu > input[type="checkbox"]:checked ~ .task-menu-content {
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.task-menu-content li {
+  --padding: 0.3ch 1ch 0.3ch 1ch;
+  display: block;
+  background: black;
+}
+
+input[type="checkbox"]:checked + label > .arrow {
+  transform: rotate(180deg);
+}
+
+.task-menu > input[type="checkbox"] {
+  opacity: 0;
+  position: absolute;
+}
+
+.task-menu-content li:hover {
+  background: grey;
+}
+
+.task-menu-content li a {
+  display: block;
+  padding: 0.2em 0.4em 0.2em 0.4em;;
+  color: #fff;
+  --margin: 0.03em 0;
+  text-decoration: none;
+}
+

@@ -1,0 +1,12 @@
+https://github.com/zachleat/w3c-banners/
+https://github.com/zachleat/snow-fall
+https://github.com/11ty/is-land
+https://github.com/zachleat/pagefind-search/
+https://github.com/zachleat/infinity-burger
+https://github.com/zachleat/announcement-banner
+https://github.com/zachleat/details-utils
+https://spicy-sections.glitch.me/SpicySections.html
+https://lit.dev
+https://www.w3schools.com/howto/howto_css_modals.asp
+https://blog.carlosrojas.dev/quick-reference-guide-to-design-patterns-in-js-1ebeb1e1c605
+https://github.com/KittyGiraudel/awesome-sass

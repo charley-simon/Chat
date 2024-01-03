@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Charley" />
+  <meta name="description" content="https://adrianroselli.com/2023/08/progressively-enhanced-html-accordion.html" />
+  <title>Progressive enhancement Accordion</title>
+  <!-- CSS external styles link -->
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* CSS inline styles here */
+    body {
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto,
+        Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      line-height: 1.4;
+      /*   line-height: 1.5; */
+      /*   letter-spacing: 0.12em; */
+      /*   word-spacing: 0.16em; */
+      --page-bg: #fff;
+      --text-color: #333;
+      background: var(--page-bg);
+      color: var(--text-color);
+    }
+
+    h1,
+    h2 {
+      line-height: 1;
+    }
+
+    summary {
+      border: 0.1em solid #ccc;
+      padding: 0.5em 1em 0.5em 0.5em;
+      font: inherit;
+      font-weight: bold;
+      font-size: 1.5em;
+      background-color: #eee;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary span {
+      display: inline-block;
+      font-size: 60%;
+      color: #000;
+      background-color: #00f;
+      padding: 0.3em 0.2em 0 0.2em;
+      border: 0.2em solid #00f;
+      border-radius: 50%;
+      line-height: 1;
+      text-align: center;
+      text-indent: 0;
+      transform: rotate(270deg);
+    }
+
+    summary svg {
+      width: 1.25em;
+      height: 1.25em;
+      fill: #fff;
+      transition: transform 0.25s ease-in;
+      transform-origin: center 45%;
+    }
+
+    summary:hover,
+    summary:focus {
+      background-color: #666;
+      color: #fff;
+      outline: none;
+      border-color: #666;
+    }
+
+    summary:hover span,
+    summary:focus span {
+      background-color: #fff;
+      outline: .1em solid #fff;
+    }
+
+    summary:hover svg,
+    summary:focus svg {
+      fill: #00f;
+    }
+
+    /* Lean on programmatic state for styling */
+    details[open] summary svg {
+      transform: rotate(90deg);
+    }
+
+    section[role="group"] {
+      padding: 0;
+      border: 0.05em solid #ccc;
+    }
+
+    section[role="group"]>div {
+      margin: 0;
+    }
+
+    details>div {
+      height: calc(70vh - 7.5em);
+      overflow: auto;
+      padding: 0.25em 1.25em;
+      border: 0.1em solid #ddd;
+      background-color: #fff;
+      margin-top: -0.1em;
+      background:
+        linear-gradient(var(--page-bg) 30%, var(--page-bg)),
+        linear-gradient(var(--page-bg), var(--page-bg) 70%) 0 100%,
+        radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)),
+        radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%;
+      background-repeat: no-repeat;
+      background-color: var(--page-bg);
+      background-size: 100% 4em, 100% 4em, 100% 1.4em, 100% 1.4em;
+      background-attachment: local, local, scroll, scroll;
+    }
+
+
+    @media print {
+
+      summary,
+      section[role="group"],
+      details>div {
+        border: none;
+        background: transparent;
+        padding: 0;
+      }
+
+      summary span {
+        display: none;
+      }
+
+      details>div {
+        height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HTML inline code here -->
+  <h1>HTML Accordion Using Only <code>name</code></h1>
+
+  <!-- https://adrianroselli.com/2020/05/disclosure-widgets.html#Accordion -->
+
+  <!-- <section> -->
+  <details open name="hammer">
+    <summary>
+      <span aria-hidden="true">
+        <svg xmlns="\http://www.w3.org/2000/svg&quot;" viewBox="0 0 80 80" focusable="false">
+          <path d="M70.3 13.8L40 66.3 9.7 13.8z"></path>
+        </svg>
+      </span>
+      Lorem Ipsum
+    </summary>
+    <div>
+      <p>
+        Used in the post <a href="https://adrianroselli.com/2023/08/progressively-enhanced-html-accordion.html"
+          target="_top"><cite>Progressively Enhanced HTML Accordion</cite></a>. Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Quisque sit amet molestie tellus. Proin ornare nisi id rhoncus ornare. In mattis vestibulum
+        sollicitudin. Vestibulum quis nisi eget magna viverra dictum non in neque. Pellentesque vehicula ex tempor
+        sapien laoreet, ut auctor nibh scelerisque. Aliquam dictum ultricies arcu, vitae varius sem viverra a. Aenean
+        mattis, tellus id hendrerit sollicitudin, velit enim pulvinar lorem, nec sollicitudin mi urna a felis. Sed
+        pretium erat risus, ullamcorper sagittis dui semper sed. Praesent ut lorem velit. Aenean tempus, sapien sit amet
+        vehicula pretium, enim justo pretium leo, rhoncus mattis nunc nunc ut dui. Suspendisse fringilla urna sem,
+        feugiat bibendum quam facilisis vitae. Pellentesque habitant morbi tristique senectus et netus et malesuada
+        fames ac turpis egestas. Phasellus suscipit congue mauris, sit amet pellentesque nulla sollicitudin eu.
+        Vestibulum lorem diam, bibendum eu mi non, condimentum elementum arcu. Proin iaculis, risus a hendrerit
+        condimentum, velit mi volutpat dui, vel consectetur massa ex in sem.
+      </p>
+      <p>
+        Sed ac mauris quis lectus efficitur ornare. Sed vitae lobortis dolor. Fusce in iaculis lectus. Morbi gravida
+        lacus ut elementum feugiat. Integer vel posuere dui. Nulla eget pharetra purus. Vestibulum ultricies dui sit
+        amet varius rhoncus. Nunc elementum ipsum id mauris volutpat commodo. Aliquam aliquet, tellus et sodales
+        facilisis, neque urna iaculis nunc, eu maximus nibh tortor gravida neque. Aliquam nec dictum elit. Nunc
+        elementum tortor lorem, eget malesuada lacus placerat eu.
+      </p>
+      <p>
+        Proin hendrerit condimentum suscipit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+        inceptos himenaeos. Proin nisi augue, pulvinar at neque ac, vulputate fringilla urna. Nullam sagittis egestas
+        urna. Maecenas venenatis ante quis interdum iaculis. Vivamus egestas tortor non neque pulvinar lobortis.
+        Suspendisse eget ex non orci consectetur blandit.
+      </p>
+      <p>
+        Fusce nec ultrices dui. Donec a massa at augue consequat blandit. Mauris sagittis arcu quis aliquet venenatis.
+        Aliquam egestas mi massa, sed rutrum risus elementum ut. Donec posuere nunc in volutpat posuere. Fusce non nisi
+        sit amet mi feugiat elementum vitae sit amet risus. Interdum et malesuada fames ac ante ipsum primis in
+        faucibus. Donec vehicula porttitor lorem sit amet scelerisque. Nullam fringilla euismod sem sit amet dictum.
+        Mauris molestie feugiat cursus.
+      </p>
+      <p>
+        Curabitur tincidunt lacus ex. Sed elementum imperdiet rutrum. Nunc metus diam, convallis id volutpat at, commodo
+        vitae quam. Integer eget sapien at mauris lacinia eleifend. Nulla suscipit sagittis enim, vel luctus magna
+        hendrerit eu. Nullam eu posuere elit. Suspendisse ultrices ac ipsum ege
+      </p>
+    </div>
+  </details>
+  <details name="hammer">
+    <summary>
+      <span aria-hidden="true">
+        <svg xmlns="\http://www.w3.org/2000/svg&quot;" viewBox="0 0 80 80" focusable="false">
+          <path d="M70.3 13.8L40 66.3 9.7 13.8z"></path>
+        </svg>
+      </span>
+      Cupcake Ipsum
+    </summary>
+    <div>
+      <p>
+        Used in the post <a href="https://adrianroselli.com/2023/08/progressively-enhanced-html-accordion.html"
+          target="_top"><cite>Progressively Enhanced HTML Accordion</cite></a>. Soufflé dessert toffee caramels pie
+        chocolate bar. Dragée fruitcake cake dragée jelly beans. Carrot cake chocolate bar muffin liquorice brownie
+        biscuit chocolate cake icing. Pastry bonbon gingerbread liquorice chupa chups. Danish croissant dragée muffin.
+        Tiramisu bonbon pastry dessert brownie pie candy canes. Pie tiramisu jujubes lemon drops biscuit cotton candy.
+        Chupa chups sweet roll sweet cookie ice cream gummi bears chocolate cake cotton candy carrot cake. Donut sesame
+        snaps chocolate pastry pastry cupcake macaroon dessert. Donut macaroon sugar plum croissant chupa chups toffee.
+        Cheesecake croissant cookie chocolate topping sweet. Pastry tart tootsie roll brownie marshmallow danish tart.
+        Powder lemon drops cake toffee tiramisu lollipop cake fruitcake. Muffin cake sesame snaps biscuit jelly
+        chocolate cake pie chocolate cake.
+      </p>
+      <p>
+        Tiramisu biscuit candy canes sweet roll jelly danish cake. Jelly-o lemon drops jelly-o. Gummies ice cream
+        gummies candy canes. Marzipan pastry dragée icing brownie candy canes. Croissant bear claw apple pie jelly beans
+        jelly-o jelly beans. Cookie liquorice jelly beans dessert croissant. Caramels pie chupa chups. Muffin danish
+        cupcake oat cake jujubes macaroon tart. Jelly-o wafer brownie toffee. Cookie marzipan gummi bears gummies
+        liquorice chocolate chocolate bar. Lollipop jelly beans bonbon gingerbread. Jelly sesame snaps brownie sweet
+        sweet roll jelly beans jelly carrot cake.
+      </p>
+      <p>
+        Biscuit brownie halvah halvah cheesecake oat cake dragée. Danish bonbon wafer. Liquorice liquorice sugar plum
+        sesame snaps caramels chupa chups tootsie roll cake. Carrot cake biscuit cupcake soufflé brownie carrot cake.
+        Jelly beans fruitcake bonbon sesame snaps icing jelly beans gingerbread candy canes. Cake cake halvah topping
+        gummi bears cookie pudding cupcake. Cotton candy cake chocolate liquorice chocolate cake powder. Chocolate cake
+        candy canes chocolate bar. Dessert chupa chups jelly beans icing candy jelly beans pastry. Tart liquorice bonbon
+        biscuit cheesecake apple pie muffin liquorice dessert. Carrot cake chocolate bar sweet gingerbread. Gummi bears
+        sesame snaps candy toffee halvah. Muffin tiramisu liquorice icing fruitcake cupcake.
+      </p>
+      <p>
+        Jelly-o halvah wafer chocolate bar. Cake bonbon sweet roll tart jujubes. Icing gingerbread biscuit chocolate bar
+        fruitcake cupcake bonbon icing. Lemon drops oat cake caramels croissant dessert. Wafer cookie brownie cookie
+        fruitcake liquorice. Icing cake gummi bears candy canes sweet. Topping biscuit marzipan. Oat cake tiramisu
+        jelly-o topping. Marzipan carrot cake gummi bears jelly-o tart sugar plum lemon drops pudding. Sweet roll pie
+        marshmallow muffin cotton candy croissant cake. Pudding marshmallow sweet. Wafer marshmallow sugar plum cake
+        icing muffin chocolate cake chupa chups. Ice cream liquorice candy canes.
+      </p>
+      <p>
+        Brownie sugar plum cake sesame snaps candy lollipop pudding halvah tiramisu. Pastry soufflé halvah bonbon muffin
+        dessert marzipan. Tart candy canes wafer biscuit brownie jujubes bear claw. Bonbon halvah donut toffee pudding
+        jujubes jelly-o sweet roll fruitcake. Candy jujubes dragée tart donut gummies chocolate bonbon. Pudding chupa
+        chups marshmallow bear claw. Oat cake bonbon soufflé sweet roll gummi bears toffee tiramisu. Carrot cake tootsie
+        roll icing caramels. Bear claw soufflé powder toffee sweet. Lollipop croissant icing biscuit fruitcake muffin.
+        Carrot cake chocolate bar chupa chups sugar plum cheesecake candy cake. Gummies dragée toffee jujubes jelly
+        gummies chocolate cake tootsie roll.
+      </p>
+    </div>
+  </details>
+  <details name="hammer">
+    <summary>
+      <span aria-hidden="true">
+        <svg xmlns="\http://www.w3.org/2000/svg&quot;" viewBox="0 0 80 80" focusable="false">
+          <path d="M70.3 13.8L40 66.3 9.7 13.8z"></path>
+        </svg>
+      </span>
+      Hipster Ipsum (Hipsum?)
+    </summary>
+    <div>
+      <p>
+        Used in the post <a href="https://adrianroselli.com/2023/08/progressively-enhanced-html-accordion.html"
+          target="_top"><cite>Progressively Enhanced HTML Accordion</cite></a>. I'm baby xOXO biodiesel vaporware
+        kombucha. 3 wolf moon fingerstache deep v vaporware cardigan, distillery yr man braid chia prism meh kale chips
+        lumbersexual kombucha. Man braid flexitarian portland swag salvia vexillologist knausgaard bitters polaroid
+        williamsburg gochujang small batch lyft pinterest scenester. Intelligentsia hammock pabst listicle single-origin
+        coffee portland sriracha enamel pin.
+      </p>
+      <p>
+        Small batch kickstarter actually, raclette lomo meh chicharrones forage. Roof party trust fund jianbing lo-fi,
+        slow-carb quinoa live-edge. Fingerstache man bun post-ironic viral, stumptown distillery live-edge woke.
+        Williamsburg hot chicken disrupt authentic snackwave farm-to-table retro thundercats swag cardigan. Crucifix
+        health goth master cleanse typewriter shoreditch pinterest dreamcatcher portland man bun ennui hot chicken,
+        flexitarian mumblecore paleo swag. Brunch truffaut iPhone swag air plant shoreditch. Pour-over cray aesthetic,
+        venmo ramps irony letterpress +1 schlitz tote bag knausgaard butcher lumbersexual heirloom.
+      </p>
+      <p>
+        Lo-fi fixie farm-to-table 90's glossier waistcoat bushwick hot chicken kombucha cred distillery dreamcatcher
+        yuccie cliche. PBR&B truffaut kombucha, viral celiac listicle cardigan ennui migas green juice master cleanse
+        shaman tumeric. Man bun squid waistcoat af butcher, kombucha pickled freegan semiotics venmo vegan craft beer
+        synth. Shaman intelligentsia vape, pabst mustache art party pickled tilde bushwick heirloom put a bird on it raw
+        denim knausgaard swag whatever.
+      </p>
+      <p>
+        Tacos franzen selvage subway tile, jianbing trust fund disrupt portland offal leggings pork belly. Typewriter
+        vaporware XOXO raw denim. Green juice before they sold out 90's vinyl, mixtape ramps brooklyn sartorial forage
+        gluten-free paleo glossier hot chicken art party. Yr readymade butcher, selvage locavore iPhone XOXO bushwick
+        coloring book vegan tumeric pabst fixie retro. Blog viral everyday carry, knausgaard fam chambray roof party
+        pork belly cloud bread iceland tumeric. Literally shabby chic man braid kogi typewriter +1 pok pok vape affogato
+        food truck. Pour-over vice helvetica irony PBR&B fashion axe farm-to-table fanny pack artisan thundercats
+        gastropub ethical try-hard.
+      </p>
+      <p>
+        Yr shabby chic raclette live-edge tumeric mustache paleo cronut edison bulb typewriter whatever church-key man
+        braid hoodie. Tbh meh artisan, 3 wolf moon pok pok offal blue bottle chia pork belly. Chicharrones thundercats
+        ramps, hexagon cloud bread fixie 8-bit. Skateboard schlitz etsy, succulents slow-carb tofu migas mlkshk
+        sartorial 3 wolf moon. Aesthetic sustainable ramps scenester cronut. Retro portland small batch vexillologist 3
+        wolf moon chambray occupy offal vinyl. Pok pok ramps meditation, helvetica plaid craft beer chia narwhal master
+        cleanse actually knausgaard neutra skateboard.
+      </p>
+    </div>
+  </details>
+  <!-- </section> -->
+
+  <!-- Javascript external link -->
+  <script src="app.js" type="text/javascript"></script>
+  <script>
+    /* Javascript inline code here */
+
+  </script>
+</body>
+
+</html>

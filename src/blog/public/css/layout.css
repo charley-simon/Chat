@@ -1,3 +1,27 @@
+
+@layer reset {
+  *,
+  *:after,
+  *:before {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul[class] {
+    list-style: none;
+  }
+
+  label {
+    cursor: pointer;
+    max-width: max-content;
+    user-select: none;
+  }
+}
+
 :root {
   --brand-hue: 244;
   --surface-shadow: var(--brand-hue) 10% 20%;

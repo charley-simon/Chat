@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Charley" />
+  <meta name="description" content="Décrire ce que fait ce fichier." />
+  <title>Kanban Board</title>
+  <!-- CSS external styles link -->
+  <link rel="stylesheet" href="../public/css/normalize.css" />
+  <link rel="stylesheet" href="./kanban.css">
+  <style>
+    /* CSS inline styles here */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HTML inline code here -->
+
+
+      <!--<div class="task" categorie="Design">
+        <div class="task-header">
+          <div class="task-header-expand"></div>
+          <div class="task-title">SVG Icons</div>
+          <div class="task-categorie" style="background-color: lightgreen;">Design</div>
+          <div class="task-header-menu"></div>
+        </div>
+        <div class="task-content">
+          <p>Create and generate the custom SVG icons.</p>
+        </div>
+      </div>-->
+        <!--<div class="task-header-menu">
+          <div class="task-menu">
+            <input type="checkbox" id="dropdown" />
+            <label for="dropdown"><span>X</span></label>
+            <ul class="task-menu-content">
+              <li><a href="#">React</a></li>
+              <li><a href="#">Angular</a></li>
+              <li><a href="#">Vue</a></li>
+              <li><a href="#">Svelte</a></li>
+            </ul>
+          </div>
+        </div>-->
+
+  <template id="task-menu">
+    <div class="task-menu">
+      <input type="checkbox" id="dropdown" />
+      <label for="dropdown">
+        <span class="arrow"></span>
+      </label>
+      <ul class="task-menu-content">
+        <li><a href="#">React</a></li>
+        <li><a href="#">Angular</a></li>
+        <li><a href="#">Vue</a></li>
+        <li><a href="#">Svelte</a></li>
+      </ul>
+    </div>
+  </template>
+  <div class="task-board">
+    <div class="task-column">
+      <h2>Backlog</h2>
+      <div class="task-item" title="Selectors" categorie="Learn">
+        <div class="task-content">
+          <h2>Welcome to Learn Performance!</h2>
+          <p>This course is designed for those new to web performance, a vital aspect of the user experience. It covers
+            key web performance concepts and techniques for improving performance.</p>
+            To apply CSS to an element you need to select it. CSS provides you with a number of different ways to do
+            this, and you can explore them in this module.
+          <p><a href="#">Read Article</a></p>
+        </div>
+        <div class="task-progress" percent="80" estimated="5d" duration="6d" start="12/04/2023" finish="20/04/2023"></div>
+      </div>
+      <div class="task-item" title="SVG Icons" categorie="Design">
+        Create and generate the custom SVG icons.
+      </div>
+      <div class="task-item" title="Selectors" categorie="Learn">
+          <h2>Selectors</h2>
+          <p>To apply CSS to an element you need to select it. CSS provides you with a number of different ways to do
+            this,
+            and you can explore them in this module.</p>
+          <p><a href="#">Read Article</a></p>
+      </div>
+      <div class="task-item">
+        <h2>…</h2>
+        <p><em>(chapters 4 to 30 of this course have been omitted for demonstation purposes)</em></p>
+      </div>
+    </div>
+    <div class="task-column">
+      <h2>Todo</h2>
+      <div class="task-item" title="Drop down menu" categorie="Code">
+        <h2>Add drop down menu in task</h2>
+        <p>This course is designed for those new to web performance, a vital aspect of the user experience. It covers
+          key web performance concepts and techniques for improving performance.</p>
+      </div>
+      <div class="task-item" title="Performances" categorie="Learn">
+        <h2>Welcome to Learn Performance!</h2>
+        <p>This course is designed for those new to web performance, a vital aspect of the user experience. It covers
+          key web performance concepts and techniques for improving performance.</p>
+      </div>
+      <div class="task-item" title="Why speed matters" categorie="Code">
+        <h2>Why speed matters</h2>
+        <p>Before you can get started with learning performance, you first have to understand its role in the user
+          experience, and how it can result in better outcomes for users. This course starts off with a brief
+          introduction
+          into these topics, giving vital context as to why it's important to learn performance.</p>
+        <p><a href="#">Read Article</a></p>
+      </div>
+      <div class="task-item" title="HTML performances" categorie="Test">
+        <h2>General HTML performance considerations</h2>
+        <p>Every website starts with a request for an HTML document, that request has a big role to play in how fast
+          your
+          website loads. This module covers important concepts such as HTML caching, parser blocking, render blocking,
+          and
+          more, so you can ensure the first request for your website's HTML is off on the right foot.</p>
+        <p><a href="#">Read Article</a></p>
+      </div>
+      <div class="task-item">
+        <h2>…</h2>
+        <p><em>(chapters 4 to 14 of this course have been omitted for demonstation purposes)</em></p>
+      </div>
+    </div>
+    <div class="task-column" categorie="Refactor">
+      <h2>Doing</h2>
+      <div class="task-item" categorie="Test">
+        <h2>Welcome to Learn Performance!</h2>
+        <p>This course is designed for those new to web performance, a vital aspect of the user experience. It covers
+          key
+          web performance concepts and techniques for improving performance.</p>
+        <p><a href="#">Read Article</a></p>
+      </div>
+      <div class="task-item">
+        <h2>Why speed matters</h2>
+        <p>Before you can get started with learning performance, you first have to understand its role in the user
+          experience, and how it can result in better outcomes for users. This course starts off with a brief
+          introduction
+          into these topics, giving vital context as to why it's important to learn performance.</p>
+        <p><a href="#">Read Article</a></p>
+      </div>
+      <div class="task-item">
+        <h2>General HTML performance considerations</h2>
+        <p>Every website starts with a request for an HTML document, that request has a big role to play in how fast
+          your
+          website loads. This module covers important concepts such as HTML caching, parser blocking, render blocking,
+          and
+          more, so you can ensure the first request for your website's HTML is off on the right foot.</p>
+        <p><a href="#">Read Article</a></p>
+      </div>
+      <div class="task-item">
+        <h2>…</h2>
+        <p><em>(chapters 4 to 14 of this course have been omitted for demonstation purposes)</em></p>
+      </div>
+    </div>
+    <div class="task-column">
+      <h2>Done</h2>
+      <div class="task-item" open>
+        <h2>Welcome to Learn Performance!</h2>
+        <p>This course is designed for those new to web performance, a vital aspect of the user experience. It covers
+          key
+          web performance concepts and techniques for improving performance.</p>
+        <p><a href="#">Read Article</a></p>
+      </div>
+      <div class="task-item">
+        <h2>Why speed matters</h2>
+        <p>Before you can get started with learning performance, you first have to understand its role in the user
+          experience, and how it can result in better outcomes for users. This course starts off with a brief
+          introduction
+          into these topics, giving vital context as to why it's important to learn performance.</p>
+        <p><a href="#">Read Article</a></p>
+      </div>
+      <div class="task-item">
+        <h2>General HTML performance considerations</h2>
+        <p>Every website starts with a request for an HTML document, that request has a big role to play in how fast
+          your
+          website loads. This module covers important concepts such as HTML caching, parser blocking, render blocking,
+          and
+          more, so you can ensure the first request for your website's HTML is off on the right foot.</p>
+        <p><a href="#">Read Article</a></p>
+      </div>
+      <div class="task-item">
+        <h2>…</h2>
+        <p><em>(chapters 4 to 14 of this course have been omitted for demonstation purposes)</em></p>
+      </div>
+    </div>
+  </div>
+  <!-- Javascript external link -->
+  <script src="./kanban.js" type="text/javascript"></script>
+  <script>
+    /* Javascript inline code here */
+  </script>
+</body>
+
+</html>

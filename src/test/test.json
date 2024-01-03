@@ -1,0 +1,30 @@
+{
+  "shapes": [
+    {
+      "x": 30,
+      "y": 20,
+      "width": 100,
+      "height": 200,
+      "stroke": {
+        "width": 2,
+        "color": "#999"
+      },
+      "type": "rectangle"
+    },
+    {
+      "x1": 30,
+      "y1": 40,
+      "x2": 140,
+      "y2": 150,
+      "stroke": "#999",
+      "type": "line"
+    },
+    {
+      "x": 100,
+      "y": 150,
+      "radius": 30,
+      "stroke": "#999",
+      "type": "circle"
+    }
+  ]
+}
