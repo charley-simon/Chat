@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=<p>I spend a lot of time in DevTools, and I’m sure you do too. Sometimes I even bounce between them, especially when I’m
+    debugging cross-browser issues. DevTools is a lot like browsers themselves — not all of the features in one browser’s
+    DevTools will be the same or supported in another browser’s DevTools.</p>
+  
+  
+  
+  <p>But there are quite a few DevTools features that are interoperable, even some lesser-known ones that I’m about to
+    share with you.</p>
+  
+  
+  
+  <p>For the sake of brevity, I use “Chromium” to refer to all Chromium-based browsers, like Chrome, Edge, and Opera, in
+    the article. Many of the DevTools in them offer the exact same features and capabilities as one another, so this is
+    just my shorthand for referring to all of them at once.</p>
+  
+  
+  
+  <span id="more-377264"></span>
+  
+  
+  <h3 class="wp-block-heading" id="search-nodes-in-the-dom-tree">Search nodes in the DOM tree</h3>
+  
+  
+  <p>Sometimes the DOM tree is full of nodes nested in nodes that are nested in other nodes, and so on. That makes it
+    pretty tough to find the exact one you’re looking for, but you can quickly search the DOM tree using <code>Cmd</code>
+    + <code>F</code> (macOS) or <code>Ctrl</code> + <code>F</code> (Windows).</p>
+  
+  
+  
+  <p>Additionally, you can also search using a valid CSS selector, like <code>.red</code>, or using an XPath, like
+    <code>//div/h1</code>.</p>
+  
+  
+  
+  <figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="2378" height="1048"
+      src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674209097213_image-1.png?resize=2378%2C1048&#038;ssl=1"
+      alt="DevTools screenshots of all three browsers." class="wp-image-377265"
+      srcset="https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674209097213_image-1.png?w=2378&amp;ssl=1 2378w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674209097213_image-1.png?resize=300%2C132&amp;ssl=1 300w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674209097213_image-1.png?resize=1024%2C451&amp;ssl=1 1024w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674209097213_image-1.png?resize=768%2C338&amp;ssl=1 768w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674209097213_image-1.png?resize=1536%2C677&amp;ssl=1 1536w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674209097213_image-1.png?resize=2048%2C903&amp;ssl=1 2048w"
+      sizes="(min-width: 735px) 864px, 96vw" data-recalc-dims="1" />
+    <figcaption class="wp-element-caption">Searching text in Chrome DevTools (left), selectors in Firefox DevTools
+      (center), and XPath in Safari DevTools (right)</figcaption>
+  </figure>
+  
+  
+  
+  <p>In Chromium browsers, the focus automatically jumps to the node that matches the search criteria as you type, which
+    could be annoying if you are working with longer search queries or a large DOM tree. Fortunately, you can disable this
+    behavior by heading to <strong>Settings</strong> (<code>F1</code>) → <strong>Preferences</strong> →
+    <strong>Global</strong> → <strong>Search as you type</strong> → <strong>Disable</strong>.</p>
+  
+  
+  
+  <p>After you have located the node in the DOM tree, you can scroll the page to bring the node within the viewport by
+    right-clicking on the nod, and selecting “Scroll into view”.</p>
+  
+  
+  
+  <figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1786" height="1118"
+      src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1675742347357_image.png?resize=1786%2C1118&#038;ssl=1"
+      alt="Showing a highlighted node on a webpage with a contextual menu open to scroll into view"
+      class="wp-image-377270"
+      srcset="https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1675742347357_image.png?w=1786&amp;ssl=1 1786w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1675742347357_image.png?resize=300%2C188&amp;ssl=1 300w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1675742347357_image.png?resize=1024%2C641&amp;ssl=1 1024w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1675742347357_image.png?resize=768%2C481&amp;ssl=1 768w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1675742347357_image.png?resize=1536%2C962&amp;ssl=1 1536w"
+      sizes="(min-width: 735px) 864px, 96vw" data-recalc-dims="1" /></figure>
+  
+  
+  <h3 class="wp-block-heading" id="access-nodes-from-the-console">Access nodes from the console</h3>
+  
+  
+  <p>DevTools provides many different ways to access a DOM node directly from the console.</p>
+  
+  
+  
+  <p>For example, you can use <code>$0</code> to access the currently selected node in the DOM tree. Chromium browsers
+    take this one step further by allowing you to access nodes selected in the reverse chronological order of historic
+    selection using, <code>$1</code>, <code>$2</code>, <code>$3</code>, etc.</p>
+  
+  
+  
+  <figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1682" height="1028"
+      src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674396487537_image-3.png?resize=1682%2C1028&#038;ssl=1"
+      alt="Currently selected node accessed from the Console in Edge DevTools" class="wp-image-377271"
+      srcset="https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674396487537_image-3.png?w=1682&amp;ssl=1 1682w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674396487537_image-3.png?resize=300%2C183&amp;ssl=1 300w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674396487537_image-3.png?resize=1024%2C626&amp;ssl=1 1024w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674396487537_image-3.png?resize=768%2C469&amp;ssl=1 768w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674396487537_image-3.png?resize=1536%2C939&amp;ssl=1 1536w"
+      sizes="(min-width: 735px) 864px, 96vw" data-recalc-dims="1" /></figure>
+  
+  
+  
+  <p>Another thing that Chromium browsers allow you to do is copy the node path as a JavaScript expression in the form of
+    <code>document.querySelector</code> by right-clicking on the node, and selecting <strong>Copy</strong> → <strong>Copy
+      JS path</strong>, which can then be used to access the node in the console.</p>
+  
+  
+  
+  <figure class="wp-block-video wp-block-embed is-type-video is-provider-videopress">
+    <div class="wp-block-embed__wrapper">
+      <iframe title="VideoPress Video Player" aria-label='VideoPress Video Player' width='500' height='305'
+        src='https://videopress.com/embed/jwsHG7QN?cover=1&amp;playsinline=1&amp;preloadContent=metadata&amp;useAverageColor=1&amp;hd=1'
+        frameborder='0' allowfullscreen data-resize-to-parent="true" allow='clipboard-write'></iframe>
+      <script src='https://v0.wordpress.com/js/next/videopress-iframe.js?m=1674852142'></script>
+    </div>
+  </figure>
+  
+  
+  
+  <p>Here’s another way to access a DOM node directly from the console: as a temporary variable. This option is available
+    by right-clicking on the node and selecting an option. That option is labeled differently in each browser&#8217;s
+    DevTools:</p>
+  
+  
+  
+  <ul>
+    <li><strong>Chromium</strong>: Right click → “Store as global variable”</li>
+  
+  
+  
+    <li><strong>Firefox</strong>: Right click → “Use in Console”</li>
+  
+  
+  
+    <li><strong>Safari</strong>: Right click → “Log Element”</li>
+  </ul>
+  
+  
+  
+  <figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="2560" height="1440"
+      src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674633378298_Myproject-1.png?resize=2560%2C1440&#038;ssl=1"
+      alt="Screenshot of DevTools contextual menus in all three browsers." class="wp-image-377274"
+      srcset="https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674633378298_Myproject-1.png?w=2560&amp;ssl=1 2560w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674633378298_Myproject-1.png?resize=300%2C169&amp;ssl=1 300w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674633378298_Myproject-1.png?resize=1024%2C576&amp;ssl=1 1024w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674633378298_Myproject-1.png?resize=768%2C432&amp;ssl=1 768w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674633378298_Myproject-1.png?resize=1536%2C864&amp;ssl=1 1536w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674633378298_Myproject-1.png?resize=2048%2C1152&amp;ssl=1 2048w"
+      sizes="(min-width: 735px) 864px, 96vw" data-recalc-dims="1" />
+    <figcaption class="wp-element-caption">Access a node as a temporary variable in the console, as shown in Chrome
+      (left), Firefox (center), and Safari (right)</figcaption>
+  </figure>
+  
+  
+  <h3 class="wp-block-heading" id="visualize-elements-with-badges">Visualize elements with badges</h3>
+  
+  
+  <p>DevTools can help visualize elements that match certain properties by displaying a badge next to the node. Badges are
+    clickable, and different browsers offer a variety of different badges.</p>
+  
+  
+  
+  <p>In <strong>Safari</strong>, there is a badge button in the Elements panel toolbar which can be used to toggle the
+    visibility of specific badges. For example, if a node has a <code>display: grid</code> or
+    <code>display: inline-grid</code> CSS declaration applied to it, a <code>grid</code> badge is displayed next to it.
+    Clicking on the badge will highlight grid areas, track sizes, line numbers, and more, on the page.</p>
+  
+  
+  
+  <figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1738" height="1082"
+      src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674708049378_Screenshot2023-01-26at10.05.40.png?resize=1738%2C1082&#038;ssl=1"
+      alt="A grid overlay visualized on top of a three-by-three grid." class="wp-image-377277"
+      srcset="https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674708049378_Screenshot2023-01-26at10.05.40.png?w=1738&amp;ssl=1 1738w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674708049378_Screenshot2023-01-26at10.05.40.png?resize=300%2C187&amp;ssl=1 300w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674708049378_Screenshot2023-01-26at10.05.40.png?resize=1024%2C637&amp;ssl=1 1024w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674708049378_Screenshot2023-01-26at10.05.40.png?resize=768%2C478&amp;ssl=1 768w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674708049378_Screenshot2023-01-26at10.05.40.png?resize=1536%2C956&amp;ssl=1 1536w"
+      sizes="(min-width: 735px) 864px, 96vw" data-recalc-dims="1" />
+    <figcaption class="wp-element-caption">Grid overlay with badges in Safari DevTools</figcaption>
+  </figure>
+  
+  
+  
+  <p>The badges that are currently supported in <strong>Firefox</strong>’s DevTools are listed in the Firefox <a
+      href="https://firefox-source-docs.mozilla.org/devtools-user/page_inspector/how_to/examine_and_edit_html/index.html#html-tree"
+      rel="noopener">source docs</a>. For example, a <code>scroll</code> badge indicates a scrollable element. Clicking on
+    the badge highlights the element causing the overflow with an <code>overflow</code> badge next to it.</p>
+  
+  
+  
+  <figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="852" height="379"
+      src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/overflow_badge.png?resize=852%2C379&#038;ssl=1"
+      alt="Overflow badge in Firefox DevTools located in the HTML panel" class="wp-image-377279"
+      srcset="https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/overflow_badge.png?w=852&amp;ssl=1 852w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/overflow_badge.png?resize=300%2C133&amp;ssl=1 300w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/overflow_badge.png?resize=768%2C342&amp;ssl=1 768w"
+      sizes="(min-width: 735px) 864px, 96vw" data-recalc-dims="1" /></figure>
+  
+  
+  
+  <p>In <strong>Chromium</strong> browsers, you can right-click on any node and select <strong>“Badge settings…”</strong>
+    to open a container that lists all of the available badges. For example, elements with <code>scroll-snap-type</code>
+    will have a <code>scroll-snap</code> badge next to it, which on click, will toggle the <code>scroll-snap</code>
+    overlay on that element.</p>
+  
+  
+  
+  <figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1738" height="1082"
+      src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/tbuxzdUk.png?resize=1738%2C1082&#038;ssl=1" alt=""
+      class="wp-image-377296"
+      srcset="https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/tbuxzdUk.png?w=1738&amp;ssl=1 1738w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/tbuxzdUk.png?resize=300%2C187&amp;ssl=1 300w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/tbuxzdUk.png?resize=1024%2C637&amp;ssl=1 1024w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/tbuxzdUk.png?resize=768%2C478&amp;ssl=1 768w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/tbuxzdUk.png?resize=1536%2C956&amp;ssl=1 1536w"
+      sizes="(min-width: 735px) 864px, 96vw" data-recalc-dims="1" /></figure>
+  
+  
+  <h3 class="wp-block-heading" id="taking-screenshots">Taking screenshots</h3>
+  
+  
+  <p>We’ve been able to take screenshots from some DevTools for a while now, but it’s now available in all of them and
+    includes new ways to take full-page shots.</p>
+  
+  
+  
+  <p>The process starts by right-clicking on the DOM node you want to capture. Then select the option to capture the node,
+    which is labeled differently depending on which DevTools you’re using.</p>
+  
+  
+  
+  <figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="2560" height="1700"
+      src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674721274966_Myproject-1.png?resize=2560%2C1700&#038;ssl=1"
+      alt="Screenshot of DevTools in all three browsers." class="wp-image-377282"
+      srcset="https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674721274966_Myproject-1.png?w=2560&amp;ssl=1 2560w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674721274966_Myproject-1.png?resize=300%2C199&amp;ssl=1 300w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674721274966_Myproject-1.png?resize=1024%2C680&amp;ssl=1 1024w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674721274966_Myproject-1.png?resize=768%2C510&amp;ssl=1 768w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674721274966_Myproject-1.png?resize=1536%2C1020&amp;ssl=1 1536w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674721274966_Myproject-1.png?resize=2048%2C1360&amp;ssl=1 2048w"
+      sizes="(min-width: 735px) 864px, 96vw" data-recalc-dims="1" />
+    <figcaption class="wp-element-caption">Chrome (left), Safari (middle), and Firefox (right)</figcaption>
+  </figure>
+  
+  
+  
+  <p>Repeat the same steps on the <code>html</code> node to take a full-page screenshot. When you do, though, it’s worth
+    noting that Safari retains the transparency of the element’s background color — Chromium and Firefox will capture it
+    as a white background.</p>
+  
+  
+  
+  <figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1506" height="1082"
+      src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674721838803_Screenshot2023-01-26at14.00.01.png?resize=1506%2C1082&#038;ssl=1"
+      alt="Two screenshots of the same element, one with a background and one without." class="wp-image-377283"
+      srcset="https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674721838803_Screenshot2023-01-26at14.00.01.png?w=1506&amp;ssl=1 1506w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674721838803_Screenshot2023-01-26at14.00.01.png?resize=300%2C216&amp;ssl=1 300w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674721838803_Screenshot2023-01-26at14.00.01.png?resize=1024%2C736&amp;ssl=1 1024w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674721838803_Screenshot2023-01-26at14.00.01.png?resize=768%2C552&amp;ssl=1 768w"
+      sizes="(min-width: 735px) 864px, 96vw" data-recalc-dims="1" />
+    <figcaption class="wp-element-caption">Comparing screenshots in Safari (left) and Chromium (right)</figcaption>
+  </figure>
+  
+  
+  
+  <p>There’s another option! You can take a “responsive” screenshot of the page, which allows you to capture the page at a
+    specific viewport width. As you might expect, each browser has different ways to get there.</p>
+  
+  
+  
+  <ul>
+    <li><strong>Chromium</strong>: <code>Cmd</code> + <code>Shift</code> + <code>M</code> (macOS) or <code>Ctrl</code> +
+      <code>Shift</code> + <code>M</code> (Windows). Or click the “Devices” icon next to the “Inspect” icon.</li>
+  
+  
+  
+    <li><strong>Firefox</strong>: Tools → Browser Tools → “Responsive Design Mode”</li>
+  
+  
+  
+    <li><strong>Safari</strong>: Develop → “Enter Responsive Design Mode”</li>
+  </ul>
+  
+  
+  
+  <figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="2550" height="1700"
+      src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674755907874_screenshot.png?resize=2550%2C1700&#038;ssl=1"
+      alt="Enter responsive mode options in DevTools for all three browsers." class="wp-image-377285"
+      srcset="https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674755907874_screenshot.png?w=2550&amp;ssl=1 2550w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674755907874_screenshot.png?resize=300%2C200&amp;ssl=1 300w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674755907874_screenshot.png?resize=1024%2C683&amp;ssl=1 1024w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674755907874_screenshot.png?resize=768%2C512&amp;ssl=1 768w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674755907874_screenshot.png?resize=1536%2C1024&amp;ssl=1 1536w, https://i0.wp.com/css-tricks.com/wp-content/uploads/2023/02/s_7E25E76B5C1A2A0120D43B477F8F8B0FA75578B215D36F3A918DC29D997AA0F4_1674755907874_screenshot.png?resize=2048%2C1365&amp;ssl=1 2048w"
+      sizes="(min-width: 735px) 864px, 96vw" data-recalc-dims="1" />
+    <figcaption class="wp-element-caption">Launching responsive design mode in Safari (left), Firefox (right), and
+      Chromium (bottom)</figcaption>
+  </figure>
+  
+  
+  <h3 class="wp-block-heading" id="chrome-tip-inspect-the-top-layer">Chrome tip: Inspect the top layer</h3>
+  
+  
+  <p>Chrome lets you visualize and inspect top-layer elements, like a dialog, alert, or modal. When an element is added to
+    the <code>#top-layer</code>, it gets a <code>top-layer</code> badge next to it, which on click, jumps you to the
+    top-layer container located just after the <code>&lt;/html&gt;</code> tag.</p>
+  
+  
+  
+  <p>The order of the elements in the <code>top-layer</code> container follows the stacking order, which means the last
+    one is on the top. Click the <code>reveal</code> badge to jump back to the node.</p>
+  
+  
+  
+  <figure class="wp-block-video wp-block-embed is-type-video is-provider-videopress">
+    <div class="wp-block-embed__wrapper">
+      <iframe title="VideoPress Video Player" aria-label='VideoPress Video Player' width='500' height='315'
+        src='https://videopress.com/embed/jljQbj3P?cover=1&amp;playsinline=1&amp;preloadContent=metadata&amp;useAverageColor=1&amp;hd=1'
+        frameborder='0' allowfullscreen data-resize-to-parent="true" allow='clipboard-write'></iframe>
+      <script src='https://v0.wordpress.com/js/next/videopress-iframe.js?m=1674852142'></script>
+    </div>
+  </figure>
+  
+  
+  <h3 class="wp-block-heading" id="firefox-tip-jump-to-id">Firefox tip: Jump to ID</h3>
+  
+  
+  <p>Firefox links the element referencing the ID attribute to its target element in the same DOM and highlights it with
+    an underline. Use <code>CMD</code> + <code>Click</code> (macOS) or <code>CTRL</code> + <code>Click</code> (Windows)
+    )to jump to the target element with the identifier.</p>
+  
+  
+  
+  <figure class="wp-block-video wp-block-embed is-type-video is-provider-videopress">
+    <div class="wp-block-embed__wrapper">
+      <iframe title="VideoPress Video Player" aria-label='VideoPress Video Player' width='500' height='315'
+        src='https://videopress.com/embed/qWuqfQTh?cover=1&amp;playsinline=1&amp;preloadContent=metadata&amp;useAverageColor=1&amp;hd=1'
+        frameborder='0' allowfullscreen data-resize-to-parent="true" allow='clipboard-write'></iframe>
+      <script src='https://v0.wordpress.com/js/next/videopress-iframe.js?m=1674852142'></script>
+    </div>
+  </figure>
+  
+  
+  <h3 class="wp-block-heading" id="wrapping-up">Wrapping up</h3>
+  
+  
+  <p>Quite a few things, right? It’s awesome that there are some incredibly useful DevTools features that are supported in
+    Chromium, Firefox, and Safari alike. Are there any other lesser-known features supported by all three that you like?
+  </p>
+  
+  
+  
+  <p>There are a few resources I keep close by to stay on top of what’s new. I thought I’d share them with here:</p>
+  
+  
+  
+  <ul>
+    <li><a href="https://devtoolstips.org/" rel="noopener">DevTools Tips</a> (Patrick Brosset): A curated collection of
+      helpful cross-browser DevTools tips and tricks.</li>
+  
+  
+  
+    <li><a href="https://umaar.com/dev-tips/" rel="noopener">Dev Tips</a> (Umar Hansa): DevTools tips sent to your inbox!
+    </li>
+  
+  
+  
+    <li><a href="https://www.canidev.tools/" rel="noopener">Can I DevTools?</a>: The <a href="https://caniuse.com"
+        rel="noopener">Can</a><a href="https://caniuse.com" rel="noopener">iuse</a> for DevTools.</li>
+  </ul>
+  <hr />
+  <p><small><a rel="nofollow" href="https://css-tricks.com/some-cross-browser-devtools-features-you-might-not-know/">Some
+        Cross-Browser DevTools Features You Might Not Know</a> originally published on <a rel="nofollow"
+        href="https://css-tricks.com">CSS-Tricks</a>, which is part of the <a
+        href="https://try.digitalocean.com/css-tricks/?utm_medium=rss&amp;utm_source=css-tricks.com&amp;utm_campaign=family_&amp;utm_content=">DigitalOcean</a>
+      family. You should <a href="https://css-tricks.com/newsletters/">get the newsletter</a>.</p>, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
